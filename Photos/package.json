@@ -5,11 +5,11 @@
   "main": "index.js",
   "scripts": {
     "react-dev": "webpack -d --watch",
-    "start-dev": "nodemon index.js",
+    "start-dev": "nodemon server/index.js",
     "build": "webpack -d",
-    "start": "node index.js"
+    "start": "node server/index.js"
   },
-  "author": "Beth Johnson",
+  "author": "Mike Hamm sucks",
   "license": "ISC",
   "devDependencies": {
     "babel-core": "^6.23.1",
