@@ -9,7 +9,7 @@
     "build": "webpack -d",
     "start": "node server/index.js"
   },
-  "author": "Beth Johnson",
+  "author": "Mehul Mandviya",
   "license": "ISC",
   "devDependencies": {
     "babel-core": "^6.23.1",
