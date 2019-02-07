@@ -9,7 +9,7 @@
     "build": "webpack -d",
     "start": "node server/index.js"
   },
-  "author": "Mike Hamm is a great guy",
+  "author": "Lawrence Chou",
   "license": "ISC",
   "devDependencies": {
     "babel-core": "^6.23.1",
