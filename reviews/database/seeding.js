@@ -78,7 +78,7 @@ Reviews.insertMany(dataArr, {ordered: false}, (err, result) => {
 
 
 var returnAll = (callback) => {
-  Reviews.find((err, data) => {
+  Reviews.find({}, '-_id -reviews._id -__v', (err, data) => {
     if (err) {
       console.log(err);
     } else {
