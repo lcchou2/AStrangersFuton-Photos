@@ -1,13 +1,21 @@
-var mongoose = require('mongoose');
 var data = require('./data.js');
-var schema = require('./schema.js');
+
+var mongoose = require('mongoose');
+var reviewsSchema = require('./schema.js');
+mongoose.connect('mongodb://localhost/testReviews');
+var db = mongoose.connection;
+
+db.on('error', console.error.bind(console, 'connection error:'));
+db.once('open', function() {
+  console.log('connected');
+});
 
 
 function getRndInt(min, max) {
   return Math.floor(Math.random() * (max - min + 1) ) + min;
 }
 
-var Reviews = function(name, month, year, review) {
+var generateReviews = function(name, month, year, review) {
   var obj = {
     name: name,
     profile: "http://i.pravatar.cc/100",
@@ -18,7 +26,7 @@ var Reviews = function(name, month, year, review) {
   return obj;
 }
 
-var Listings = function(id) {
+var generateListings = function(id) {
   var ratings = [getRndInt(1, 5), getRndInt(1, 5), getRndInt(1, 5), getRndInt(1, 5), getRndInt(1, 5), getRndInt(1, 5)];
   var totalRating = 0;
   for (var i = 0; i < ratings.length; i++) {
@@ -34,7 +42,7 @@ var Listings = function(id) {
     var year = data.year[getRndInt(0, 1)];
     var review = data.review[getRndInt(0, 19)];
 
-    reviews.push(Reviews(name, month, year, review));
+    reviews.push(generateReviews(name, month, year, review));
   }
 
   var obj = {
@@ -53,10 +61,31 @@ var Listings = function(id) {
 
 var dataArr = [];
 for (var i = 1; i <= 100; i++) {
-  dataArr.push(Listings(i));
+  dataArr.push(generateListings(i));
 }
 
 
 
+var Reviews = mongoose.model('Reviews', reviewsSchema);
 
-module.exports = Listings;
+Reviews.insertMany(dataArr, {ordered: false}, (err, result) => {
+  if (err) {
+    console.log(err);
+  } else {
+    console.log('result:', result);
+  }
+});
+
+
+// var returnAll = (callback) => {
+//   Repo.find(null, null, {sort: {updated_at: -1}, limit: 25}, function(err, data) {
+//     if (err) {
+//       throw (err);
+//     } else {
+//       console.log('data', data);
+//       callback(null, data);
+//     }
+//   })
+// }
+
+// module.exports = returnAll;

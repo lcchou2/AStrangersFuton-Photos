@@ -1,6 +1,6 @@
 var mongoose = require('mongoose');
 
-var reviews = new mongoose.Schema({
+var reviewsSchema = new mongoose.Schema({
   listingId: Number,
   rating: Number,
   accuracy: Number,
@@ -18,4 +18,4 @@ var reviews = new mongoose.Schema({
   }]
 })
 
-module.export = reviews;
+module.exports = reviewsSchema;
