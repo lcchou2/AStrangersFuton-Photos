@@ -77,15 +77,17 @@ Reviews.insertMany(dataArr, {ordered: false}, (err, result) => {
 });
 
 
-// var returnAll = (callback) => {
-//   Repo.find(null, null, {sort: {updated_at: -1}, limit: 25}, function(err, data) {
-//     if (err) {
-//       throw (err);
-//     } else {
-//       console.log('data', data);
-//       callback(null, data);
-//     }
-//   })
-// }
+var returnAll = (callback) => {
+  Reviews.find((err, data) => {
+    if (err) {
+      console.log(err);
+    } else {
+      console.log('data', data);
+      callback(null, data);
+    }
+  })
+}
 
-// module.exports = returnAll;
+module.exports = {
+  returnAll
+};
