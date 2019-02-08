@@ -26,7 +26,7 @@ var generate = function(){
   var obj = {
     // isHeader: header[getRndInteger(0,1)],
     photoId: photoId++,
-    listingId: listingId,
+    listingId: getRndInteger(1,100),
     description: description[getRndInteger(1,21)],
     url: 'https://via.placeholder.com/1027x628'
   }
@@ -60,6 +60,4 @@ const returnAll=(callback) => {
   })
 }
 
-module.exports = {
-  returnAll
-}
+module.exports = {returnAll}
