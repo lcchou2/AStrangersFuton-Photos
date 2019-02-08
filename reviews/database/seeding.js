@@ -1,5 +1,6 @@
 var mongoose = require('mongoose');
-var data = require('./data.js')
+var data = require('./data.js');
+var schema = require('./schema.js');
 
 
 function getRndInt(min, max) {
@@ -37,7 +38,7 @@ var Listings = function(id) {
   }
 
   var obj = {
-    id: id,
+    listingId: id,
     rating: aveRating,
     accuracy: ratings[0],
     communication: ratings[1],
@@ -51,10 +52,11 @@ var Listings = function(id) {
 }
 
 var dataArr = [];
-for (var i = 0; i < 100; i++) {
+for (var i = 1; i <= 100; i++) {
   dataArr.push(Listings(i));
 }
 
-module.exports = {
-  Listings
-}
+
+
+
+module.exports = Listings;
