@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const similarSchema = new Schema({
+const similarListingSchema = new Schema({
     url: String,
     listingID: Number,
     roomDescription: String,
@@ -11,4 +11,4 @@ const similarSchema = new Schema({
     name: String
 });
 
-module.exports = { similarSchema };
+module.exports = { similarListingSchema };

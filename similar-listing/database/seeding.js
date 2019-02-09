@@ -5,7 +5,7 @@ mongoose.connect('mongodb://localhost:27017/similar-listings', { useNewUrlParser
 var db = mongoose.connection;
 
 
-var SimilarModel = mongoose.model('SimilarModel', simSchema.similarSchema);
+var SimilarModel = mongoose.model('SimilarModel', simSchema.similarListingSchema);
 
 var result = [];
 

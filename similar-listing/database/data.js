@@ -11,9 +11,7 @@ const rating = [5, 5, 5, 5, 5, 5, 5, 5, 5, 5];
 
 const name = ["Villa Kupu Kupu Lovina", "Stunning All Bamboo House on Pristine Valley edge", "Private Family Love Villa4 close to 66Beach BALI", "EXCLUSIVE AND UNIQUE BEACHFRONT POOL VILLA !", "The Taman Negari Bali Retreat", "Eco-luxury, family-friendly villa", "A Splendid Ubud Experience In Bali", "Architect's villa in Ubud, Bali for yoga & art", "Uniquely designed Villa in Ubud / Mas", "Luxe Ubud Villa Ultimate Conscious Exp 2BR 30% OFF"];
 
-exports.url = url;
-exports.rooomDescription = rooomDescription;
-exports.location = location;
-exports.price = price;
-exports.rating = rating;
-exports.name = name;
+module.exports = {
+    url, rooomDescription, location,
+    price, rating, name
+}
