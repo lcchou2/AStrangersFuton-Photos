@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const photos = require('./schema');
-mongoose.connect('mongodb://localhost/testPhotos');
+mongoose.connect('mongodb://localhost/testPhoto');
 
 var db = mongoose.connection;
 
@@ -17,7 +17,7 @@ function getRndInteger(min, max) {
 var arr = []
 var photoId = 1
 // var header = [true,false]
-var listingId = getRndInteger(1,100)
+// var listingId = getRndInteger(1,100)
 var description = ['Lorem ipsum dolor sit amet', 'consectetur adipiscing elit', 'sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.', 'Urna neque viverra justo nec ultrices dui', 'Vel elit scelerisque mauris pellentesque pulvinar', 'Malesuada proin libero nunc consequat interdum varius', 'Turpis egestas integer eget aliquet nibh praesent tristique magna sit', 'Orci phasellus egestas tellus rutrum tellus pellentesque. Sit amet facilisis magna etiam tempor orci eu', 'Morbi tristique senectus et netus et malesuada fames ac', 'Adipiscing tristique risus nec feugiat in fermentum posuere urna', 'Placerat in egestas erat imperdiet sed euismod nisi porta', 'Eu ultrices vitae auctor eu', 'Sollicitudin aliquam ultrices sagittis orci a', 'Nisl purus in mollis nunc sed id semper', 'Laoreet id donec ultrices tincidunt arcu non', 'Arcu bibendum at varius vel pharetra vel', 'Diam phasellus vestibulum lorem sed risus', 'Scelerisque purus semper eget duis at tellus', 'Vulputate enim nulla aliquet porttitor lacus luctus accumsan tortor', 'Eget felis eget nunc lobortis mattis aliquam', 'Eleifend donec pretium vulputate sapien nec sagittis aliquam malesuada bibendum']
 // var url;
 
@@ -42,7 +42,7 @@ const Photos = mongoose.model('Photos', photos);
 // {ordered:false} as second argument for insertMany
 
 
-Photos.insertMany(arr,{ordered:false}, (err)=>{
+Photos.insertMany(arr, (err)=>{
   if (err){
     console.log(err)
   }
@@ -51,8 +51,8 @@ Photos.insertMany(arr,{ordered:false}, (err)=>{
 })
 
 
-const returnAll=(callback) => {
-  Photos.find((err,data) => {
+const returnListing41=(callback) => {
+  Photos.find({listingId:41}, '-_id -__v',(err,data) => {
     if (err) {
       callback(err)
     }
@@ -60,4 +60,4 @@ const returnAll=(callback) => {
   })
 }
 
-module.exports = {returnAll}
+module.exports = {returnListing41}
