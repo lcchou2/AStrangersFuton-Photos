@@ -38,3 +38,23 @@
 .stars-80:after { width: 80%; }
 .stars-90:after { width: 90%; }
 .stars-100:after { width: 100%;}
+
+.left-rating {
+  font-size: 20px
+}
+
+.right-rating {
+  font-size: 20px;
+  position: relative;
+  left: 50%;
+}
+
+.center-stars {
+  position: relative;
+  right: 50%;
+}
+
+.right-stars {
+  position: relative;
+  right: 0px;
+}
