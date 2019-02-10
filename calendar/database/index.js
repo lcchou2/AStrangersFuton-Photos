@@ -7,7 +7,7 @@ mongoose.connect('mongodb://localhost/schedule', function(error) {
 });
 
 var singleScheduleSchema = new mongoose.Schema({
-  timestamp: Number,
+  timestamp: Date,
   taken: Boolean
 });
 

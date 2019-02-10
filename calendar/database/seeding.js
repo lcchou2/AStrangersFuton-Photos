@@ -1,18 +1,29 @@
 
 var db = require('./index.js');
 
-var DAY = 24 * 60 * 60;
-var MONTH = DAY * 30;
-var YEAR = MONTH * 12;
-
 function getRndInteger(min, max) {
   return Math.floor(Math.random() * (max - min + 1) ) + min;
 }
 
-function nearestTs() {
-  var d = new Date();
-  d.setHours(0, 0, 0, 0);
-  return Math.floor(d.getTime() / 1000);
+const getStartOfToday = function() {
+  var currentTime = Date.now();
+  var currentDate = new Date(currentTime);
+  currentDate.setHours(0, 0, 0, 0);
+  return currentDate;
+};
+
+var iterDate = function(date, count=1, copy=false) {
+  var dateRef = date;
+  var iterVal = (count < 0 ? -1 : 1);
+
+  if(!copy) {
+    dateRef = new Date(dateRef.getTime());
+  }
+
+  for (var i=0; i<Math.abs(count); i++) {
+      dateRef.setDate(dateRef.getDate() + iterVal);
+  }
+  return dateRef;
 }
 
 function coinFlip(odds=2) {
@@ -25,11 +36,12 @@ var buildMinimum = function(listingId=1, minimumStay=3, takenOdds=3, endOdds=2) 
     minimumStay: minimumStay,
     datesTaken: []
   };
-  var startTs = nearestTs() - MONTH;
-  var endTs = nearestTs() + YEAR;
+  var today = getStartOfToday();
+  var startDate = iterDate(today, -30);
+  var endDate = iterDate(today, 365);
   var daysInARow = 0;
 
-  while (startTs <= endTs) {
+  while (startDate.getTime() <= endDate.getTime()) {
     var isTaken = false;
     if (daysInARow === 0) {
       if (coinFlip(takenOdds)) isTaken = true; 
@@ -45,8 +57,8 @@ var buildMinimum = function(listingId=1, minimumStay=3, takenOdds=3, endOdds=2) 
       daysInARow = 0;
     }
 
-    obj.datesTaken.push({timestamp: startTs, taken: isTaken});
-    startTs += DAY;
+    obj.datesTaken.push({timestamp: startDate, taken: isTaken});
+    startDate = iterDate(startDate);
   }
   return obj;
 }

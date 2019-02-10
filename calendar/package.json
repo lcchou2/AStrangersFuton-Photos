@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "react-dev": "webpack -d --watch",
-    "start-dev": "nodemon server/index.js",
+    "start-dev": "nodemon server/server.js",
     "build": "webpack -d",
     "start": "node server/server.js"
   },
