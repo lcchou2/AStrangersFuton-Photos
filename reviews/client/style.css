@@ -1,6 +1,7 @@
 .numOfReviews {
-  font-size: 30px;
+  font-size: 25px;
   font-weight: bold;
+  font-family: sans-serif;
 }
 
 /**********STAR COMPONENT**********/
@@ -48,13 +49,15 @@
 }
 
 .left-rating {
-  font-size: 20px;
+  font-size: 18px;
+  font-family: sans-serif;
 }
 
 .right-rating {
-  font-size: 20px;
+  font-size: 18px;
+  font-family: sans-serif;
   position: relative;
-  min-width: 300px;
+  min-width: 100px;
   /* max-width: 1000px; */
   margin: 0 auto;
   /* left: 500px; */
@@ -62,7 +65,7 @@
 
 .center-stars {
   position: relative;
-  min-width: 300px;
+  min-width: 100px;
   /* max-width: 1000px; */
   margin: 0 auto;
   /* right: 500px; */
@@ -70,7 +73,7 @@
 
 .right-stars {
   position: relative;
-  min-width: 300px;
+  min-width: 100px;
   /* max-width: 1000px; */
   margin: 0 auto;
   /* right: 0px; */
@@ -78,7 +81,10 @@
 
 /**********SEARCH COMPONENT**********/
 @import url("//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css");
-.search { position: relative; }
+.search { 
+  position: relative;
+  float:left;
+ }
 .search input { 
   text-indent: 30px;
   font-size: 12px;
@@ -91,3 +97,43 @@
   top: 24px;
   left: 7px;
 } */
+
+/**********ORDER COMPONENT**********/
+.order { 
+  position: relative;
+  float:right;
+  border: 1px solid gray;
+  padding: 8px;
+ }
+
+
+/**********REVIEWS COMPONENT**********/
+.avatar {
+  border-radius: 100px;
+  display: inline-block;
+  margin-right: 25px; 
+}
+
+.profileInfo {
+  display: inline-block;
+}
+
+.username {
+  font-weight: bold;
+  font-family: sans-serif;
+  font-size: 17px;
+}
+
+.date {
+  font-family: sans-serif;
+  font-size: 14px;
+}
+
+.flag {
+  float:right;
+}
+
+.review {
+  font-family: sans-serif;
+  font-size: 15px;
+}
