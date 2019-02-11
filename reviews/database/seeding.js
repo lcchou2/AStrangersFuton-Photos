@@ -18,7 +18,7 @@ function getRndInt(min, max) {
 var generateReviews = function(name, month, year, review) {
   var obj = {
     name: name,
-    profile: "http://i.pravatar.cc/100",
+    profile: "http://i.pravatar.cc/50",
     month: month,
     year: year,
     review: review
