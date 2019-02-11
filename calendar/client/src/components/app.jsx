@@ -1,14 +1,7 @@
 import moment from 'moment';
 
 var buildCalGrid = function (month, year) {
-  var grid = {
-      0: {},
-      1: {},
-      2: {},
-      3: {},
-      4: {},
-      5: {}
-  };
+  var grid = {0: {}};
   var m = moment().month(month).year(year).startOf('month');
 
   for (var i=0; i<m.day(); i++) {
@@ -18,6 +11,7 @@ var buildCalGrid = function (month, year) {
   var currWeek = 0;
 
   while (m.month() === month) {
+    if (!grid[currWeek]) grid[currWeek] = {};
     grid[currWeek][m.day()] = m.date();
     m = m.add(1, 'day');
 
@@ -34,9 +28,13 @@ class App extends React.Component {
     this.state = {
       moment: moment().startOf('month')
     }
-    this.handleClick = this.handleClick.bind(this);
+    this.handleButtonClick = this.handleButtonClick.bind(this);
+    this.handleDateClick = this.handleDateClick.bind(this);
   }
-  handleClick(event) {
+  handleDateClick(event) {
+    console.log(event.target);
+  }
+  handleButtonClick(event) {
     if (event.target.dataset.direction === 'left') {
       this.setState({moment: this.state.moment.subtract(1, 'months')});
     } else if (event.target.dataset.direction === 'right') {
@@ -46,7 +44,7 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        {<this.props.Calender moment={this.state.moment} grid={buildCalGrid(this.state.moment.month(), this.state.moment.year())} handleClick={this.handleClick} />}
+        {<this.props.Calender moment={this.state.moment} month={this.state.moment.month()} year={this.state.moment.year()} grid={buildCalGrid(this.state.moment.month(), this.state.moment.year())} handleButtonClick={this.handleButtonClick} handleDateClick={this.handleDateClick} />}
       </div>
     );
   }
