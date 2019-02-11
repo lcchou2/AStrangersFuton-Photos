@@ -3,6 +3,7 @@
   font-weight: bold;
 }
 
+/**********STAR COMPONENT**********/
 .stars-container {
   position: relative;
   display: inline-block;
@@ -39,22 +40,54 @@
 .stars-90:after { width: 90%; }
 .stars-100:after { width: 100%;}
 
+
+/**********RATING COMPONENT**********/
+.container {
+  position: relative;
+  width: 100%;
+}
+
 .left-rating {
-  font-size: 20px
+  font-size: 20px;
 }
 
 .right-rating {
   font-size: 20px;
   position: relative;
-  left: 50%;
+  min-width: 300px;
+  /* max-width: 1000px; */
+  margin: 0 auto;
+  /* left: 500px; */
 }
 
 .center-stars {
   position: relative;
-  right: 50%;
+  min-width: 300px;
+  /* max-width: 1000px; */
+  margin: 0 auto;
+  /* right: 500px; */
 }
 
 .right-stars {
   position: relative;
-  right: 0px;
+  min-width: 300px;
+  /* max-width: 1000px; */
+  margin: 0 auto;
+  /* right: 0px; */
 }
+
+/**********SEARCH COMPONENT**********/
+@import url("//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css");
+.search { position: relative; }
+.search input { 
+  text-indent: 30px;
+  font-size: 12px;
+  font-weight: bold;
+  border: 1px solid gray;
+  padding: 8px;
+}
+/* .search .fa-search { 
+  position: absolute;
+  top: 24px;
+  left: 7px;
+} */

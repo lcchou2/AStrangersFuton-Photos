@@ -1,3 +1,5 @@
+import Search from './Search.jsx';
+
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -11,7 +13,7 @@ class App extends React.Component {
     return (
     <div>
       <div>
-        <span className='numOfReviews'>{this.state.numOfReviews} Reviews </span>
+        <span className="numOfReviews">{this.state.numOfReviews} Reviews </span>
         <span className="stars-container stars-90">★★★★★</span>
       </div>
       <hr/>
@@ -33,6 +35,10 @@ class App extends React.Component {
         <span className="right-rating">Value</span>
         <span className="stars-container stars-90 right-stars">★★★★★</span>
       </div>
+      <br/>
+        <div className="search-container">
+          <Search handleSearch={this.handleSearch} value={this.state.value}/>
+        </div>
     </div>
     );
   }
