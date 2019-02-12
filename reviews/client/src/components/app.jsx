@@ -63,11 +63,21 @@ class App extends React.Component {
         }
         this.setState({reviews: relevantReviews});
       } else if (this.state.sort === 'recent') {
-        var recentReviews = [];
-        var months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+        var months = {January: 1, February: 2, March: 3, April: 4, May: 5, June: 6, July: 7, August: 8, September: 9, October: 10, November: 11, December: 12};
 
-
-        this.setState({reviews: recentReviews});
+        for (var i = 0; i <= this.state.reviews.length; i++) {
+          for (var j = i; j < this.state.reviews.length; j++) {
+            var currentReview = this.state.reviews[i];
+            var nextReview = this.state.reviews[j];
+            if (nextReview.year > currentReview.year) {
+              this.state.reviews[i] = nextReview;
+              this.state.reviews[j] = currentReview;
+            } else if (nextReview.year === currentReview.year) {
+              
+            }
+          }
+        }
+        this.setState({reviews: this.state.reviews});
       }
     })
     console.log(this.state.reviews)
@@ -80,30 +90,47 @@ class App extends React.Component {
         <span className={"stars-container stars-" + this.state.rating}>★★★★★</span>
       </div>
       <hr/>
-      <div>
-        <span className="left-rating">Accuracy</span>
-        <span className={"stars-container stars-" + this.state.accuracy + " center-stars"}>★★★★★</span>
-        <span className="right-rating">Location</span>
-        <span className={"stars-container stars-" + this.state.location + " right-stars"}>★★★★★</span>
+      <div className="left-ratings">
+        <div>
+          <span>Accuracy</span>
+          <span className={"stars-container stars-" + this.state.accuracy + " center-stars"}>★★★★★</span>
+        </div>
+        <div>
+          <span>Communication</span>
+          <span className={"stars-container stars-" + this.state.communication + " center-stars"}>★★★★★</span>
+        </div>
+        <div>
+          <span>Cleanliness</span>
+          <span className={"stars-container stars-" + this.state.cleanliness + " center-stars"}>★★★★★</span>
+        </div>
       </div>
-      <div>
-        <span className="left-rating">Communication</span>
-        <span className={"stars-container stars-" + this.state.communication + " center-stars"}>★★★★★</span>
-        <span className="right-rating">Check-in</span>
-        <span className={"stars-container stars-" + this.state.checkin + " right-stars"}>★★★★★</span>
-      </div>
-      <div>
-      <span className="left-rating">Cleanliness</span>
-        <span className={"stars-container stars-" + this.state.cleanliness + " center-stars"}>★★★★★</span>
-        <span className="right-rating">Value</span>
-        <span className={"stars-container stars-" + this.state.value + " right-stars"}>★★★★★</span>
+      <div className="right-ratings">
+        <div>
+          <span className="right-rating">Location</span>
+          <span className={"stars-container stars-" + this.state.location + " right-stars"}>★★★★★</span>
+        </div>
+        <div>
+          <span className="right-rating">Check-in</span>
+          <span className={"stars-container stars-" + this.state.checkin + " right-stars"}>★★★★★</span>
+        </div>
+        <div>
+          <span className="right-rating">Value</span>
+          <span className={"stars-container stars-" + this.state.value + " right-stars"}>★★★★★</span>
+        </div>
       </div>
       <br/>
-      <div className="search-container">
-        <Search handleSearch={this.handleSearch} value={this.state.value}/>
-      </div>
-      <div className="search-container">
-        <Sort sort={this.state.sort} handleSort={this.handleSort}/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <div>
+        <div className="search-container">
+          <Search handleSearch={this.handleSearch} value={this.state.value}/>
+        </div>
+        <div className="search-container">
+          <Sort sort={this.state.sort} handleSort={this.handleSort}/>
+        </div>
       </div>
       <br/>
       <br/>

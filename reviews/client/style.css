@@ -51,40 +51,38 @@ body {
   width: 100%;
 }
 
-.left-rating {
+.left-ratings {
+  position: relative;
+  float: left;
+  font-size: 18px;
+}
+.right-ratings {
+  position: relative;
+  float: right;
   font-size: 18px;
 }
 
 .right-rating {
-  font-size: 18px;
   position: relative;
-  min-width: 100px;
-  /* max-width: 1000px; */
-  margin: 0 auto;
-  /* left: 500px; */
+  right: 100px;
 }
 
 .center-stars {
   position: relative;
   min-width: 100px;
-  /* max-width: 1000px; */
-  margin: 0 auto;
-  /* right: 500px; */
+  left: 100px;
 }
 
 .right-stars {
   position: relative;
   min-width: 100px;
-  /* max-width: 1000px; */
-  margin: 0 auto;
-  /* right: 0px; */
 }
 
 /**********SEARCH COMPONENT**********/
 /* @import url("http://download.seaicons.com/icons/icons8/ios7/512/Very-Basic-Search-icon.png"); */
 .search { 
   position: relative;
-  float:left;
+  float: left;
  }
 .search input { 
   width: 150px;
@@ -108,7 +106,7 @@ body {
 /**********ORDER COMPONENT**********/
 .sort { 
   position: relative;
-  float:right;
+  float: right;
   width: 175px;
   height: 33px;
   border: 1px solid lightgray;
