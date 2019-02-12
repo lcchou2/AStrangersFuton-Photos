@@ -4,12 +4,11 @@
 
 .innercon1 {
   display:flex;
-  flex-direction: row;
 }
 
 .pic {
   display: flex;
-  
+  text-align: center;
 }
 
   /* AirBnb Icon*/
