@@ -45,12 +45,7 @@ class App extends React.Component {
         reviews: data[0].reviews,
       });
       this.setState({numOfReviews: this.state.reviews.length});
-      console.log(this.state)
     });
-  }
-
-  renderReviews(reviews) {
-    
   }
 
   render() {
