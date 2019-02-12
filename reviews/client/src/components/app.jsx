@@ -1,5 +1,6 @@
 import Search from './Search.jsx';
 import Sort from './Sort.jsx';
+import Reviews from './Reviews.jsx';
 import $ from 'jquery';
 
 class App extends React.Component {
@@ -7,7 +8,7 @@ class App extends React.Component {
     super(props);
 
     this.state = {
-      listingId: 2,
+      listingId: 11,
       rating: 0,
       accuracy: 0,
       communication: 0,
@@ -25,10 +26,8 @@ class App extends React.Component {
 
   getListingData(listingId, successCB) {
     $.ajax({
-      url: 'http://localhost:3003/api/reviews',
-      method: 'POST',
-      data: JSON.stringify({listingId: listingId}),
-      contentType: 'application/json',
+      url: `http://localhost:3003/api/reviews/${listingId}`,
+      method: 'GET',
       success: successCB
     });
   }
@@ -52,32 +51,30 @@ class App extends React.Component {
   handleSort(event) {
     this.setState({sort: event.target.value}, () => {
       console.log('sorted by?? ', this.state.sort)
+
+      if (this.state.sort === 'relevant') {
+        var relevantReviews = [];
+        for (var i = 1; i <= this.state.reviews.length; i++) {
+          for (var j = 0; j < this.state.reviews.length; j++) {
+            if (this.state.reviews[j].reviewId === i) {
+              relevantReviews.push(this.state.reviews[j]);
+            }
+          }
+        }
+        this.setState({reviews: relevantReviews});
+      } else if (this.state.sort === 'recent') {
+        var recentReviews = [];
+        var months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+
+
+        this.setState({reviews: recentReviews});
+      }
     })
     console.log(this.state.reviews)
   }
 
   render() {
-    var listOfReviews = this.state.reviews.map((review, index) =>
-      <div key={index}>
-        <br/>
-        <div>
-          <img className="avatar" src="http://i.pravatar.cc/50"/>
-          <div className="profileInfo">
-            <div className="username">{review.name}</div>
-            <br/>
-            <div className="date">{review.month} {review.year}</div>
-          </div>
-          <img className="flag" src="http://download.seaicons.com/icons/icons8/ios7/512/Very-Basic-Flag-icon.png"/>
-        </div>
-        <br/>
-        <div className="review">{review.review}</div>
-        <br/>
-        <hr/>
-      </div>
-    );
-
-    return (
-    <div>
+    return (<div>
       <div>
         <span className="numOfReviews">{this.state.numOfReviews} Reviews </span>
         <span className={"stars-container stars-" + this.state.rating}>★★★★★</span>
@@ -111,9 +108,8 @@ class App extends React.Component {
       <br/>
       <br/>
       <hr/>
-      {listOfReviews}
-    </div>
-    );
+      <Reviews reviews={this.state.reviews} sort={this.state.sort}/>
+    </div>);
   }
 }
 
