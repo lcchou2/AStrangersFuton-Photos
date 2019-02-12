@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "react-dev": "webpack -d --watch",
-    "start-dev": "nodemon server/index.js",
+    "start-dev": "nodemon server/server.js",
     "build": "webpack -d",
     "start": "node server/server.js"
   },
@@ -20,7 +20,9 @@
   },
   "dependencies": {
     "express": "^4.15.0",
+    "moment": "^2.24.0",
     "mongoose": "^5.4.10",
-    "nodemon": "^1.18.9"
+    "nodemon": "^1.18.9",
+    "underscore": "^1.9.1"
   }
 }
