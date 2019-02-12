@@ -1,4 +1,5 @@
 import _ from 'underscore';
+import React from 'react';
 
 const calendarHeaderItems = (
   <div className="calendar-row">
