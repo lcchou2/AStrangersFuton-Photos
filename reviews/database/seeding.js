@@ -1,14 +1,5 @@
 var data = require('./data.js');
-
-var mongoose = require('mongoose');
-var reviewsSchema = require('./schema.js');
-mongoose.connect('mongodb://localhost/testReviews');
-var db = mongoose.connection;
-
-db.on('error', console.error.bind(console, 'connection error:'));
-db.once('open', function() {
-  console.log('connected');
-});
+var db = require('./index.js');
 
 
 function getRndInt(min, max) {
@@ -60,34 +51,14 @@ var generateListings = function(id) {
 }
 
 var dataArr = [];
-for (var i = 1; i <= 100; i++) {
+for (var i = 1; i <= 100; i++) { 
   dataArr.push(generateListings(i));
 }
 
-
-
-var Reviews = mongoose.model('Reviews', reviewsSchema);
-
-Reviews.insertMany(dataArr, {ordered: false}, (err, result) => {
+db.saveListings(dataArr, (err, data) => {
   if (err) {
     console.log(err);
   } else {
-    console.log('result:', result);
+    console.log('saved to database', data);
   }
 });
-
-
-var returnAll = (callback) => {
-  Reviews.find({}, '-_id -reviews._id -__v', (err, data) => {
-    if (err) {
-      console.log(err);
-    } else {
-      console.log('data', data);
-      callback(null, data);
-    }
-  })
-}
-
-module.exports = {
-  returnAll
-};
