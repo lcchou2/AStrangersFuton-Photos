@@ -1,5 +1,5 @@
 import Search from './Search.jsx';
-import Order from './Order.jsx';
+import Sort from './Sort.jsx';
 import $ from 'jquery';
 
 class App extends React.Component {
@@ -7,7 +7,7 @@ class App extends React.Component {
     super(props);
 
     this.state = {
-      listingId: 0,
+      listingId: 2,
       rating: 0,
       accuracy: 0,
       communication: 0,
@@ -16,9 +16,11 @@ class App extends React.Component {
       checkin: 0,
       value: 0,
       reviews: [],
-      numOfReviews: 0
+      numOfReviews: 0,
+      sort: 'relevant'
     }
     this.getListingData = this.getListingData.bind(this);
+    this.handleSort = this.handleSort.bind(this);
   }
 
   getListingData(listingId, successCB) {
@@ -32,9 +34,8 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    this.getListingData('1', (data) => {
+    this.getListingData(this.state.listingId, (data) => {
       this.setState({
-        listingId: data[0].listingId, 
         rating: Math.round(data[0].rating * 2),
         accuracy: Math.round(data[0].accuracy * 2),
         communication: Math.round(data[0].communication * 2),
@@ -48,8 +49,14 @@ class App extends React.Component {
     });
   }
 
+  handleSort(event) {
+    this.setState({sort: event.target.value}, () => {
+      console.log('sorted by?? ', this.state.sort)
+    })
+    console.log(this.state.reviews)
+  }
+
   render() {
- 
     var listOfReviews = this.state.reviews.map((review, index) =>
       <div key={index}>
         <br/>
@@ -99,7 +106,7 @@ class App extends React.Component {
         <Search handleSearch={this.handleSearch} value={this.state.value}/>
       </div>
       <div className="search-container">
-        <Order />
+        <Sort sort={this.state.sort} handleSort={this.handleSort}/>
       </div>
       <br/>
       <br/>

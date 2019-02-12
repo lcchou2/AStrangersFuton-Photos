@@ -81,38 +81,45 @@ body {
 }
 
 /**********SEARCH COMPONENT**********/
-@import url("http://download.seaicons.com/icons/icons8/ios7/512/Very-Basic-Search-icon.png");
+/* @import url("http://download.seaicons.com/icons/icons8/ios7/512/Very-Basic-Search-icon.png"); */
 .search { 
   position: relative;
   float:left;
  }
 .search input { 
+  width: 150px;
   text-indent: 30px;
   font-size: 12px;
   font-weight: bold;
-  border: 1px solid gray;
+  border: 1px solid lightgrey;
   padding: 8px;
   border-radius: 5px;
-  background: url("http://download.seaicons.com/icons/icons8/ios7/512/Very-Basic-Search-icon.png")
+  /* background: url("http://download.seaicons.com/icons/icons8/ios7/512/Very-Basic-Search-icon.png") */
 }
-.search .fa-search { 
+/* .search .fa-search { 
   position: absolute;
   top: 24px;
   left: 7px;
-}
+} */
 /* .searchIcon {
   height: 15px;
 } */
 
 /**********ORDER COMPONENT**********/
-.order { 
+.sort { 
   position: relative;
   float:right;
-  border: 1px solid gray;
+  width: 175px;
+  height: 33px;
+  border: 1px solid lightgray;
   padding: 8px;
   border-radius: 5px;
+  font-size: 12px;
  }
-
+.sort option {
+  width: 175px;
+  height: 33px;
+}
 
 /**********REVIEWS COMPONENT**********/
 .avatar {

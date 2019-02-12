@@ -13,11 +13,11 @@ app.listen(app.get('port'));
 
 
 app.post('/api/reviews', function (req, res) {
+  console
   db.returnListing(req.body.listingId, function(err, data) {
     if (err) {
       throw (err);
     } else {
-      console.log('data---', data)
       res.send(data);
     }
   });
