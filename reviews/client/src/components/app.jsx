@@ -1,3 +1,4 @@
+import React from 'react';
 import Search from './Search.jsx';
 import Order from './Order.jsx';
 import $ from 'jquery';
