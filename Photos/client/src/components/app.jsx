@@ -1,6 +1,16 @@
 import ajax from '../lib/ajax';
 import Photos from './photos.jsx'
 
+
+
+// const appStyle = {
+//   position: 'relative',
+//   border: '2px solid #333',
+//   /* margin: 2%; */
+//   overflow: 'hidden',
+//   width: '659px', /* VERY important. Lets me change the pic sizes*/
+//   height: '379px'/* 659w x 379l big picture, 324w 216l*/
+// }
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -24,7 +34,7 @@ class App extends React.Component {
   render() {
     return(
 
-      <div>
+      <div >
         {this.state.list.map((photos) => (
           <Photos photos={photos} />
         ))}

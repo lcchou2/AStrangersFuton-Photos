@@ -1,3 +1,7 @@
+
+
+
+
 class Photos extends React.Component {
   constructor(props) {
     super(props);
@@ -6,7 +10,7 @@ class Photos extends React.Component {
   render() {
     return(
 
-      <div>
+      <div className = "outside">
         <img src = {this.props.photos.url}></img>
       </div>
     )

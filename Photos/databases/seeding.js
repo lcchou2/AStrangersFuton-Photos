@@ -33,9 +33,9 @@ var generate = function(){
   arr.push(obj)
 }
 
-for (var i=0; i < 20; i ++) {
-  generate()
-}
+// for (var i=0; i < 20; i ++) {
+//   generate()
+// }
 
 const Photos = mongoose.model('Photos', photos);
 
