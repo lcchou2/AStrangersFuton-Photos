@@ -1,5 +1,7 @@
 import _ from 'underscore';
 import React from 'react';
+import moment from 'moment';
+import { buildCalGrid } from '../utils';
 
 const calendarHeaderItems = (
   <div className="calendar-row">
@@ -36,14 +38,36 @@ function CalendarRow(props) {
   )
 }
 
-export default function Calendar(props) {
+const Calendar = function(props) {
+  var calendarBody = [];
+  if (props.handleLeftArrowClick) {
+    calendarBody.push(<button data-view={props.view} data-direction="left" onClick={props.handleLeftArrowClick}>&lt;--</button>)
+  }
+  calendarBody.push(props.moment.format("MMMM YYYY"));
+  if (props.handleRightArrowClick) {
+    calendarBody.push(<button data-view={props.view} data-direction="right" onClick={props.handleRightArrowClick}>--&gt;</button>)
+  }
+
   return (
     <div className="calendar-box calendar-border">
       <div className="calendar-header">
-        <button data-direction="left" onClick={props.handleButtonClick}>&lt;--</button>{props.moment.format("MMMM YYYY")}<button data-direction="right" onClick={props.handleButtonClick}>--&gt;</button>
+        {calendarBody}
       </div>
       {calendarHeaderItems}
-      {_.map(Object.values(props.grid), (row) => <CalendarRow row={row} handleDateClick={props.handleDateClick} month={props.month} year={props.year} />)}
+      {_.map(Object.values(buildCalGrid(props.moment.month(), props.moment.year())), (row) => <CalendarRow row={row} handleDateClick={props.handleDateClick} month={props.moment.month()} year={props.moment.year()} />)}
     </div>
   )
 }
+
+const DualCalendar = function(props) {
+  return (
+    <div>
+      <Calendar view={'main'} moment={props.moment}
+       handleLeftArrowClick={props.handleArrowClick} handleDateClick={props.handleDateClick} />
+      <Calendar view={'main'} moment={moment(props.moment).add(1, 'month')}
+       handleRightArrowClick={props.handleArrowClick} handleDateClick={props.handleDateClick} />
+    </div>
+  )
+}
+
+export {Calendar, DualCalendar};

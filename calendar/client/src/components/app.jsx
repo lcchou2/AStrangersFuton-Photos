@@ -1,51 +1,56 @@
 import moment from 'moment';
 import React from 'react';
-
-var buildCalGrid = function (month, year) {
-  var grid = {0: {}};
-  var m = moment().month(month).year(year).startOf('month');
-
-  for (var i=0; i<m.day(); i++) {
-    grid[0][i] = null;
-  }
-
-  var currWeek = 0;
-
-  while (m.month() === month) {
-    if (!grid[currWeek]) grid[currWeek] = {};
-    grid[currWeek][m.day()] = m.date();
-    m = m.add(1, 'day');
-
-    if (m.day() === 0) {
-      currWeek++;
-    }
-  }
-  return grid;
-};
+import { Calendar, DualCalendar } from './calendar.jsx';
+import { buildDateString, cleanTakenSchedule } from '../utils';
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      moment: moment().startOf('month')
+      selectedStartDate: null,
+      selectedEndDate: null,
+      sidebarMoment: moment().startOf('month'),
+      mainMoment: moment().startOf('month'),
+      takenSchedule: {},
     }
-    this.handleButtonClick = this.handleButtonClick.bind(this);
+    this.handleArrowClick = this.handleArrowClick.bind(this);
     this.handleDateClick = this.handleDateClick.bind(this);
   }
-  handleDateClick(event) {
-    console.log(event.target);
+  componentDidMount() {
+    fetch('/api/schedule/1')
+    .then((resp) => resp.json())
+    .then((jsonResp) => this.state.takenSchedule = cleanTakenSchedule(jsonResp))
   }
-  handleButtonClick(event) {
+  handleDateClick(event) {
+    var [date, month, year] = [event.target.dataset.date, event.target.dataset.month, event.target.dataset.year];
+    console.log(buildDateString(date, month, year));
+    console.log(this.state);
+  }
+  handleArrowClick(event) {
+    console.log(event.target);
     if (event.target.dataset.direction === 'left') {
-      this.setState({moment: this.state.moment.subtract(1, 'months')});
+      if (event.target.dataset.view === 'sidebar') {
+        this.setState({sidebarMoment: this.state.sidebarMoment.subtract(1, 'months')});
+      } else if (event.target.dataset.view === 'main') {
+        this.setState({mainMoment: this.state.mainMoment.subtract(1, 'months')});
+      }
     } else if (event.target.dataset.direction === 'right') {
-      this.setState({moment: this.state.moment.add(1, 'months')});
+      if (event.target.dataset.view === 'sidebar') {
+        this.setState({sidebarMoment: this.state.sidebarMoment.add(1, 'months')});
+      } else if (event.target.dataset.view === 'main') {
+        this.setState({mainMoment: this.state.mainMoment.add(1, 'months')});
+      }
     }
   }
   render() {
     return (
       <div>
-        {<this.props.Calender moment={this.state.moment} month={this.state.moment.month()} year={this.state.moment.year()} grid={buildCalGrid(this.state.moment.month(), this.state.moment.year())} handleButtonClick={this.handleButtonClick} handleDateClick={this.handleDateClick} />}
+        {<DualCalendar
+        moment={this.state.mainMoment} handleArrowClick={this.handleArrowClick} handleDateClick={this.handleDateClick}/>}
+
+        {<Calendar
+        view={'sidebar'}
+        moment={this.state.sidebarMoment} handleLeftArrowClick={this.handleArrowClick} handleRightArrowClick={this.handleArrowClick} handleDateClick={this.handleDateClick} />}
       </div>
     );
   }
