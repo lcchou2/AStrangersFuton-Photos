@@ -87,7 +87,7 @@ class App extends React.Component {
   render() {
     return (<div>
       <div>
-        <span className="numOfReviews">{this.state.numOfReviews} Reviews </span>
+        <span className="numOfReviews">{this.state.numOfReviews} Reviews</span>
         <span className={"stars-container stars-" + this.state.rating}>★★★★★</span>
       </div>
       <hr/>

@@ -3,8 +3,10 @@ body {
 }
 
 .numOfReviews {
-  font-size: 25px;
+  font-size: 23px;
   font-weight: bold;
+  color: rgb(53, 53, 53);
+  margin-right: 15px;
 }
 
 /**********STAR COMPONENT**********/
@@ -54,12 +56,12 @@ body {
 .left-ratings {
   position: relative;
   float: left;
-  font-size: 18px;
+  font-size: 16px;
 }
 .right-ratings {
   position: relative;
   float: right;
-  font-size: 18px;
+  font-size: 16px;
 }
 
 .right-rating {
