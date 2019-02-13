@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const photos = require('./schema');
-mongoose.connect('mongodb://localhost/what');
+mongoose.connect('mongodb://localhost/testing');
 
 var db = mongoose.connection;
 
