@@ -1,3 +1,4 @@
+import React from 'react';
 import Search from './Search.jsx';
 import Sort from './Sort.jsx';
 import Reviews from './Reviews.jsx';

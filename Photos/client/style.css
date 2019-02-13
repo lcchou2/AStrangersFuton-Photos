@@ -1,0 +1,82 @@
+/* MOST OUTER CONTAINER */
+
+  /* Container 1*/
+
+.innercon1 {
+  display:flex;
+}
+
+.pic {
+  display: flex;
+  text-align: center;
+}
+
+  /* AirBnb Icon*/
+
+  /* Search Bar Container */
+
+    /* Mag glass pic*/
+
+    /* Actual search bar*/
+
+
+  /* Container 2*/
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  background-color: white;
+}
+
+li {
+  float: left;
+}
+
+li a {
+  display: block;
+  color: 	#3d3b3b;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+li a:hover {
+  border-bottom: 2px solid
+}
+
+.container1 {
+  display:flex;
+  justify-content: space-between ;
+  font-family: 'lucida grande', tahoma, verdana, arial, sans-serif;
+  font-size: 14px;
+  /* need to change once we add in side picture */
+  /* border-bottom: 5px black */
+}
+
+.search {
+  display:flex;
+  padding: 10px;
+  margin-right: 10px
+}
+
+.search input {
+  background-color: transparent;
+  font-weight: 400;
+  font-size: 17px;
+  padding: 0px 36px 0px 0px;
+  color: black;
+  width: 100%;
+  background-color: #ffffff;
+  border: 1px solid #EBEBEB;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+
+
+
+
+
+
+
