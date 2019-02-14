@@ -9,7 +9,7 @@ class App extends React.Component {
     super(props);
 
     this.state = {
-      listingId: 1,
+      listingId: 10,
       rating: 0,
       accuracy: 0,
       communication: 0,

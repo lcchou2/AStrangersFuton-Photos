@@ -6,11 +6,11 @@ function getRndInt(min, max) {
   return Math.floor(Math.random() * (max - min + 1) ) + min;
 }
 
-var generateReviews = function(id, name, month, year, review) {
+var generateReviews = function(id, name, profile, month, year, review) {
   var obj = {
     reviewId: id,
     name: name,
-    profile: "http://i.pravatar.cc/50",
+    profile: profile,
     month: month,
     year: year,
     review: review
@@ -30,11 +30,12 @@ var generateListings = function(id) {
   var index = getRndInt(1, 20);
   for (var i = 1; i <= index; i++) {
     var name = data.name[getRndInt(0, 19)];
+    var profile = data.profile[getRndInt(0, 19)];
     var month = data.month[getRndInt(0, 11)];
     var year = data.year[getRndInt(0, 1)];
     var review = data.review[getRndInt(0, 19)];
 
-    reviews.push(generateReviews(i, name, month, year, review));
+    reviews.push(generateReviews(i, name, profile, month, year, review));
   }
 
   var obj = {

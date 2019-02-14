@@ -1,5 +1,7 @@
 var name = ['Lawrence', 'Mike', 'Mehul', 'Irene', 'Summer', 'Nadine', 'Stacy', 'Simone', 'Andrea', 'Gabby', 'David', 'Faridh', 'Shilpi', 'Igor', 'Val', 'Rosalyn', 'Max', 'Sara', 'Warren', 'Helen'];
 
+var profile = ["https://s3-us-west-1.amazonaws.com/fec-futon/1.jpeg", "https://s3-us-west-1.amazonaws.com/fec-futon/2.jpeg", "https://s3-us-west-1.amazonaws.com/fec-futon/3.jpeg", "https://s3-us-west-1.amazonaws.com/fec-futon/4.jpeg", "https://s3-us-west-1.amazonaws.com/fec-futon/5.jpeg", "https://s3-us-west-1.amazonaws.com/fec-futon/6.jpeg", "https://s3-us-west-1.amazonaws.com/fec-futon/7.jpeg", "https://s3-us-west-1.amazonaws.com/fec-futon/8.jpeg", "https://s3-us-west-1.amazonaws.com/fec-futon/9.jpeg", "https://s3-us-west-1.amazonaws.com/fec-futon/10.jpeg", "https://s3-us-west-1.amazonaws.com/fec-futon/11.jpeg", "https://s3-us-west-1.amazonaws.com/fec-futon/12.jpeg", "https://s3-us-west-1.amazonaws.com/fec-futon/13.jpeg", "https://s3-us-west-1.amazonaws.com/fec-futon/14.jpeg", "https://s3-us-west-1.amazonaws.com/fec-futon/15.jpeg", "https://s3-us-west-1.amazonaws.com/fec-futon/16.jpeg", "https://s3-us-west-1.amazonaws.com/fec-futon/17.jpeg", "https://s3-us-west-1.amazonaws.com/fec-futon/18.jpeg", "https://s3-us-west-1.amazonaws.com/fec-futon/19.jpeg", "https://s3-us-west-1.amazonaws.com/fec-futon/20.jpeg"];
+
 var month = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 
 var year = [2017, 2018];
@@ -29,6 +31,7 @@ var review = [
 
 module.exports = {
   name,
+  profile,
   month,
   year,
   review

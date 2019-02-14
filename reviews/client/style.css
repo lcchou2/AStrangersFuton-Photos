@@ -44,15 +44,15 @@ hr {
 }
 
 .stars-0:after { width: 0%; }
-.stars-1:after { width: 10%; }
+.stars-1:after { width: 7%; }
 .stars-2:after { width: 20%; }
-.stars-3:after { width: 30%; }
+.stars-3:after { width: 27%; }
 .stars-4:after { width: 40%; }
-.stars-5:after { width: 50%; }
+.stars-5:after { width: 47%; }
 .stars-6:after { width: 60%; }
-.stars-7:after { width: 70%; }
+.stars-7:after { width: 67%; }
 .stars-8:after { width: 80%; }
-.stars-9:after { width: 90%; }
+.stars-9:after { width: 87%; }
 .stars-10:after { width: 100%;}
 
 
@@ -162,6 +162,7 @@ hr {
 .flag {
   float:right;
   height: 15px;
+  margin-right: 5px;
 }
 
 .review {

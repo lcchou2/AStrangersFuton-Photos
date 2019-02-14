@@ -1,4 +1,5 @@
 import IndReviewText from './IndReviewText.jsx';
+import Flag from './Flag.jsx';
 
 class Reviews extends React.Component {
   constructor(props) {
@@ -9,13 +10,13 @@ class Reviews extends React.Component {
     var listOfReviews = this.props.reviews.map((review, index) =>
       <div key={index}>
         <div>
-          <img className="avatar" src="http://i.pravatar.cc/50"/>
+          <img className="avatar" src={review.profile}/>
           <div className="profileInfo">
             <div className="username">{review.name}</div>
             <br/>
             <div className="date">{review.month} {review.year}</div>
           </div>
-          <img className="flag" src="http://download.seaicons.com/icons/icons8/ios7/512/Very-Basic-Flag-icon.png"/>
+          <Flag />
         </div>
         <br/>
         <IndReviewText reviewText={review.review}/>
