@@ -111,7 +111,7 @@ hr {
   height: 15px;
 }
 
-/**********ORDER COMPONENT**********/
+/**********SORT COMPONENT**********/
 .sort { 
   position: relative;
   float: right;
@@ -154,4 +154,15 @@ hr {
 
 .review {
   font-size: 15px;
+}
+
+.noReviews {
+  font-size: 15px;
+  margin-left: 50px;
+}
+
+.backToReviews {
+  font-size: 15px;
+  float: right;
+  color: seagreen;
 }

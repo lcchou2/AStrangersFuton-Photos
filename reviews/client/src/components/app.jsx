@@ -26,6 +26,7 @@ class App extends React.Component {
     this.getListingData = this.getListingData.bind(this);
     this.handleSort = this.handleSort.bind(this);
     this.handleSearch = this.handleSearch.bind(this);
+    this.backToReviews = this.backToReviews.bind(this);
   }
 
   getListingData(listingId, successCB) {
@@ -100,6 +101,10 @@ class App extends React.Component {
     });
   }
 
+  backToReviews() {
+    this.setState({reviews: this.state.allReviews});
+  }
+
   render() {
     return (<div>
       <div>
@@ -152,7 +157,7 @@ class App extends React.Component {
       <br/>
       <br/>
       <hr/>
-      <Reviews reviews={this.state.reviews} sort={this.state.sort}/>
+      <Reviews reviews={this.state.reviews} sort={this.state.sort} value={this.state.searchValue} backToReviews={this.backToReviews}/>
     </div>);
   }
 }

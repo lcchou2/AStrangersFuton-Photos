@@ -22,9 +22,17 @@ class Reviews extends React.Component {
       </div>
     );
 
-    return (
-    <div>{listOfReviews}</div>
-    );
+    if (this.props.reviews.length === 0) {
+      return (<div>
+          <span className="noReviews">None of our guests have mentioned "<strong>{this.props.value}</strong>"</span>
+          <span className="backToReviews" onClick={this.props.backToReviews}><u>Back to all reviews</u></span>
+        </div>
+      )
+    } else {
+      return (
+      <div>{listOfReviews}</div>
+      );
+    }
   }
 }
 
