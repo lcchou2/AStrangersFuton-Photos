@@ -1,4 +1,5 @@
 import moment from 'moment';
+import React from 'react';
 
 var buildCalGrid = function (month, year) {
   var grid = {0: {}};

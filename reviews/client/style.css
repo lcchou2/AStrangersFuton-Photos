@@ -3,8 +3,16 @@ body {
 }
 
 .numOfReviews {
-  font-size: 25px;
+  font-size: 23px;
   font-weight: bold;
+  color: rgb(53, 53, 53);
+  margin-right: 15px;
+}
+
+hr {
+  border: 0;
+  border-top: 1px solid rgb(212, 212, 212);
+  margin: 1em 0;
 }
 
 /**********STAR COMPONENT**********/
@@ -51,68 +59,73 @@ body {
   width: 100%;
 }
 
-.left-rating {
-  font-size: 18px;
+.left-ratings {
+  position: relative;
+  float: left;
+  font-size: 16px;
+}
+.right-ratings {
+  position: relative;
+  float: right;
+  font-size: 16px;
 }
 
 .right-rating {
-  font-size: 18px;
   position: relative;
-  min-width: 100px;
-  /* max-width: 1000px; */
-  margin: 0 auto;
-  /* left: 500px; */
+  right: 100px;
 }
 
 .center-stars {
   position: relative;
   min-width: 100px;
-  /* max-width: 1000px; */
-  margin: 0 auto;
-  /* right: 500px; */
+  left: 100px;
 }
 
 .right-stars {
   position: relative;
   min-width: 100px;
-  /* max-width: 1000px; */
-  margin: 0 auto;
-  /* right: 0px; */
 }
 
 /**********SEARCH COMPONENT**********/
-@import url("http://download.seaicons.com/icons/icons8/ios7/512/Very-Basic-Search-icon.png");
+/* @import url("http://download.seaicons.com/icons/icons8/ios7/512/Very-Basic-Search-icon.png"); */
 .search { 
   position: relative;
-  float:left;
+  float: left;
  }
 .search input { 
+  width: 150px;
   text-indent: 30px;
   font-size: 12px;
   font-weight: bold;
-  border: 1px solid gray;
+  border: 1px solid lightgrey;
   padding: 8px;
   border-radius: 5px;
-  background: url("http://download.seaicons.com/icons/icons8/ios7/512/Very-Basic-Search-icon.png")
+  /* background: url("http://download.seaicons.com/icons/icons8/ios7/512/Very-Basic-Search-icon.png") */
 }
-.search .fa-search { 
+/* .search .fa-search { 
   position: absolute;
   top: 24px;
   left: 7px;
-}
-/* .searchIcon {
-  height: 15px;
 } */
+.glass {
+  height: 15px;
+}
 
 /**********ORDER COMPONENT**********/
-.order { 
+.sort { 
   position: relative;
-  float:right;
-  border: 1px solid gray;
+  float: right;
+  width: 175px;
+  height: 33px;
+  border: 1px solid lightgray;
   padding: 8px;
   border-radius: 5px;
+  font-size: 12px;
  }
-
+.sort option {
+  width: 175px;
+  height: 33px;
+}
 
 /**********REVIEWS COMPONENT**********/
 .avatar {

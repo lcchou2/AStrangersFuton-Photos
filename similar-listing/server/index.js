@@ -10,6 +10,7 @@ app.get('/similar-listings', function (req, res) {
     similarModel.find({}, function (err, docs) {
         if (err) {
             console.log(err);
+            return;
         }
         console.log(docs);
         res.send(docs);

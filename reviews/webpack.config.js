@@ -8,15 +8,18 @@ module.exports = {
     filename: 'bundle.js',
     path: DIST_DIR
   },
+  mode: 'development',
   module : {
-    loaders : [
+    rules : [
       {
-        test : /\.jsx?/,
-        include : SRC_DIR,
-        loader : 'babel-loader',
-        query: {
-          presets: ['react', 'es2015']
-       }
+        test: /\.jsx?$/,
+        exclude: /(node_modules | bower_components)/,
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: ['@babel/preset-env', '@babel/preset-react']
+          }
+        }
       }
     ]
   }

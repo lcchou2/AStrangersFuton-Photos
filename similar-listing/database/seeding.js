@@ -43,6 +43,7 @@ for (var i = 1; i <= 100; i++) {
 SimilarModel.insertMany(result, function (err, docs) {
     if (err) {
         console.log("err");
+        return;
     } else {
         console.log(docs);
     }

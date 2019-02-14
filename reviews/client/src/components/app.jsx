@@ -1,5 +1,7 @@
+import React from 'react';
 import Search from './Search.jsx';
-import Order from './Order.jsx';
+import Sort from './Sort.jsx';
+import Reviews from './Reviews.jsx';
 import $ from 'jquery';
 
 class App extends React.Component {
@@ -7,7 +9,7 @@ class App extends React.Component {
     super(props);
 
     this.state = {
-      listingId: 0,
+      listingId: 1,
       rating: 0,
       accuracy: 0,
       communication: 0,
@@ -16,25 +18,27 @@ class App extends React.Component {
       checkin: 0,
       value: 0,
       reviews: [],
-      numOfReviews: 0
+      allReviews: [],
+      numOfReviews: 0,
+      sort: 'relevant',
+      searchValue: ''
     }
     this.getListingData = this.getListingData.bind(this);
+    this.handleSort = this.handleSort.bind(this);
+    this.handleSearch = this.handleSearch.bind(this);
   }
 
   getListingData(listingId, successCB) {
     $.ajax({
-      url: 'http://localhost:3003/api/reviews',
-      method: 'POST',
-      data: JSON.stringify({listingId: listingId}),
-      contentType: 'application/json',
+      url: `http://localhost:3003/api/reviews/${listingId}`,
+      method: 'GET',
       success: successCB
     });
   }
 
   componentDidMount() {
-    this.getListingData('1', (data) => {
+    this.getListingData(this.state.listingId, (data) => {
       this.setState({
-        listingId: data[0].listingId, 
         rating: Math.round(data[0].rating * 2),
         accuracy: Math.round(data[0].accuracy * 2),
         communication: Math.round(data[0].communication * 2),
@@ -43,70 +47,113 @@ class App extends React.Component {
         checkin: Math.round(data[0].checkin * 2),
         value: Math.round(data[0].value * 2),
         reviews: data[0].reviews,
+        allReviews: data[0].reviews
       });
       this.setState({numOfReviews: this.state.reviews.length});
     });
   }
 
-  render() {
- 
-    var listOfReviews = this.state.reviews.map((review, index) =>
-      <div key={index}>
-        <br/>
-        <div>
-          <img className="avatar" src="http://i.pravatar.cc/50"/>
-          <div className="profileInfo">
-            <div className="username">{review.name}</div>
-            <br/>
-            <div className="date">{review.month} {review.year}</div>
-          </div>
-          <img className="flag" src="http://download.seaicons.com/icons/icons8/ios7/512/Very-Basic-Flag-icon.png"/>
-        </div>
-        <br/>
-        <div className="review">{review.review}</div>
-        <br/>
-        <hr/>
-      </div>
-    );
+  handleSort(event) {
+    this.setState({sort: event.target.value}, () => {
+      if (this.state.sort === 'relevant') {
+        var relevantReviews = [];
+        for (var i = 1; i <= this.state.reviews.length; i++) {
+          for (var j = 0; j < this.state.reviews.length; j++) {
+            if (this.state.reviews[j].reviewId === i) {
+              relevantReviews.push(this.state.reviews[j]);
+            }
+          }
+        }
+        this.setState({reviews: relevantReviews});
+      } else if (this.state.sort === 'recent') {
+        var months = {January: 1, February: 2, March: 3, April: 4, May: 5, June: 6, July: 7, August: 8, September: 9, October: 10, November: 11, December: 12};
 
-    return (
-    <div>
+        for (var i = 0; i <= this.state.reviews.length; i++) {
+          for (var j = i; j < this.state.reviews.length; j++) {
+            var currentReview = this.state.reviews[i];
+            var nextReview = this.state.reviews[j];
+            if (nextReview.year > currentReview.year) {
+              this.state.reviews[i] = nextReview;
+              this.state.reviews[j] = currentReview;
+            } else if (nextReview.year === currentReview.year) {
+              if (months[nextReview.month] > months[currentReview.month]) {
+                this.state.reviews[i] = nextReview;
+                this.state.reviews[j] = currentReview;
+              }
+            }
+          }
+        }
+        this.setState({reviews: this.state.reviews});
+      }
+    })
+  }
+
+  handleSearch(event) {
+    this.setState({searchValue: event.target.value}, () => {
+      var reviewsToRender = [];
+      for (var i = 0; i < this.state.allReviews.length; i++) {
+        if (this.state.allReviews[i].review.includes(this.state.searchValue)) {
+          reviewsToRender.push(this.state.allReviews[i]);
+        }
+      }
+      this.setState({reviews: reviewsToRender});
+    });
+  }
+
+  render() {
+    return (<div>
       <div>
-        <span className="numOfReviews">{this.state.numOfReviews} Reviews </span>
+        <span className="numOfReviews">{this.state.numOfReviews} Reviews</span>
         <span className={"stars-container stars-" + this.state.rating}>★★★★★</span>
       </div>
       <hr/>
-      <div>
-        <span className="left-rating">Accuracy</span>
-        <span className={"stars-container stars-" + this.state.accuracy + " center-stars"}>★★★★★</span>
-        <span className="right-rating">Location</span>
-        <span className={"stars-container stars-" + this.state.location + " right-stars"}>★★★★★</span>
+      <div className="left-ratings">
+        <div>
+          <span>Accuracy</span>
+          <span className={"stars-container stars-" + this.state.accuracy + " center-stars"}>★★★★★</span>
+        </div>
+        <div>
+          <span>Communication</span>
+          <span className={"stars-container stars-" + this.state.communication + " center-stars"}>★★★★★</span>
+        </div>
+        <div>
+          <span>Cleanliness</span>
+          <span className={"stars-container stars-" + this.state.cleanliness + " center-stars"}>★★★★★</span>
+        </div>
       </div>
-      <div>
-        <span className="left-rating">Communication</span>
-        <span className={"stars-container stars-" + this.state.communication + " center-stars"}>★★★★★</span>
-        <span className="right-rating">Check-in</span>
-        <span className={"stars-container stars-" + this.state.checkin + " right-stars"}>★★★★★</span>
-      </div>
-      <div>
-      <span className="left-rating">Cleanliness</span>
-        <span className={"stars-container stars-" + this.state.cleanliness + " center-stars"}>★★★★★</span>
-        <span className="right-rating">Value</span>
-        <span className={"stars-container stars-" + this.state.value + " right-stars"}>★★★★★</span>
+      <div className="right-ratings">
+        <div>
+          <span className="right-rating">Location</span>
+          <span className={"stars-container stars-" + this.state.location + " right-stars"}>★★★★★</span>
+        </div>
+        <div>
+          <span className="right-rating">Check-in</span>
+          <span className={"stars-container stars-" + this.state.checkin + " right-stars"}>★★★★★</span>
+        </div>
+        <div>
+          <span className="right-rating">Value</span>
+          <span className={"stars-container stars-" + this.state.value + " right-stars"}>★★★★★</span>
+        </div>
       </div>
       <br/>
-      <div className="search-container">
-        <Search handleSearch={this.handleSearch} value={this.state.value}/>
-      </div>
-      <div className="search-container">
-        <Order />
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <div>
+        <div className="search-container">
+          <Search handleSearch={this.handleSearch} value={this.state.searchValue}/>
+        </div>
+        <div className="search-container">
+          <Sort sort={this.state.sort} handleSort={this.handleSort}/>
+        </div>
       </div>
       <br/>
       <br/>
       <hr/>
-      {listOfReviews}
-    </div>
-    );
+      <Reviews reviews={this.state.reviews} sort={this.state.sort}/>
+    </div>);
   }
 }
 
