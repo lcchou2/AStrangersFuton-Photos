@@ -1,4 +1,4 @@
-import Truncate from 'react-truncate'
+import IndReviewText from './IndReviewText.jsx';
 
 class Reviews extends React.Component {
   constructor(props) {
@@ -18,11 +18,7 @@ class Reviews extends React.Component {
           <img className="flag" src="http://download.seaicons.com/icons/icons8/ios7/512/Very-Basic-Flag-icon.png"/>
         </div>
         <br/>
-        <div className="review">
-          <Truncate lines={4} ellipsis={<span>... <a href='/link/to/article'>Read more</a></span>}>
-            {review.review}
-          </Truncate>
-        </div>
+        <IndReviewText reviewText={review.review}/>
         <br/>
         <hr/>
       </div>
