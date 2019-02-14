@@ -18,12 +18,14 @@ class App extends React.Component {
       checkin: 0,
       value: 0,
       reviews: [],
+      allReviews: [],
       numOfReviews: 0,
       sort: 'relevant',
       searchValue: ''
     }
     this.getListingData = this.getListingData.bind(this);
     this.handleSort = this.handleSort.bind(this);
+    this.handleSearch = this.handleSearch.bind(this);
   }
 
   getListingData(listingId, successCB) {
@@ -45,6 +47,7 @@ class App extends React.Component {
         checkin: Math.round(data[0].checkin * 2),
         value: Math.round(data[0].value * 2),
         reviews: data[0].reviews,
+        allReviews: data[0].reviews
       });
       this.setState({numOfReviews: this.state.reviews.length});
     });
@@ -83,6 +86,18 @@ class App extends React.Component {
         this.setState({reviews: this.state.reviews});
       }
     })
+  }
+
+  handleSearch(event) {
+    this.setState({searchValue: event.target.value}, () => {
+      var reviewsToRender = [];
+      for (var i = 0; i < this.state.allReviews.length; i++) {
+        if (this.state.allReviews[i].review.includes(this.state.searchValue)) {
+          reviewsToRender.push(this.state.allReviews[i]);
+        }
+      }
+      this.setState({reviews: reviewsToRender});
+    });
   }
 
   render() {
@@ -128,7 +143,7 @@ class App extends React.Component {
       <br/>
       <div>
         <div className="search-container">
-          <Search handleSearch={this.handleSearch} value={this.state.value}/>
+          <Search handleSearch={this.handleSearch} value={this.state.searchValue}/>
         </div>
         <div className="search-container">
           <Sort sort={this.state.sort} handleSort={this.handleSort}/>

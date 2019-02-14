@@ -6,7 +6,6 @@ class Reviews extends React.Component {
   render() {
     var listOfReviews = this.props.reviews.map((review, index) =>
       <div key={index}>
-        <br/>
         <div>
           <img className="avatar" src="http://i.pravatar.cc/50"/>
           <div className="profileInfo">
