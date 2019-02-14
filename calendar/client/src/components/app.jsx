@@ -1,7 +1,7 @@
 import moment from 'moment';
 import React from 'react';
 import { Calendar, DualCalendar } from './calendar.jsx';
-import { buildDateString, cleanTakenSchedule } from '../utils';
+import { cleanTakenSchedule } from '../utils';
 
 class App extends React.Component {
   constructor(props) {
@@ -19,15 +19,14 @@ class App extends React.Component {
   componentDidMount() {
     fetch('/api/schedule/1')
     .then((resp) => resp.json())
-    .then((jsonResp) => this.state.takenSchedule = cleanTakenSchedule(jsonResp))
+    .then((jsonResp) => this.setState({takenSchedule: cleanTakenSchedule(jsonResp)}))
   }
   handleDateClick(event) {
-    var [date, month, year] = [event.target.dataset.date, event.target.dataset.month, event.target.dataset.year];
-    console.log(buildDateString(date, month, year));
-    console.log(this.state);
+    this.setState({selectedStartDate: event.target.dataset.datestring}, function() {
+      console.log(this.state);
+    });
   }
   handleArrowClick(event) {
-    console.log(event.target);
     if (event.target.dataset.direction === 'left') {
       if (event.target.dataset.view === 'sidebar') {
         this.setState({sidebarMoment: this.state.sidebarMoment.subtract(1, 'months')});
@@ -45,12 +44,14 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        {<DualCalendar
-        moment={this.state.mainMoment} handleArrowClick={this.handleArrowClick} handleDateClick={this.handleDateClick}/>}
-
         {<Calendar
-        view={'sidebar'}
-        moment={this.state.sidebarMoment} handleLeftArrowClick={this.handleArrowClick} handleRightArrowClick={this.handleArrowClick} handleDateClick={this.handleDateClick} />}
+        view={'sidebar'} moment={this.state.sidebarMoment}
+        handleLeftArrowClick={this.handleArrowClick} handleRightArrowClick={this.handleArrowClick}
+        handleDateClick={this.handleDateClick} takenSchedule={this.state.takenSchedule} />}
+        {<DualCalendar
+        view={'main'} moment={this.state.mainMoment}
+        handleArrowClick={this.handleArrowClick}
+        handleDateClick={this.handleDateClick} takenSchedule={this.state.takenSchedule}/>}
       </div>
     );
   }

@@ -9,10 +9,10 @@ export const cleanTakenSchedule = function (jsonResp) {
 }
 
 export const buildDateString = function (date, month, year) {
-  return moment().month(month).year(year).date(date).startOf('day').toDate().toString();
+  return moment().month(month).year(year).date(date).startOf('day').toDate().toIsoString();
 }
 
-export const buildCalGrid = function (month, year) {
+export const buildCalGrid = function (month, year, takenSchedule) {
   var grid = {0: {}};
   var m = moment().month(month).year(year).startOf('month');
 
@@ -23,7 +23,11 @@ export const buildCalGrid = function (month, year) {
   var currWeek = 0;
   while (m.month() === month) {
     if (!grid[currWeek]) grid[currWeek] = {};
-    grid[currWeek][m.day()] = m.date();
+    if (takenSchedule) {
+      grid[currWeek][m.day()] = [m.date(), m.toDate().toISOString(), !!takenSchedule[m.toDate().toISOString()]];
+    } else {
+      grid[currWeek][m.day()] = [m.date(), m.toDate().toISOString()]
+    }
     m = m.add(1, 'day');
 
     if (m.day() === 0) {
