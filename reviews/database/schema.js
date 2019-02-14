@@ -10,6 +10,7 @@ var reviewsSchema = new mongoose.Schema({
   checkin: Number,
   value: Number,
   reviews: [{
+    reviewId: Number,
     name: String,
     profile: String,
     month: String,

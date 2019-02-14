@@ -20,7 +20,6 @@ var returnListing = (listingId, callback) => {
     if (err) {
       console.log(err);
     } else {
-      console.log('data', data);
       callback(null, data);
     }
   })

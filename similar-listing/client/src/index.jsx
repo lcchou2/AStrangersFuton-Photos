@@ -1,4 +1,5 @@
+import App from './components/app.jsx';
 ReactDOM.render(
-    <h1>Hello, world!</h1>,
+    <App />,
     document.getElementById('app')
 );
