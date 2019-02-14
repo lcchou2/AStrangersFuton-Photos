@@ -9,7 +9,7 @@ class App extends React.Component {
     super(props);
 
     this.state = {
-      listingId: 11,
+      listingId: 1,
       rating: 0,
       accuracy: 0,
       communication: 0,
@@ -19,7 +19,8 @@ class App extends React.Component {
       value: 0,
       reviews: [],
       numOfReviews: 0,
-      sort: 'relevant'
+      sort: 'relevant',
+      searchValue: ''
     }
     this.getListingData = this.getListingData.bind(this);
     this.handleSort = this.handleSort.bind(this);
@@ -51,8 +52,6 @@ class App extends React.Component {
 
   handleSort(event) {
     this.setState({sort: event.target.value}, () => {
-      console.log('sorted by?? ', this.state.sort)
-
       if (this.state.sort === 'relevant') {
         var relevantReviews = [];
         for (var i = 1; i <= this.state.reviews.length; i++) {
@@ -74,14 +73,16 @@ class App extends React.Component {
               this.state.reviews[i] = nextReview;
               this.state.reviews[j] = currentReview;
             } else if (nextReview.year === currentReview.year) {
-              
+              if (months[nextReview.month] > months[currentReview.month]) {
+                this.state.reviews[i] = nextReview;
+                this.state.reviews[j] = currentReview;
+              }
             }
           }
         }
         this.setState({reviews: this.state.reviews});
       }
     })
-    console.log(this.state.reviews)
   }
 
   render() {
