@@ -7,7 +7,7 @@ export const calendarHeaderItems = (
   </div>
   );
 
-export const cleanTakenSchedule = function (jsonResp) {
+export const cleanSchedule = function (jsonResp) {
   var cleaned = {};
   for (var row of jsonResp[0].datesTaken) {
     cleaned[row.timestamp] = row.taken;
@@ -19,7 +19,7 @@ export const buildDateString = function (date, month, year) {
   return moment().month(month).year(year).date(date).startOf('day').toDate().toIsoString();
 }
 
-export const buildCalGrid = function (month, year, takenSchedule) {
+export const buildCalGrid = function (month, year, schedule) {
   var grid = {0: {}};
   var m = moment().month(month).year(year).startOf('month');
 
@@ -30,8 +30,8 @@ export const buildCalGrid = function (month, year, takenSchedule) {
   var currWeek = 0;
   while (m.month() === month) {
     if (!grid[currWeek]) grid[currWeek] = {};
-    if (takenSchedule) {
-      grid[currWeek][m.day()] = [m.date(), m.toDate().toISOString(), !!takenSchedule[m.toDate().toISOString()]];
+    if (schedule) {
+      grid[currWeek][m.day()] = [m.date(), m.toDate().toISOString(), !!schedule[m.toDate().toISOString()]];
     } else {
       grid[currWeek][m.day()] = [m.date(), m.toDate().toISOString()]
     }

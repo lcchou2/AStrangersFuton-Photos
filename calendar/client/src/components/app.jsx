@@ -2,7 +2,7 @@ import moment from 'moment';
 import React from 'react';
 import { Calendar } from './calendar.jsx';
 import { DualCalendar } from './dualCalendar.jsx';
-import { cleanTakenSchedule } from './utils.jsx';
+import { cleanSchedule } from './utils.jsx';
 
 class App extends React.Component {
   constructor(props) {
@@ -12,7 +12,7 @@ class App extends React.Component {
       selectedEndDate: null,
       sidebarMoment: moment().startOf('month'),
       mainMoment: moment().startOf('month'),
-      takenSchedule: {},
+      schedule: {},
     }
     this.handleArrowClick = this.handleArrowClick.bind(this);
     this.handleDateClick = this.handleDateClick.bind(this);
@@ -20,7 +20,7 @@ class App extends React.Component {
   componentDidMount() {
     fetch('/api/schedule/1')
     .then((resp) => resp.json())
-    .then((jsonResp) => this.setState({takenSchedule: cleanTakenSchedule(jsonResp)}))
+    .then((jsonResp) => this.setState({schedule: cleanSchedule(jsonResp)}))
   }
   handleDateClick(event) {
     this.setState({selectedStartDate: event.target.dataset.datestring}, function() {
@@ -48,11 +48,11 @@ class App extends React.Component {
         {<Calendar
         view={'sidebar'} moment={this.state.sidebarMoment}
         handleLeftArrowClick={this.handleArrowClick} handleRightArrowClick={this.handleArrowClick}
-        handleDateClick={this.handleDateClick} takenSchedule={this.state.takenSchedule} />}
+        handleDateClick={this.handleDateClick} schedule={this.state.schedule} />}
         {<DualCalendar
         view={'main'} moment={this.state.mainMoment}
         handleArrowClick={this.handleArrowClick}
-        handleDateClick={this.handleDateClick} takenSchedule={this.state.takenSchedule}/>}
+        handleDateClick={this.handleDateClick} schedule={this.state.schedule}/>}
       </div>
     );
   }

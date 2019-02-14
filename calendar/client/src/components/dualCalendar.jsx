@@ -5,9 +5,9 @@ const DualCalendar = function(props) {
   return (
     <div className="calendar-container">
       <Calendar view={props.view} moment={props.moment}
-       handleLeftArrowClick={props.handleArrowClick} handleDateClick={props.handleDateClick} takenSchedule={props.takenSchedule} />
+       handleLeftArrowClick={props.handleArrowClick} handleDateClick={props.handleDateClick} schedule={props.schedule} />
       <Calendar view={props.view} moment={moment(props.moment).add(1, 'month')}
-       handleRightArrowClick={props.handleArrowClick} handleDateClick={props.handleDateClick} takenSchedule={props.takenSchedule} />
+       handleRightArrowClick={props.handleArrowClick} handleDateClick={props.handleDateClick} schedule={props.schedule} />
     </div>
   )
 }
