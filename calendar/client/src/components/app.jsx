@@ -1,7 +1,8 @@
 import moment from 'moment';
 import React from 'react';
-import { Calendar, DualCalendar } from './calendar.jsx';
-import { cleanTakenSchedule } from '../utils';
+import { Calendar } from './calendar.jsx';
+import { DualCalendar } from './dualCalendar.jsx';
+import { cleanTakenSchedule } from './utils.jsx';
 
 class App extends React.Component {
   constructor(props) {
