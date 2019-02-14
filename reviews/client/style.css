@@ -1,11 +1,11 @@
 body {
-  font-family: sans-serif;
+  font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;
 }
 
 .numOfReviews {
-  font-size: 23px;
+  font-size: 24px;
   font-weight: bold;
-  color: rgb(53, 53, 53);
+  color: #484848;
   margin-right: 15px;
 }
 
@@ -21,6 +21,7 @@ hr {
   display: inline-block;
   color: transparent;
   font-size: 20px;
+  letter-spacing: 6px;
 }
 
 .stars-container:before{
@@ -29,6 +30,7 @@ hr {
   left: 0;
   content: '★★★★★';
   color:lightgray;
+  letter-spacing: 6px;
 }
 
 .stars-container:after {
@@ -36,8 +38,9 @@ hr {
   top: 0;
   left: 0;
   content: '★★★★★';
-  color: seagreen;
+  color: rgb(41, 126, 113);
   overflow: hidden;
+  letter-spacing: 6px;
 }
 
 .stars-0:after { width: 0%; }
@@ -63,11 +66,13 @@ hr {
   position: relative;
   float: left;
   font-size: 16px;
+  color: #484848;
 }
 .right-ratings {
   position: relative;
   float: right;
   font-size: 16px;
+  color: #484848;
 }
 
 .right-rating {
@@ -98,6 +103,9 @@ hr {
   font-size: 12px;
   font-weight: bold;
   border: 1px solid lightgrey;
+  outline-color: rgb(41, 126, 113);
+  outline-width: 2px;
+  -moz-outline-radius: 5px;
   padding: 8px;
   border-radius: 5px;
   /* background: url("http://download.seaicons.com/icons/icons8/ios7/512/Very-Basic-Search-icon.png") */
@@ -121,6 +129,8 @@ hr {
   padding: 8px;
   border-radius: 5px;
   font-size: 12px;
+  outline-color: rgb(41, 126, 113);
+  outline-width: 1px;
  }
 .sort option {
   width: 175px;
@@ -139,12 +149,14 @@ hr {
 }
 
 .username {
-  font-weight: bold;
-  font-size: 17px;
+  font-size: 16px !important;
+  font-weight: 600 !important;
+  color: #484848 !important;
 }
 
 .date {
   font-size: 14px;
+  color: #484848 !important;
 }
 
 .flag {
@@ -154,15 +166,18 @@ hr {
 
 .review {
   font-size: 15px;
+  color: #484848 !important;
 }
 
 .noReviews {
   font-size: 15px;
   margin-left: 50px;
 }
-
+.someReviews {
+  font-size: 15px;
+}
 .backToReviews {
   font-size: 15px;
   float: right;
-  color: seagreen;
+  color: rgb(41, 126, 113);
 }

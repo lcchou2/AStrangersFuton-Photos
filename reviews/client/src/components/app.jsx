@@ -102,7 +102,10 @@ class App extends React.Component {
   }
 
   backToReviews() {
-    this.setState({reviews: this.state.allReviews});
+    this.setState({
+      reviews: this.state.allReviews,
+      searchValue: ''
+    });
   }
 
   render() {
@@ -157,7 +160,7 @@ class App extends React.Component {
       <br/>
       <br/>
       <hr/>
-      <Reviews reviews={this.state.reviews} sort={this.state.sort} value={this.state.searchValue} backToReviews={this.backToReviews}/>
+      <Reviews reviews={this.state.reviews} sort={this.state.sort} value={this.state.searchValue} backToReviews={this.backToReviews} allReviews={this.state.allReviews}/>
     </div>);
   }
 }

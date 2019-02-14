@@ -5,6 +5,11 @@ class Search extends React.Component {
     super(props);
   }
 
+  // addBorder(event) {
+  //   event.target.classList.add('addBorder');
+  //   console.log(event.target)
+  // }
+
   render() {
     return (<div>
       <form className="search">

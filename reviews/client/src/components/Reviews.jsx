@@ -1,3 +1,5 @@
+import Truncate from 'react-truncate'
+
 class Reviews extends React.Component {
   constructor(props) {
     super(props);
@@ -16,7 +18,11 @@ class Reviews extends React.Component {
           <img className="flag" src="http://download.seaicons.com/icons/icons8/ios7/512/Very-Basic-Flag-icon.png"/>
         </div>
         <br/>
-        <div className="review">{review.review}</div>
+        <div className="review">
+          <Truncate lines={4} ellipsis={<span>... <a href='/link/to/article'>Read more</a></span>}>
+            {review.review}
+          </Truncate>
+        </div>
         <br/>
         <hr/>
       </div>
@@ -28,6 +34,14 @@ class Reviews extends React.Component {
           <span className="backToReviews" onClick={this.props.backToReviews}><u>Back to all reviews</u></span>
         </div>
       )
+    } else if (this.props.reviews.length < this.props.allReviews.length) {
+      return (<div>
+        <span className="someReviews">{this.props.reviews.length} guests have mentioned "<strong>{this.props.value}</strong>"</span>
+        <span className="backToReviews" onClick={this.props.backToReviews}><u>Back to all reviews</u></span>
+        <hr/>
+        <div>{listOfReviews}</div>
+      </div>
+    )
     } else {
       return (
       <div>{listOfReviews}</div>
