@@ -1,6 +1,6 @@
 const Arrow = ({ direction, clickFunction, glyph }) => (
   <div
-    className={ `slide-arrow ${direction}` }
+    className={ `${direction}` }
     onClick={ clickFunction }>
     { glyph }
   </div>

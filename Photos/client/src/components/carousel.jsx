@@ -45,12 +45,21 @@ class Carousel extends React.Component {
           clickFunction={ this.previousSlide }
           glyph="&#9664;" />
 
-        <CarouselPic list = {this.props} currentIndex = {this.state.currentImageIndex}/>
+        <CarouselPic list = {this.props} currentIndex = {this.state.currentImageIndex} clickFunction={ this.nextSlide }/>
+
+        <div>
+          
+        <div>
+          <a href="#" className = 'close' onClick = {this.props.switchBack}></a>
+        </div>
+        </div>
 
         <Arrow
           direction="right"
           clickFunction={ this.nextSlide }
           glyph="&#9654;" />
+
+        
       
       </div>
 
@@ -58,5 +67,5 @@ class Carousel extends React.Component {
     )
   }
 }
-
+// for X button this.props.switchBack
 export default Carousel
