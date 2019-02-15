@@ -1,7 +1,7 @@
 import ajax from '../lib/ajax';
 import Photos from './photos.jsx'
 import Carousel from './carousel.jsx'
-
+import React from 'react'
 
 // const appStyle = {
 //   position: 'relative',

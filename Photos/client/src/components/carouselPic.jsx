@@ -1,3 +1,4 @@
+import React from 'react'
 
 class Carouselpic extends React.Component {
   constructor(props) {

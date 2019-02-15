@@ -1,6 +1,6 @@
 import CarouselPic from './carouselPic.jsx'
 import Arrow from './arrow.jsx'
-
+import React from 'react'
 
 class Carousel extends React.Component {
   constructor(props) {
