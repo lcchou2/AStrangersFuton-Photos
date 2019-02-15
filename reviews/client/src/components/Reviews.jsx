@@ -52,7 +52,7 @@ class Reviews extends React.Component {
       );
     } else {
       return (
-      <div>{listOfReviews} {numOfPages} <span className="pageNum" onClick={this.props.nextPage}>></span></div>
+      <div>{listOfReviews} {numOfPages} <span className="nextPage" onClick={this.props.nextPage}>></span></div>
       );
     }
   }
