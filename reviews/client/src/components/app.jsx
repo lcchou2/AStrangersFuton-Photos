@@ -114,6 +114,7 @@ class App extends React.Component {
         <span className="numOfReviews">{this.state.numOfReviews} Reviews</span>
         <span className={"stars-container stars-" + this.state.rating}>★★★★★</span>
       </div>
+      <br/>
       <hr/>
       <div className="left-ratings">
         <div>

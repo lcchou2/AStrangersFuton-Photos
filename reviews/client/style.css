@@ -1,14 +1,12 @@
 body {
   font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;
 }
-
 .numOfReviews {
   font-size: 24px;
   font-weight: bold;
   color: #484848;
   margin-right: 15px;
 }
-
 hr {
   border: 0;
   border-top: 1px solid rgb(212, 212, 212);
@@ -23,7 +21,6 @@ hr {
   font-size: 20px;
   letter-spacing: 6px;
 }
-
 .stars-container:before{
   position: absolute;
   top: 0;
@@ -32,7 +29,6 @@ hr {
   color:lightgray;
   letter-spacing: 6px;
 }
-
 .stars-container:after {
   position: absolute;
   top: 0;
@@ -61,31 +57,29 @@ hr {
   position: relative;
   width: 100%;
 }
-
 .left-ratings {
   position: relative;
   float: left;
-  font-size: 16px;
+  font-size: 16px !important;
+  font-weight: 400 !important;
   color: #484848;
 }
 .right-ratings {
   position: relative;
   float: right;
-  font-size: 16px;
+  font-size: 16px !important;
+  font-weight: 400 !important;
   color: #484848;
 }
-
 .right-rating {
   position: relative;
   right: 100px;
 }
-
 .center-stars {
   position: relative;
   min-width: 100px;
   left: 100px;
 }
-
 .right-stars {
   position: relative;
   min-width: 100px;
@@ -93,7 +87,7 @@ hr {
 
 /**********SEARCH COMPONENT**********/
 /* @import url("http://download.seaicons.com/icons/icons8/ios7/512/Very-Basic-Search-icon.png"); */
-.search { 
+/* .search { 
   position: relative;
   float: left;
  }
@@ -103,20 +97,33 @@ hr {
   font-size: 12px;
   font-weight: bold;
   border: 1px solid lightgrey;
-  outline-color: rgb(41, 126, 113);
-  outline-width: 2px;
-  -moz-outline-radius: 5px;
+  outline: none;
   padding: 8px;
   border-radius: 5px;
-  /* background: url("http://download.seaicons.com/icons/icons8/ios7/512/Very-Basic-Search-icon.png") */
-}
-/* .search .fa-search { 
+}*/
+.input-icon{
   position: absolute;
-  top: 24px;
-  left: 7px;
-} */
-.glass {
-  height: 15px;
+  left: 3px;
+  top: calc(50% - 0.5em);
+  color: grey;
+}
+input{
+  padding-left: 17px;
+  width: 150px;
+  text-indent: 15px;
+  font-size: 12px;
+  font-weight: bold;
+  border: 1px solid lightgrey;
+  outline: none;
+  padding: 8px;
+  border-radius: 5px;
+}
+input:focus {
+  border: 1px solid rgb(41, 126, 113);
+}
+.input-wrapper{
+  position: relative;
+  float: left;
 }
 
 /**********SORT COMPONENT**********/
@@ -129,9 +136,11 @@ hr {
   padding: 8px;
   border-radius: 5px;
   font-size: 12px;
-  outline-color: rgb(41, 126, 113);
-  outline-width: 1px;
+  outline: none;
  }
+.sort:focus {
+  border: 1px solid rgb(41, 126, 113);
+}
 .sort option {
   width: 175px;
   height: 33px;
@@ -143,33 +152,27 @@ hr {
   display: inline-block;
   margin-right: 25px; 
 }
-
 .profileInfo {
   display: inline-block;
 }
-
 .username {
   font-size: 16px !important;
   font-weight: 600 !important;
   color: #484848 !important;
 }
-
 .date {
   font-size: 14px;
   color: #484848 !important;
 }
-
 .flag {
   float:right;
   height: 15px;
   margin-right: 5px;
 }
-
 .review {
   font-size: 15px;
   color: #484848 !important;
 }
-
 .noReviews {
   font-size: 15px;
   margin-left: 50px;
@@ -182,8 +185,10 @@ hr {
   font-size: 15px;
   float: right;
   color: rgb(41, 126, 113);
+  cursor: pointer;
 }
 .readMore {
   font-size: 15px;
   color: rgb(41, 126, 113);
+  cursor: pointer;
 }
