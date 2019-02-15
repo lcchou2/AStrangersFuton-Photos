@@ -11,8 +11,34 @@ class Photos extends React.Component {
   render() {
     return(
 
-      <div className = "outside">
-        <img src = {this.props.photos.url}></img>
+      <div className = "outside" onClick={() => { this.props.modalHandler() }}>
+         <div className = 'container'>
+        
+        <div className = 'bigger'>
+        
+          <img src = {this.props.list[0].url}></img>
+        </div>
+  
+        <div className = 'containerdos'>
+          <div className = 'smaller'>
+            <img src = {this.props.list[1].url}></img>
+          </div>
+  
+          <div className = 'smaller'>
+            <img src = {this.props.list[2].url}></img>
+          </div>
+        </div>
+  
+        <div className = 'containerdos'>
+          <div className = 'smaller'>
+            <img src = {this.props.list[3].url}></img>
+          </div>
+  
+          <div className = 'smaller'>
+            <img src = {this.props.list[5].url}></img>
+          </div>
+        </div>
+      </div>
       </div>
     )
   }

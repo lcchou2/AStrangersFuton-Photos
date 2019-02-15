@@ -1,6 +1,6 @@
 import ajax from '../lib/ajax';
 import Photos from './photos.jsx'
-
+import Carousel from './carousel.jsx'
 
 
 // const appStyle = {
@@ -15,8 +15,11 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      list : [{url:''}, {url:''},{url:''},{url:''},{url:''},{url:''}]
+      list : [{url:''}, {url:''},{url:''},{url:''},{url:''},{url:''}],
+      display : 'none'
     }
+
+    this.modalHandler = this.modalHandler.bind(this)
   }
 
   componentWillMount() {
@@ -31,36 +34,18 @@ class App extends React.Component {
     })
   }
 
+  modalHandler() {
+    this.setState ({
+      display : 'block'
+    })
+  }
+
   render() {
     return(
-      <div className = 'outside'>
-        <div className = 'container'>
-        
-        <div className = 'bigger'>
-          <img src = {this.state.list[0].url}></img>
-        </div>
-  
-        <div className = 'containerdos'>
-          <div className = 'smaller'>
-            <img src = {this.state.list[1].url}></img>
-          </div>
-  
-          <div className = 'smaller'>
-            <img src = {this.state.list[2].url}></img>
-          </div>
-        </div>
-  
-        <div className = 'containerdos'>
-          <div className = 'smaller'>
-            <img src = {this.state.list[3].url}></img>
-          </div>
-  
-          <div className = 'smaller'>
-            <img src = {this.state.list[5].url}></img>
-          </div>
-        </div>
-        </div>
+      <div >
+       <Photos list = {this.state.list} modalHandler = {this.modalHandler} />
 
+       <Carousel list = {this.state.list} display = {this.state.display} />
        
       </div>
      
