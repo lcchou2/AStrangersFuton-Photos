@@ -3,6 +3,11 @@ body {
   font-family: 'Montserrat', sans-serif;
 }
 
+.calendar-container {
+  display: flex;
+  max-width: 800px;
+}
+
 .calendar-text {
   display: flex;
   justify-content: center;
@@ -33,13 +38,28 @@ body {
 
 }
 
-.calendar-item, .empty-calendar-item, .calendar-header-item {
+.calendar-item-main, .calendar-item-sidebar, .empty-calendar-item, .calendar-header-item {
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.calendar-item {
+.calendar-item-main {
+  color: rgb(0, 132, 137);
+  background-color: rgb(237, 246, 246);
+  font-size: 16px;
+  font-weight: 700;
+  min-height: 40px;
+  min-width: 40px;
+  box-shadow: 0px 0px 1px 1px #DDDDDD;
+  border: 1px solid #DDDDDD;
+}
+
+.calendar-item-main:hover {
+  background-color: #C7F0EB;
+}
+
+.calendar-item-sidebar {
   color: #3d3b3b;
   font-size: 16px;
   font-weight: 700;
@@ -47,6 +67,22 @@ body {
   min-width: 40px;
   box-shadow: 0px 0px 1px 1px #DDDDDD;
   border: 1px solid #DDDDDD;
+}
+
+.calendar-item-taken-main {
+  color: rgb(216, 216, 216);
+  background: repeating-linear-gradient(
+    -45deg,
+    #ffffff,
+    #ffffff 3px,
+    #ebebeb 3px,
+    #ebebeb 4px
+  );
+}
+
+.calendar-item-taken-sidebar {
+  color: rgb(216, 216, 216);
+  text-decoration: line-through;
 }
 
 .empty-calendar-item {
