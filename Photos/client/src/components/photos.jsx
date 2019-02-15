@@ -19,7 +19,7 @@ class Photos extends React.Component {
           <img src = {this.props.list[0].url}></img>
         </div>
   
-        <div className = 'containerdos'>
+        <div className = 'innerContainer'>
           <div className = 'smaller'>
             <img src = {this.props.list[1].url}></img>
           </div>
@@ -29,7 +29,7 @@ class Photos extends React.Component {
           </div>
         </div>
   
-        <div className = 'containerdos'>
+        <div className = 'innerContainer'>
           <div className = 'smaller'>
             <img src = {this.props.list[3].url}></img>
           </div>

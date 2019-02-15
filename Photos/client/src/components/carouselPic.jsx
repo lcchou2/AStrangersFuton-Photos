@@ -12,8 +12,7 @@ class Carouselpic extends React.Component {
 
       <div className = 'image' >
 
-        <img src = {this.props.list.list[this.props.currentIndex].url} style = {{width: '340px',
-  height: '189px'}}></img>
+        <img src = {this.props.list.list[this.props.currentIndex].url} style = {{width: '340px',height: '189px', backgroundSize: 'cover', backgroundPosition: 'center'}}></img>
 
       </div>
 
