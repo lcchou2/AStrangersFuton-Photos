@@ -86,21 +86,6 @@ hr {
 }
 
 /**********SEARCH COMPONENT**********/
-/* @import url("http://download.seaicons.com/icons/icons8/ios7/512/Very-Basic-Search-icon.png"); */
-/* .search { 
-  position: relative;
-  float: left;
- }
-.search input { 
-  width: 150px;
-  text-indent: 30px;
-  font-size: 12px;
-  font-weight: bold;
-  border: 1px solid lightgrey;
-  outline: none;
-  padding: 8px;
-  border-radius: 5px;
-}*/
 .input-icon{
   position: absolute;
   left: 3px;
@@ -191,4 +176,10 @@ input:focus {
   font-size: 15px;
   color: rgb(41, 126, 113);
   cursor: pointer;
+}
+.pageNum {
+  font-size: 15px;
+  color: rgb(41, 126, 113) !important;
+  margin-left: 20px;
+  margin-right: 20px;
 }
