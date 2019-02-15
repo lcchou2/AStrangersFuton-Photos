@@ -14,6 +14,7 @@ class App extends React.Component {
       mainMoment: moment().startOf('month'),
       schedule: {},
     }
+    this.resetCalendarState = this.resetCalendarState.bind(this);
     this.handleArrowClick = this.handleArrowClick.bind(this);
     this.handleDateClick = this.handleDateClick.bind(this);
   }
@@ -31,6 +32,17 @@ class App extends React.Component {
     } else {
       this.setState({selectedEndDate: date});
     }
+  }
+  resetCalendarState(){
+    var newState = this.state;
+    newState.selectedStartDate = null;
+    newState.selectedEndDate = null;
+    
+    for(var k of Object.keys(newState.schedule)) {
+      newState.schedule[k].isSelected = false;
+      newState.schedule[k].isTmpTaken = false;
+    }
+    this.setState(newState);
   }
   temporaryBlockout(selectedStartDate){
     var newSchedState = this.state.schedule;
@@ -64,6 +76,7 @@ class App extends React.Component {
         view={'sidebar'} moment={this.state.sidebarMoment}
         handleLeftArrowClick={this.handleArrowClick} handleRightArrowClick={this.handleArrowClick}
         handleDateClick={this.handleDateClick} schedule={this.state.schedule} />}
+        <br></br><button onClick={this.resetCalendarState}>Clear Dates</button><br></br>
         {<DualCalendar
         view={'main'} moment={this.state.mainMoment}
         handleArrowClick={this.handleArrowClick}

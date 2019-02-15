@@ -1,6 +1,10 @@
 import moment from 'moment';
 import _ from 'underscore';
 
+const todayToString = function() {
+  return moment().startOf('day').toDate().toISOString();
+};
+
 export const calendarHeaderItems = (
   <div className="calendar-row">
     {_.map(['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'], (dow) => <div className="calendar-header-item">{dow}</div>)}
@@ -8,11 +12,12 @@ export const calendarHeaderItems = (
   );
 
 export const cleanSchedule = function (jsonResp) {
+  var today = todayToString();
   var cleaned = {};
   for (var row of jsonResp[0].datesTaken) {
     var dateString = row.timestamp;
     var date = new Date(dateString);
-    cleaned[dateString] = {text: date.getDate(), isTaken: row.taken, dateString: dateString, isSelected: false, isTmpTaken: false};
+    cleaned[dateString] = {text: date.getDate(), isTaken: row.taken || dateString <= today, dateString: dateString, isSelected: false, isTmpTaken: false};
   }
   return cleaned;
 }
