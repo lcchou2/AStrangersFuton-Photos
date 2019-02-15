@@ -23,9 +23,24 @@ class App extends React.Component {
     .then((jsonResp) => this.setState({schedule: cleanSchedule(jsonResp)}))
   }
   handleDateClick(event) {
-    this.setState({selectedStartDate: event.target.dataset.datestring}, function() {
-      console.log(this.state);
-    });
+    var date = event.target.dataset.datestring;
+    if (this.state.selectedStartDate === null) {
+      this.setState({selectedStartDate: date}, function() {
+        this.temporaryBlockout(date);
+      });
+    } else {
+      this.setState({selectedEndDate: date});
+    }
+  }
+  temporaryBlockout(selectedStartDate){
+    var newSchedState = this.state.schedule;
+    console.log(newSchedState, selectedStartDate);
+    for (var k of Object.keys(this.state.schedule)) {
+      if (k < selectedStartDate) {
+        newSchedState[k].isTmpTaken = true;
+      }
+    }
+    this.setState({schedule: newSchedState});
   }
   handleArrowClick(event) {
     if (event.target.dataset.direction === 'left') {

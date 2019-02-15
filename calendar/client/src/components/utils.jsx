@@ -10,13 +10,11 @@ export const calendarHeaderItems = (
 export const cleanSchedule = function (jsonResp) {
   var cleaned = {};
   for (var row of jsonResp[0].datesTaken) {
-    cleaned[row.timestamp] = row.taken;
+    var dateString = row.timestamp;
+    var date = new Date(dateString);
+    cleaned[dateString] = {text: date.getDate(), isTaken: row.taken, dateString: dateString, isSelected: false, isTmpTaken: false};
   }
   return cleaned;
-}
-
-export const buildDateString = function (date, month, year) {
-  return moment().month(month).year(year).date(date).startOf('day').toDate().toIsoString();
 }
 
 export const buildCalGrid = function (month, year, schedule) {
@@ -30,11 +28,8 @@ export const buildCalGrid = function (month, year, schedule) {
   var currWeek = 0;
   while (m.month() === month) {
     if (!grid[currWeek]) grid[currWeek] = {};
-    if (schedule) {
-      grid[currWeek][m.day()] = [m.date(), m.toDate().toISOString(), !!schedule[m.toDate().toISOString()]];
-    } else {
-      grid[currWeek][m.day()] = [m.date(), m.toDate().toISOString()]
-    }
+    grid[currWeek][m.day()] = schedule[m.toDate().toISOString()];
+
     m = m.add(1, 'day');
 
     if (m.day() === 0) {
@@ -43,3 +38,8 @@ export const buildCalGrid = function (month, year, schedule) {
   }
   return grid;
 };
+
+
+export const buildDateString = function (date, month, year) {
+  return moment().month(month).year(year).date(date).startOf('day').toDate().toIsoString();
+}

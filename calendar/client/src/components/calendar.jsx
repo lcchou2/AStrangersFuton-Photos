@@ -20,7 +20,7 @@ const Calendar = function(props) {
         {calendarBody}
       </div>
       {calendarHeaderItems}
-      {_.map(Object.values(buildCalGrid(props.moment.month(), props.moment.year(), props.takenSchedule)), (row) => <CalendarRow row={row} handleDateClick={props.handleDateClick} month={props.moment.month()} year={props.moment.year()} view={props.view} />)}
+      {_.map(Object.values(buildCalGrid(props.moment.month(), props.moment.year(), props.schedule)), (row) => <CalendarRow row={row} handleDateClick={props.handleDateClick} month={props.moment.month()} year={props.moment.year()} view={props.view} />)}
     </div>
   )
 }
