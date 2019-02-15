@@ -4,30 +4,20 @@ import Flag from './Flag.jsx';
 class Reviews extends React.Component {
   constructor(props) {
     super(props);
-
-    this.state = {
-      page: 1
-    }
-
-    this.changePage = this.changePage.bind(this);
-  }
-
-  changePage(event) {
-    this.setState({page: Number(event.target.innerHTML)});
   }
 
   render() {
-    var totalPages = Math.ceil(this.props.reviews.length / 7);
+    var totalPages = Math.ceil(this.props.reviews.length / this.props.commentPerPage);
     var pagesArr = [];
     for (var i = 1; i <= totalPages; i++) {
       pagesArr.push(i);
     }
     var numOfPages = pagesArr.map((pageNum, index) =>
-      <span className="pageNum" key={index} onClick={this.changePage}>{pageNum}</span>
+      <span className="pageNum" key={index} onClick={this.props.changePage}>{pageNum}</span>
     )
-    var start = (this.state.page - 1) * 7;
-    var end = this.state.page * 7;
-    console.log(start, end)
+
+    var start = (this.props.reviewPage - 1) * this.props.commentPerPage;
+    var end = this.props.reviewPage * this.props.commentPerPage;
     var listOfReviews = this.props.reviews.slice(start, end).map((review, index) =>
       <div key={index}>
         <div>
@@ -62,7 +52,7 @@ class Reviews extends React.Component {
       );
     } else {
       return (
-      <div>{listOfReviews} {numOfPages}</div>
+      <div>{listOfReviews} {numOfPages} <span className="pageNum" onClick={this.props.nextPage}>></span></div>
       );
     }
   }
