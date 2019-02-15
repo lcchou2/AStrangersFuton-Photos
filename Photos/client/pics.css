@@ -1,0 +1,56 @@
+/* APP */
+
+.outside:hover img {
+  -webkit-filter: brightness(70%);
+   filter: brightness(70%);
+}
+
+/*bigger*/
+.bigger {
+  position: relative;
+  border: 1px solid #333;
+  overflow: hidden;
+  width: 659px;
+  height: 380px;
+}
+
+.bigger img {
+  max-width: 100%;
+  -moz-transition: all 0.5s;
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+}
+.bigger:hover img {
+  -moz-transform: scale(1.05);
+  -webkit-transform: scale(1.05);
+  transform: scale(1.05);
+  -webkit-filter: brightness(100%);
+   filter: brightness(100%);
+}
+
+.smaller {
+  position: relative;
+  border: 1px solid #333;
+  overflow: hidden;
+  width: 340px;
+  height: 189px;
+}
+
+.smaller img {
+  max-width: 100%;
+  -moz-transition: all 0.5s;
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+
+}
+.smaller:hover img {
+  -moz-transform: scale(1.05);
+  -webkit-transform: scale(1.05);
+  transform: scale(1.05);
+  -webkit-filter: brightness(100%);
+   filter: brightness(100%);
+}
+
+.container {
+  display:flex
+}
