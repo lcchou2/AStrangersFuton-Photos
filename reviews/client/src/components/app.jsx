@@ -9,7 +9,7 @@ class App extends React.Component {
     super(props);
 
     this.state = {
-      listingId: 1,
+      listingId: 5,
       rating: 0,
       accuracy: 0,
       communication: 0,
@@ -21,11 +21,16 @@ class App extends React.Component {
       allReviews: [],
       numOfReviews: 0,
       sort: 'relevant',
-      searchValue: ''
+      searchValue: '',
+      reviewPage: 1,
+      commentPerPage: 3
     }
     this.getListingData = this.getListingData.bind(this);
     this.handleSort = this.handleSort.bind(this);
     this.handleSearch = this.handleSearch.bind(this);
+    this.backToReviews = this.backToReviews.bind(this);
+    this.changePage = this.changePage.bind(this);
+    this.nextPage = this.nextPage.bind(this);
   }
 
   getListingData(listingId, successCB) {
@@ -64,7 +69,7 @@ class App extends React.Component {
             }
           }
         }
-        this.setState({reviews: relevantReviews});
+        this.setState({reviews: relevantReviews, reviewPage: 1});
       } else if (this.state.sort === 'recent') {
         var months = {January: 1, February: 2, March: 3, April: 4, May: 5, June: 6, July: 7, August: 8, September: 9, October: 10, November: 11, December: 12};
 
@@ -83,7 +88,7 @@ class App extends React.Component {
             }
           }
         }
-        this.setState({reviews: this.state.reviews});
+        this.setState({reviews: this.state.reviews, reviewPage: 1});
       }
     })
   }
@@ -96,7 +101,24 @@ class App extends React.Component {
           reviewsToRender.push(this.state.allReviews[i]);
         }
       }
-      this.setState({reviews: reviewsToRender});
+      this.setState({reviews: reviewsToRender, reviewPage: 1});
+    });
+  }
+
+  backToReviews() {
+    this.setState({
+      reviews: this.state.allReviews,
+      searchValue: ''
+    });
+  }
+
+  changePage(event) {
+    this.setState({reviewPage: Number(event.target.innerHTML)});
+  }
+  
+  nextPage() {
+    this.setState({reviewPage: this.state.reviewPage + 1}, () => {
+      console.log(this.state.reviewPage)
     });
   }
 
@@ -106,6 +128,7 @@ class App extends React.Component {
         <span className="numOfReviews">{this.state.numOfReviews} Reviews</span>
         <span className={"stars-container stars-" + this.state.rating}>★★★★★</span>
       </div>
+      <br/>
       <hr/>
       <div className="left-ratings">
         <div>
@@ -152,7 +175,7 @@ class App extends React.Component {
       <br/>
       <br/>
       <hr/>
-      <Reviews reviews={this.state.reviews} sort={this.state.sort}/>
+      <Reviews reviews={this.state.reviews} sort={this.state.sort} value={this.state.searchValue} backToReviews={this.backToReviews} allReviews={this.state.allReviews} reviewPage={this.state.reviewPage} commentPerPage={this.state.commentPerPage} changePage={this.changePage} nextPage={this.nextPage}/>
     </div>);
   }
 }
