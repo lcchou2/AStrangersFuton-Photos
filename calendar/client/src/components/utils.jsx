@@ -5,6 +5,25 @@ const todayToString = function() {
   return moment().startOf('day').toDate().toISOString();
 };
 
+export const isoDateStringToReadable = function(isoDateString) {
+  if (isoDateString === null) {
+    return '';
+  }
+  return moment(isoDateString).calendar();
+};
+
+export const dateRange = function(start, end) {
+  var startMoment = moment(start);
+  var endMoment = moment(end);
+  var result = [];
+
+  while (startMoment <= endMoment) {
+    result.push(startMoment.toDate().toISOString());
+    startMoment = startMoment.add(1, 'day');
+  }
+  return result;
+}
+
 export const calendarHeaderItems = (
   <div className="calendar-row">
     {_.map(['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'], (dow) => <div className="calendar-header-item">{dow}</div>)}
@@ -17,7 +36,7 @@ export const cleanSchedule = function (jsonResp) {
   for (var row of jsonResp[0].datesTaken) {
     var dateString = row.timestamp;
     var date = new Date(dateString);
-    cleaned[dateString] = {text: date.getDate(), isTaken: row.taken || dateString <= today, dateString: dateString, isSelected: false, isTmpTaken: false};
+    cleaned[dateString] = {text: date.getDate(), isTaken: row.taken || dateString <= today, dateString: dateString, isSelected: false, isTmpTaken: false, isHighlighted: false, isHoverable: false};
   }
   return cleaned;
 }

@@ -1,8 +1,8 @@
 import moment from 'moment';
 import React from 'react';
-import { Calendar } from './calendar.jsx';
+import { BookingView } from './booking.jsx';
 import { DualCalendar } from './dualCalendar.jsx';
-import { cleanSchedule } from './utils.jsx';
+import { cleanSchedule, dateRange } from './utils.jsx';
 
 class App extends React.Component {
   constructor(props) {
@@ -13,43 +13,87 @@ class App extends React.Component {
       sidebarMoment: moment().startOf('month'),
       mainMoment: moment().startOf('month'),
       schedule: {},
+      displayBookingView: false
     }
     this.resetCalendarState = this.resetCalendarState.bind(this);
-    this.handleArrowClick = this.handleArrowClick.bind(this);
-    this.handleDateClick = this.handleDateClick.bind(this);
+    this.handleArrowClick   = this.handleArrowClick.bind(this);
+    this.handleDateClick    = this.handleDateClick.bind(this);
+    this.handleHover        = this.handleHover.bind(this);
+    this.handleHoverExit    = this.handleHoverExit.bind(this);
   }
   componentDidMount() {
     fetch('/api/schedule/1')
     .then((resp) => resp.json())
     .then((jsonResp) => this.setState({schedule: cleanSchedule(jsonResp)}))
   }
+  handleHover(event) {
+    var dateString = event.target.children[0].dataset.datestring;
+    var hoverableDates = dateRange(this.state.selectedStartDate, dateString);
+    var newScheduleState = this.state.schedule;
+    for(var dateKey of hoverableDates) {
+      newScheduleState[dateKey].isHighlighted = true;
+    }
+    this.setState({schedule: newScheduleState});
+  }
+  handleHoverExit(event) {
+    if (this.state.selectedStartDate !== null && this.state.selectedStartDate === null) {
+      var dateString = event.target.children[0].dataset.datestring;
+      var hoverableDates = dateRange(this.state.selectedStartDate, dateString);
+      var newScheduleState = this.state.schedule;
+      for(var dateKey of hoverableDates) {
+        newScheduleState[dateKey].isHighlighted = false;
+      }
+      this.setState({schedule: newScheduleState});
+    }
+  }
   handleDateClick(event) {
     var date = event.target.dataset.datestring;
+    var currentView = event.target.dataset.view;
+
     if (this.state.selectedStartDate === null) {
-      this.setState({selectedStartDate: date}, function() {
+      var newState = this.state;
+      newState.selectedStartDate = date;
+      if (currentView === 'main') {
+        newState.displayBookingView = true;
+      }
+      newState.schedule[date].isSelected = true;
+      this.setState(newState, function() {
         this.temporaryBlockout(date);
       });
     } else {
-      this.setState({selectedEndDate: date});
+      this.setState({selectedEndDate: date, displayBookingView: true});
     }
   }
   resetCalendarState(){
     var newState = this.state;
     newState.selectedStartDate = null;
     newState.selectedEndDate = null;
+    newState.displayBookingView = false;
     
     for(var k of Object.keys(newState.schedule)) {
       newState.schedule[k].isSelected = false;
+      newState.schedule[k].isHoverable = false;
+      newState.schedule[k].isHighlighted = false;
       newState.schedule[k].isTmpTaken = false;
     }
     this.setState(newState);
   }
   temporaryBlockout(selectedStartDate){
     var newSchedState = this.state.schedule;
-    console.log(newSchedState, selectedStartDate);
+    var firstTakenDate = null;
     for (var k of Object.keys(this.state.schedule)) {
       if (k < selectedStartDate) {
         newSchedState[k].isTmpTaken = true;
+      } else {
+        if (firstTakenDate) {
+          newSchedState[k].isTmpTaken = true;
+        } else {
+          if (newSchedState[k].isTaken) {
+            firstTakenDate = k;
+          } else {
+            newSchedState[k].isHoverable = true;
+          }
+        }
       }
     }
     this.setState({schedule: newSchedState});
@@ -72,15 +116,17 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        {<Calendar
-        view={'sidebar'} moment={this.state.sidebarMoment}
-        handleLeftArrowClick={this.handleArrowClick} handleRightArrowClick={this.handleArrowClick}
-        handleDateClick={this.handleDateClick} schedule={this.state.schedule} />}
+        <BookingView
+          displayBookingView={this.state.displayBookingView}
+          view={'sidebar'} moment={this.state.sidebarMoment}
+          handleLeftArrowClick={this.handleArrowClick} handleRightArrowClick={this.handleArrowClick}
+          handleDateClick={this.handleDateClick} schedule={this.state.schedule} handleHover={this.handleHover} handleHoverExit={this.handleHoverExit}
+          selectedStartDate={this.state.selectedStartDate} selectedEndDate={this.state.selectedEndDate} />
         <br></br><button onClick={this.resetCalendarState}>Clear Dates</button><br></br>
         {<DualCalendar
         view={'main'} moment={this.state.mainMoment}
         handleArrowClick={this.handleArrowClick}
-        handleDateClick={this.handleDateClick} schedule={this.state.schedule}/>}
+        handleDateClick={this.handleDateClick} schedule={this.state.schedule} handleHover={this.handleHover} handleHoverExit={this.handleHoverExit} />}
       </div>
     );
   }

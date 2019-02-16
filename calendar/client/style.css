@@ -3,6 +3,12 @@ body {
   font-family: 'Montserrat', sans-serif;
 }
 
+.booking-container {
+}
+
+.booking-border {
+}
+
 .calendar-container {
   display: flex;
   max-width: 800px;
@@ -24,6 +30,7 @@ body {
   margin: 1%;
   padding: 2%;
   max-width: 300px;
+  min-height: 400px;
 }
 
 .calendar-row {
@@ -55,9 +62,20 @@ body {
   border: 1px solid #DDDDDD;
 }
 
+.calendar-item-selected-main {
+  color: white;
+  background-color: #00858B;
+}
+
+
 .calendar-item-main:hover {
   background-color: #C7F0EB;
 }
+
+.calendar-item-selected-main:hover {
+  background-color: #00858B;
+}
+
 
 .calendar-item-sidebar {
   color: #3d3b3b;
@@ -67,6 +85,11 @@ body {
   min-width: 40px;
   box-shadow: 0px 0px 1px 1px #DDDDDD;
   border: 1px solid #DDDDDD;
+}
+
+.calendar-item-selected-sidebar {
+  background-color: #00AC9A;
+  color: white;
 }
 
 .calendar-item-taken-main {
@@ -83,6 +106,15 @@ body {
 .calendar-item-taken-sidebar {
   color: rgb(216, 216, 216);
   text-decoration: line-through;
+}
+
+.calendar-item-highlighted-sidebar {
+  background-color: #50E8DC;
+}
+
+.calendar-item-highlighted-main {
+  color: white;
+  background-color: #00858B;
 }
 
 .empty-calendar-item {
