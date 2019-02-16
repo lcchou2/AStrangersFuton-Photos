@@ -19,7 +19,8 @@ class App extends React.Component {
       display : 'none'
     }
 
-    this.modalHandler = this.modalHandler.bind(this)
+    this.modalHandler = this.modalHandler.bind(this);
+    this.switchBack = this.switchBack.bind(this);
   }
 
   componentWillMount() {
@@ -40,12 +41,22 @@ class App extends React.Component {
     })
   }
 
+  switchBack() {
+    this.setState ({
+      display : 'none'
+    })
+  }
+
   render() {
     return(
       <div >
        <Photos list = {this.state.list} modalHandler = {this.modalHandler} />
 
-       <Carousel list = {this.state.list} display = {this.state.display} />
+
+      <div className = 'modal__inner' style = {{display:this.state.display}}>
+        <Carousel list = {this.state.list} display = {this.state.display} switchBack = {this.switchBack}/>
+      </div>
+       
        
       </div>
      
