@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const photos = require('./schema');
-mongoose.connect('mongodb://localhost/testing');
+mongoose.connect('mongodb://localhost/airbnbss');
 
 var db = mongoose.connection;
 
