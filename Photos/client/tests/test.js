@@ -6,8 +6,17 @@ import App from '../src/components/app.jsx';
 
 // });
 
-it('Should pass this test', function() {
+test('Should pass this test', ()=> {
   const wrapper = shallow(<App/>);
   const stateList = wrapper.state().list
   expect(stateList[0]).toEqual({url:''});
 });
+
+describe('Components', ()=> {
+  test('App', ()=> {
+    const wrapper = shallow(<App/>);
+    expect(wrapper.state()).toHaveProperty('list')
+  })
+ 
+
+})
