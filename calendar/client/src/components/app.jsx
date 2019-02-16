@@ -13,13 +13,23 @@ class App extends React.Component {
       sidebarMoment: moment().startOf('month'),
       mainMoment: moment().startOf('month'),
       schedule: {},
-      displayBookingView: false
+      dropdown: {
+        isActive: false,
+        adults: 1,
+        children: 0,
+        infants: 0
+      },
+      calendarViewHidden: true
     }
-    this.resetCalendarState = this.resetCalendarState.bind(this);
-    this.handleArrowClick   = this.handleArrowClick.bind(this);
-    this.handleDateClick    = this.handleDateClick.bind(this);
-    this.handleHover        = this.handleHover.bind(this);
-    this.handleHoverExit    = this.handleHoverExit.bind(this);
+    this.resetCalendarState     = this.resetCalendarState.bind(this);
+    this.handleArrowClick       = this.handleArrowClick.bind(this);
+    this.handleDateClick        = this.handleDateClick.bind(this);
+    this.handleHover            = this.handleHover.bind(this);
+    this.handleHoverExit        = this.handleHoverExit.bind(this);
+    this.displaySidebarCalendar = this.displaySidebarCalendar.bind(this);
+  }
+  displaySidebarCalendar() {
+    this.setState({calendarViewHidden: false});
   }
   componentDidMount() {
     fetch('/api/schedule/1')
@@ -36,7 +46,7 @@ class App extends React.Component {
     this.setState({schedule: newScheduleState});
   }
   handleHoverExit(event) {
-    if (this.state.selectedStartDate !== null && this.state.selectedStartDate === null) {
+    if (this.state.selectedStartDate !== null && this.state.selectedEndDate === null) {
       var dateString = event.target.children[0].dataset.datestring;
       var hoverableDates = dateRange(this.state.selectedStartDate, dateString);
       var newScheduleState = this.state.schedule;
@@ -54,21 +64,21 @@ class App extends React.Component {
       var newState = this.state;
       newState.selectedStartDate = date;
       if (currentView === 'main') {
-        newState.displayBookingView = true;
+        newState.calendarViewHidden = true;
       }
       newState.schedule[date].isSelected = true;
       this.setState(newState, function() {
         this.temporaryBlockout(date);
       });
     } else {
-      this.setState({selectedEndDate: date, displayBookingView: true});
+      this.setState({selectedEndDate: date, calendarViewHidden: true});
     }
   }
   resetCalendarState(){
     var newState = this.state;
     newState.selectedStartDate = null;
     newState.selectedEndDate = null;
-    newState.displayBookingView = false;
+    newState.calendarViewHidden = false;
     
     for(var k of Object.keys(newState.schedule)) {
       newState.schedule[k].isSelected = false;
@@ -117,11 +127,12 @@ class App extends React.Component {
     return (
       <div>
         <BookingView
-          displayBookingView={this.state.displayBookingView}
+          calendarViewHidden={this.state.calendarViewHidden}
           view={'sidebar'} moment={this.state.sidebarMoment}
           handleLeftArrowClick={this.handleArrowClick} handleRightArrowClick={this.handleArrowClick}
           handleDateClick={this.handleDateClick} schedule={this.state.schedule} handleHover={this.handleHover} handleHoverExit={this.handleHoverExit}
-          selectedStartDate={this.state.selectedStartDate} selectedEndDate={this.state.selectedEndDate} />
+          selectedStartDate={this.state.selectedStartDate} selectedEndDate={this.state.selectedEndDate}
+          dropdownState={this.state.dropdown} displaySidebarCalendar={this.displaySidebarCalendar} />
         <br></br><button onClick={this.resetCalendarState}>Clear Dates</button><br></br>
         {<DualCalendar
         view={'main'} moment={this.state.mainMoment}

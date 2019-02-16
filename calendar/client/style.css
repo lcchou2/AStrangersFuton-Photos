@@ -3,10 +3,8 @@ body {
   font-family: 'Montserrat', sans-serif;
 }
 
-.booking-container {
-}
-
-.booking-border {
+.booking-row {
+  display: flex;
 }
 
 .calendar-container {
@@ -31,6 +29,19 @@ body {
   padding: 2%;
   max-width: 300px;
   min-height: 400px;
+}
+
+.calendar-box-hidden {
+  display: none;
+}
+
+.calendar-box-pop {
+  z-index: 1;
+}
+
+.booking-date {
+  padding: 3%;
+  min-width: 95px;
 }
 
 .calendar-row {

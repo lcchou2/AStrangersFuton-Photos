@@ -13,9 +13,16 @@ const Calendar = function(props) {
   if (props.handleRightArrowClick) {
     calendarBody.push(<button data-view={props.view} data-direction="right" onClick={props.handleRightArrowClick}>--&gt;</button>)
   }
-
+  var sidebarCss = '';
+  if (props.view === 'sidebar') {
+    if (props.calendarViewHidden) {
+      sidebarCss += ' calendar-box-hidden';
+    } else {
+      sidebarCss += ' calendar-box-pop';
+    }
+  }
   return (
-    <div className="calendar-box">
+    <div className={"calendar-box" + sidebarCss}>
       <div className="calendar-header">
         {calendarBody}
       </div>

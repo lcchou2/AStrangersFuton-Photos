@@ -1,38 +1,28 @@
 import { Calendar } from './calendar.jsx';
+import { Dropdown } from './dropdown.jsx';
 import { isoDateStringToReadable } from './utils.jsx';
 
-const Booking = function(props){
+const BookingView = function(props){
   return (
-    <div className="calendar-box">
+    <div className="calendar-box calendar-border">
       <div>
         <div>Dates</div>
-        <div>
-          {isoDateStringToReadable(props.selectedStartDate)}
+        <div className="booking-row calendar-border" onClick={props.displaySidebarCalendar}>
+          <div className="booking-date">
+            {isoDateStringToReadable(props.selectedStartDate)}
+          </div>
+          <div className="booking-date">
+            {isoDateStringToReadable(props.selectedEndDate)}
+          </div>
         </div>
-        <div>
-          {isoDateStringToReadable(props.selectedEndDate)}
-        </div>
+        <Calendar
+          view={props.view} moment={props.moment}
+          handleLeftArrowClick={props.handleLeftArrowClick} handleRightArrowClick={props.handleRightArrowClick}
+          handleDateClick={props.handleDateClick} schedule={props.schedule} handleHover={props.handleHover} handleHoverExit={props.handleHoverExit}
+          calendarViewHidden={props.calendarViewHidden} />
       </div>
-      <div>
-        <div>Guests</div>
-        <div>Here</div>
-      </div>
+      <Dropdown dropdownState={props.dropdownState} />
     </div>
-  );
-};
-
-const BookingView = function(props){
-  if (!props.displayBookingView) {
-    return (
-      <Calendar
-      view={props.view} moment={props.moment}
-      handleLeftArrowClick={props.handleLeftArrowClick} handleRightArrowClick={props.handleRightArrowClick}
-      handleDateClick={props.handleDateClick} schedule={props.schedule} handleHover={props.handleHover} handleHoverExit={props.handleHoverExit} />
-    );
-  } 
-
-  return (
-    <Booking selectedStartDate={props.selectedStartDate} selectedEndDate={props.selectedEndDate} />
   );
 };
 

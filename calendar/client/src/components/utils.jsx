@@ -1,5 +1,6 @@
 import moment from 'moment';
 import _ from 'underscore';
+import React from 'react';
 
 const todayToString = function() {
   return moment().startOf('day').toDate().toISOString();
