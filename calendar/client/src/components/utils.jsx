@@ -10,7 +10,7 @@ export const isoDateStringToReadable = function(isoDateString) {
   if (isoDateString === null) {
     return '';
   }
-  return moment(isoDateString).calendar();
+  return moment(isoDateString).format("MM/DD/YYYY");
 };
 
 export const dateRange = function(start, end) {

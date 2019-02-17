@@ -78,7 +78,7 @@ class App extends React.Component {
     var newState = this.state;
     newState.selectedStartDate = null;
     newState.selectedEndDate = null;
-    newState.calendarViewHidden = false;
+    newState.calendarViewHidden = true;
     
     for(var k of Object.keys(newState.schedule)) {
       newState.schedule[k].isSelected = false;

@@ -5,6 +5,31 @@ body {
 
 .booking-row {
   display: flex;
+  min-height: 35px;
+}
+
+.calendar-arrow {
+  cursor: pointer !important;
+  user-select: none !important;
+  background-color: rgb(255, 255, 255) !important;
+  color: rgb(117, 117, 117) !important;
+  line-height: 0.78 !important;
+  border-width: 1px !important;
+  border-style: solid !important;
+  border-color: rgb(228, 231, 231) !important;
+  border-image: initial !important;
+  border-radius: 3px !important;
+  padding: 6px 9px !important;
+}
+
+.calendar-arrow-left {
+  margin-left: 0;
+  margin-right: auto;
+}
+
+.calendar-arrow-right {
+  margin-right: 0;
+  margin-left: auto;
 }
 
 .calendar-container {
@@ -13,6 +38,8 @@ body {
 }
 
 .calendar-text {
+  font-weight: bold;
+  font-size: 13px;
   display: flex;
   justify-content: center;
 }
@@ -27,8 +54,8 @@ body {
   display: inline-block;
   margin: 1%;
   padding: 2%;
-  max-width: 300px;
-  min-height: 400px;
+  width: 298px;
+  height: 325px;
 }
 
 .calendar-box-hidden {
@@ -69,8 +96,7 @@ body {
   font-weight: 700;
   min-height: 40px;
   min-width: 40px;
-  box-shadow: 0px 0px 1px 1px #DDDDDD;
-  border: 1px solid #DDDDDD;
+  border: 1px solid rgb(255, 255, 255);
 }
 
 .calendar-item-selected-main {
@@ -94,7 +120,6 @@ body {
   font-weight: 700;
   min-height: 40px;
   min-width: 40px;
-  box-shadow: 0px 0px 1px 1px #DDDDDD;
   border: 1px solid #DDDDDD;
 }
 

@@ -22,7 +22,7 @@ const Dropdown = function(props) {
   return (
     <div className="dropdown">
       <div>Guests</div>
-      <div className="booking-row">
+      <div className="booking-row calendar-border">
         {props.dropdownState.adults + props.dropdownState.children + props.dropdownState.infants} guests
       </div>
       {items}
