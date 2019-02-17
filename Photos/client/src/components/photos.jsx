@@ -13,11 +13,13 @@ class Photos extends React.Component {
 
       <div>
         <div className = 'share' style = {{display: this.props.displayShare}}>
-          Share
+        <div className = 'mshare'>
+        </div>
         </div>
 
         <div className = 'save' style = {{display: this.props.displaySave}}>
-          Save
+        <div className = 'mshare'>
+        </div>
         </div>
 
       <div className = "outside" onClick={() => { this.props.modalHandler() }}>

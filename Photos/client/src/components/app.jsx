@@ -68,6 +68,7 @@ class App extends React.Component {
   render() {
     return(
       <div >
+       
         <div>
           <Photos list = {this.state.list} modalHandler = {this.modalHandler} saveHandler = {this.saveHandler} switchBack = {this.switchBack} shareHandler = {this.shareHandler} displayShare = {this.state.displayShare} displaySave = {this.state.displaySave}/>
 
