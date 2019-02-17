@@ -12,7 +12,7 @@ class Photos extends React.Component {
     return(
 
       <div className = "outside" onClick={() => { this.props.modalHandler() }}>
-         <div className = 'container'>
+        <div className = 'container'>
         
         <div className = 'bigger'>
         

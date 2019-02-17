@@ -1,5 +1,9 @@
 /* APP */
 
+.outside {
+  display: flex;
+ 
+}
 .outside:hover img {
   -webkit-filter: brightness(70%);
    filter: brightness(70%);
@@ -10,9 +14,8 @@
   position: relative;
   border: 1px solid #333;
   overflow: hidden;
-  width: 100%;
-  height: 380px;
-  
+  width: 725px;
+  height: 292px;
 }
 
 .bigger img {
@@ -33,8 +36,8 @@
   position: relative;
   border: 1px solid #333;
   overflow: hidden;
-  width: 340px;
-  height: 189px;
+  width: 358px;
+  height: 145px;
 }
 
 .smaller img {
@@ -53,5 +56,6 @@
 }
 
 .container {
-  display:flex
+  display: flex;
+  margin-left: -15px;
 }
