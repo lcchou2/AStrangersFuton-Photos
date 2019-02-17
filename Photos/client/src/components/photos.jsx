@@ -11,6 +11,15 @@ class Photos extends React.Component {
   render() {
     return(
 
+      <div>
+        <div className = 'share' style = {{display: this.props.displayShare}}>
+          Share
+        </div>
+
+        <div className = 'save' style = {{display: this.props.displaySave}}>
+          Save
+        </div>
+
       <div className = "outside" onClick={() => { this.props.modalHandler() }}>
         <div className = 'container'>
         
@@ -32,12 +41,16 @@ class Photos extends React.Component {
         <div className = 'innerContainer'>
           <div className = 'smaller'>
             <img src = {this.props.list[3].url}></img>
+            <button className="btnMid" onClick={(e) => { this.props.shareHandler(e) }}><i className="fa fa-upload"></i>  Share</button>
+            <button className="btnTop" onClick={(e) => { this.props.saveHandler(e) }}><i className="far fa-heart"></i>                  Save</button>
           </div>
   
           <div className = 'smaller'>
             <img src = {this.props.list[5].url}></img>
+            <button className="btnBot" onClick={() => { this.props.modalHandler() }}>View Photos</button>
           </div>
         </div>
+      </div>
       </div>
       </div>
     )

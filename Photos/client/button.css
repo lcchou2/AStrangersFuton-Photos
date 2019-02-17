@@ -1,0 +1,48 @@
+.btnMid {
+  position: absolute;
+  top: 14%;
+  left: 34%;
+  background-color: white;
+  color: #484848;
+  font-size: 14px;
+  font-weight: 500;
+  padding: 10px 16px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.btnTop {
+  position: absolute;
+  top: 14%;
+  left: 67%;
+  background-image: url(./save.png);
+  color: #484848;
+  font-size: 14px;
+  font-weight: 500;
+  padding: 10px 16px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.btnBot {
+  position: absolute;
+  top: 60%;
+  left: 60%;
+  background-color: white;
+  color: #484848;
+  font-size: 14px;
+  font-weight: 500;
+  padding: 10px 15px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+i {
+  margin-right: 10px;
+}
