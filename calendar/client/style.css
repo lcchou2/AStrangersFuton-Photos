@@ -45,9 +45,7 @@ body {
 }
 
 .calendar-border {
-  border: 1px solid #DDDDDD;
-  box-shadow: 0px 0px 1px 1px #DDDDDD;
-  border-radius: 3%;
+  border: 1px solid #EBEBEB;
 }
 
 .calendar-box {
@@ -165,4 +163,25 @@ body {
   min-width: 42px;
   color: gray;
   align-items: flex-end;
+}
+
+.dropdown-items {
+  min-width: 298px;
+  position: absolute;
+  background-color: white;
+}
+
+.dropdown-item {
+  display: flex;
+}
+
+.dropdown-text {
+  margin-left: 0;
+  margin-right: auto;
+}
+
+.dropdown-tracker {
+  margin-right: 0;
+  margin-left: auto;
+  display: flex;
 }

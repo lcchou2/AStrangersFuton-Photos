@@ -6,9 +6,23 @@ const todayToString = function() {
   return moment().startOf('day').toDate().toISOString();
 };
 
-export const isoDateStringToReadable = function(isoDateString) {
-  if (isoDateString === null) {
-    return '';
+export const getUrlParams = function(urlSearch) {
+  // expects something like window.location.search as a param
+  var params = {};
+  for (var eachItemPair of urlSearch.replace('?', '').split('&')) {
+    var [k, v] = eachItemPair.split('=');
+    params[k] = v;
+  }
+  return params;
+}
+
+export const pluralize = function(baseWord, count, suffix="s") {
+  return baseWord + (count === 1 ? '' : suffix);
+};
+
+export const isoDateStringToReadable = function(isoDateString, isCheckIn=true) {
+  if (isoDateString === null ) {
+    return isCheckIn ? 'Check in' : 'Check Out';
   }
   return moment(isoDateString).format("MM/DD/YYYY");
 };
@@ -64,7 +78,10 @@ export const buildCalGrid = function (month, year, schedule) {
   return grid;
 };
 
-
 export const buildDateString = function (date, month, year) {
   return moment().month(month).year(year).date(date).startOf('day').toDate().toIsoString();
 }
+
+export const randInt = function (mini, maxi) {
+  return Math.floor(Math.random() * (maxi - mini + 1) ) + mini;
+};

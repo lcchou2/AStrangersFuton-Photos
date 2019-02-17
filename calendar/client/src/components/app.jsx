@@ -1,13 +1,19 @@
 import moment from 'moment';
+import _ from 'underscore';
 import React from 'react';
 import { BookingView } from './booking.jsx';
 import { DualCalendar } from './dualCalendar.jsx';
-import { cleanSchedule, dateRange } from './utils.jsx';
+import { cleanSchedule, dateRange, getUrlParams, randInt } from './utils.jsx';
 
 class App extends React.Component {
   constructor(props) {
     super(props);
+    var urlParams = {listingId: '1'};
+    _.extend(urlParams, getUrlParams(window.location.search));
+
     this.state = {
+      listingId: urlParams.listingId,
+      price: randInt(100, 700),
       selectedStartDate: null,
       selectedEndDate: null,
       sidebarMoment: moment().startOf('month'),
@@ -21,20 +27,42 @@ class App extends React.Component {
       },
       calendarViewHidden: true
     }
-    this.resetCalendarState     = this.resetCalendarState.bind(this);
-    this.handleArrowClick       = this.handleArrowClick.bind(this);
-    this.handleDateClick        = this.handleDateClick.bind(this);
-    this.handleHover            = this.handleHover.bind(this);
-    this.handleHoverExit        = this.handleHoverExit.bind(this);
-    this.displaySidebarCalendar = this.displaySidebarCalendar.bind(this);
+    this.resetCalendarState          = this.resetCalendarState.bind(this);
+    this.handleArrowClick            = this.handleArrowClick.bind(this);
+    this.handleDateClick             = this.handleDateClick.bind(this);
+    this.handleHover                 = this.handleHover.bind(this);
+    this.handleHoverExit             = this.handleHoverExit.bind(this);
+    this.displaySidebarCalendar      = this.displaySidebarCalendar.bind(this);
+    this.displayBookingGuestDropdown = this.displayBookingGuestDropdown.bind(this);
+    this.hideBookingGuestDropdown    = this.hideBookingGuestDropdown.bind(this);
+    this.handleDropdownButtonClick   = this.handleDropdownButtonClick.bind(this);
+  }
+  displayBookingGuestDropdown(){
+    var newDropdownState = this.state.dropdown;
+    newDropdownState.isActive = true;
+    this.setState({dropdown: newDropdownState});
+  }
+  hideBookingGuestDropdown(){
+    var newDropdownState = this.state.dropdown;
+    newDropdownState.isActive = false;
+    this.setState({dropdown: newDropdownState});
   }
   displaySidebarCalendar() {
     this.setState({calendarViewHidden: false});
   }
   componentDidMount() {
-    fetch('/api/schedule/1')
+    fetch(`/api/schedule/${this.state.listingId}`)
     .then((resp) => resp.json())
     .then((jsonResp) => this.setState({schedule: cleanSchedule(jsonResp)}))
+  }
+  handleDropdownButtonClick(event) {
+    var value = Number(event.target.dataset.increment);
+    var guestKey = event.target.dataset.guesttype;
+    console.log(value, guestKey);
+    var newDropdownState = this.state.dropdown;
+
+    newDropdownState[guestKey] = newDropdownState[guestKey] + value;
+    this.setState({dropdown: newDropdownState}, () => console.log(this.state));
   }
   handleHover(event) {
     var dateString = event.target.children[0].dataset.datestring;
@@ -127,12 +155,14 @@ class App extends React.Component {
     return (
       <div>
         <BookingView
-          calendarViewHidden={this.state.calendarViewHidden}
+          price={this.state.price} calendarViewHidden={this.state.calendarViewHidden}
           view={'sidebar'} moment={this.state.sidebarMoment}
           handleLeftArrowClick={this.handleArrowClick} handleRightArrowClick={this.handleArrowClick}
           handleDateClick={this.handleDateClick} schedule={this.state.schedule} handleHover={this.handleHover} handleHoverExit={this.handleHoverExit}
           selectedStartDate={this.state.selectedStartDate} selectedEndDate={this.state.selectedEndDate}
-          dropdownState={this.state.dropdown} displaySidebarCalendar={this.displaySidebarCalendar} />
+          dropdownState={this.state.dropdown} displaySidebarCalendar={this.displaySidebarCalendar}
+          displayBookingGuestDropdown={this.displayBookingGuestDropdown} hideBookingGuestDropdown={this.hideBookingGuestDropdown}
+          handleDropdownButtonClick={this.handleDropdownButtonClick} />
         <br></br><button onClick={this.resetCalendarState}>Clear Dates</button><br></br>
         {<DualCalendar
         view={'main'} moment={this.state.mainMoment}
