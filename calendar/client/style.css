@@ -185,3 +185,10 @@ body {
   margin-left: auto;
   display: flex;
 }
+
+hr {
+  border-width: 1px;
+  color: #EBEBEB;
+  margin-top: 16px;
+  margin-bottom: 16px;
+}

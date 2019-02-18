@@ -2,6 +2,18 @@ import React from 'react';
 
 import styled from 'styled-components';
 
+// border-color: rgba(0, 132, 137, 0.3) !important;
+const DropdownButton = styled.button`
+  height: 32px;
+  width: 32px;
+  background-color: transparent;
+  color: ${props => props.isActive ? 'rgb(0, 132, 137)' : 'rgb(0, 132, 137, 0.3)'};
+  border-style: solid;
+  border-radius: 50%;
+  border-color: ${props => props.isActive ? 'rgb(0, 132, 137)' : 'rgb(0, 132, 137, 0.3)'};
+  border-width: 1px;
+`;
+
 const BookingButton = styled.button`
   padding-top: 10px;
   padding-bottom: 10px;
@@ -60,4 +72,4 @@ const BaseStyledCalendarItem = styled.div`
 const StyledCalendarItem = styled(BaseStyledCalendarItem)`
 `;
 
-export {CalendarBox, CalendarContainer, OffsetCalendarHeader, CenteredCalendarHeader, BookingButton};
+export {CalendarBox, CalendarContainer, OffsetCalendarHeader, CenteredCalendarHeader, BookingButton, DropdownButton};
