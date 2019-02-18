@@ -1,5 +1,5 @@
 
-.mshare {
+.modalSS {
     z-index: 9999;
     position: fixed;
     left: 0;
@@ -11,6 +11,52 @@
 }
 
 
+.btnShare {
+    position: absolute;
+    top: 9%;
+    left: 40%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    background: transparent;
+    color : rgba(0,0,0,0);
+    font-size: 16px;
+    padding: 6px 6px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.btnSave {
+  position: absolute;
+  top: 6.8%;
+  left: 32.5%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  background: transparent;
+  color : rgba(0,0,0,0);
+  font-size: 17px;
+  padding: 6px 6px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+
+.picShare img {
+  top: 5%;
+  left:38%;
+  height:90%;
+  width: 25%;
+  position: fixed;
+}
+
+.picSave img {
+  top:2%;
+  left:30%;
+  height:97%;
+  width: 39%;
+  position: fixed;
+}
 
 
 
@@ -22,7 +68,7 @@
   background-color: white;
   color: #484848;
   font-size: 14px;
-  font-weight: 500;
+  font-weight: 440;
   padding: 10px 16px;
   border: none;
   cursor: pointer;
@@ -34,10 +80,9 @@
   position: absolute;
   top: 14%;
   left: 67%;
-  background-image: url(./save.png);
   color: #484848;
   font-size: 14px;
-  font-weight: 500;
+  font-weight: 400;
   padding: 10px 16px;
   border: none;
   cursor: pointer;
@@ -52,7 +97,7 @@
   background-color: white;
   color: #484848;
   font-size: 14px;
-  font-weight: 500;
+  font-weight: 400;
   padding: 10px 15px;
   border: none;
   cursor: pointer;

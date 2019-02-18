@@ -13,13 +13,24 @@ class Photos extends React.Component {
 
       <div>
         <div className = 'share' style = {{display: this.props.displayShare}}>
-        <div className = 'mshare'>
-        </div>
+          <div className = 'modalSS' onClick = {()=> {this.props.switchBack()}}>
+            
+          <div className = 'picShare' onClick={(e) => { this.props.shareHandler(e) }}>
+            
+            <img src = 'https://s3-us-west-1.amazonaws.com/lcchou2/Screen+Shot+2019-02-17+at+3.45.46+PM.png'></img>
+            <button class="btnShare" onClick = {(e) => {this.props.shareXHandler(e)}}>Heh</button>
+          </div>
+          </div>
         </div>
 
         <div className = 'save' style = {{display: this.props.displaySave}}>
-        <div className = 'mshare'>
-        </div>
+          <div className = 'modalSS' onClick = {()=> {this.props.switchBack()}}>
+            <div className = 'picSave' onClick={(e) => { this.props.saveHandler(e) }}>
+
+              <img src = 'https://s3-us-west-1.amazonaws.com/lcchou2/save.png'></img>
+              <button class="btnSave" onClick = {(e) => {this.props.shareXHandler(e)}}>Heh</button>
+            </div>
+          </div>
         </div>
 
       <div className = "outside" onClick={() => { this.props.modalHandler() }}>
