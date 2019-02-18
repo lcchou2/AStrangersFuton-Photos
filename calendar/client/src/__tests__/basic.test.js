@@ -3,12 +3,10 @@ import React from 'react';
 import { shallow, mount, render } from 'enzyme';
 
 import App from '../components/app.jsx';
-import Calender from '../components/calendar.jsx';
 
 describe('A suite', function() {
   it('should render without throwing an error', function() {
     // shallow(<App Calender={Calender} />).contains(<div className="foo">Bar</div>)
-    shallow(<App Calender={Calender} />);
-    expect(true).toBe(true);
+    expect(shallow(<App />).contains("February 2019")).toBe(true);
   });
 });
