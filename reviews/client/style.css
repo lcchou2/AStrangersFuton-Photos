@@ -54,35 +54,55 @@ hr {
 
 /**********RATING COMPONENT**********/
 .container {
+  display: flex;
   position: relative;
+  width: auto;
+}
+.left-container {
+  display: flex;
+  font-size: 16px !important;
+  font-weight: 400 !important;
+  color: #484848;
   width: 100%;
 }
-.left-ratings {
-  position: relative;
-  float: left;
-  font-size: 16px !important;
-  font-weight: 400 !important;
-  color: #484848;
+.left-text-container {
+  display: flex;
+  flex-direction: column;
 }
-.right-ratings {
-  position: relative;
-  float: right;
+.left-star-container {
+  display: flex;
+  flex-direction: column;
+}
+.left-rating {
+  margin-bottom: 15px;
+}
+.left-stars {
+  left: 50px;
+  margin-bottom: 10px;
+}
+.right-container {
+  display: flex;
   font-size: 16px !important;
   font-weight: 400 !important;
   color: #484848;
+  width: 100%;
+}
+.right-text-container {
+  display: flex;
+  flex-direction: column;
+}
+.right-star-container {
+  display: flex;
+  flex-direction: column;
 }
 .right-rating {
-  position: relative;
-  right: 100px;
-}
-.center-stars {
-  position: relative;
-  min-width: 100px;
-  left: 100px;
+  margin-bottom: 15px;
+  /* float: left; */
 }
 .right-stars {
-  position: relative;
-  min-width: 100px;
+  left: 50px;
+  /* float: right; */
+  margin-bottom: 10px;
 }
 
 /**********SEARCH COMPONENT**********/

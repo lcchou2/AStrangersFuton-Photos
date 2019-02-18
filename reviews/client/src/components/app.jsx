@@ -23,7 +23,7 @@ class App extends React.Component {
       sort: 'relevant',
       searchValue: '',
       reviewPage: 1,
-      commentPerPage: 3
+      commentPerPage: 7
     }
     this.getListingData = this.getListingData.bind(this);
     this.handleSort = this.handleSort.bind(this);
@@ -133,40 +133,32 @@ class App extends React.Component {
       </div>
       <br/>
       <hr/>
-      <div className="left-ratings">
-        <div>
-          <span>Accuracy</span>
-          <span className={"stars-container stars-" + this.state.accuracy + " center-stars"}>★★★★★</span>
+      <div className="container">
+        <div className="left-container">
+          <div className="left-text-container">
+            <div className="left-rating">Accuracy</div>
+            <div className="left-rating">Communication</div>
+            <div className="left-rating">Cleanliness</div>
+          </div>
+          <div className="left-star-container">
+            <div className={"stars-container stars-" + this.state.accuracy + " left-stars"}>★★★★★</div>
+            <div className={"stars-container stars-" + this.state.communication + " left-stars"}>★★★★★</div>
+            <div className={"stars-container stars-" + this.state.cleanliness + " left-stars"}>★★★★★</div>
+          </div>
         </div>
-        <div>
-          <span>Communication</span>
-          <span className={"stars-container stars-" + this.state.communication + " center-stars"}>★★★★★</span>
-        </div>
-        <div>
-          <span>Cleanliness</span>
-          <span className={"stars-container stars-" + this.state.cleanliness + " center-stars"}>★★★★★</span>
-        </div>
-      </div>
-      <div className="right-ratings">
-        <div>
-          <span className="right-rating">Location</span>
-          <span className={"stars-container stars-" + this.state.location + " right-stars"}>★★★★★</span>
-        </div>
-        <div>
-          <span className="right-rating">Check-in</span>
-          <span className={"stars-container stars-" + this.state.checkin + " right-stars"}>★★★★★</span>
-        </div>
-        <div>
-          <span className="right-rating">Value</span>
-          <span className={"stars-container stars-" + this.state.value + " right-stars"}>★★★★★</span>
+        <div className="right-container">
+          <div className="right-text-container">
+              <div className="right-rating">Location</div>
+              <div className="right-rating">Check-in</div>
+              <div className="right-rating">Value</div>
+          </div>
+          <div className="right-star-container">
+            <div className={"stars-container stars-" + this.state.location + " right-stars"}>★★★★★</div>
+            <div className={"stars-container stars-" + this.state.checkin + " right-stars"}>★★★★★</div>
+            <div className={"stars-container stars-" + this.state.value + " right-stars"}>★★★★★</div>
+          </div>
         </div>
       </div>
-      <br/>
-      <br/>
-      <br/>
-      <br/>
-      <br/>
-      <br/>
       <div>
         <div className="search-container">
           <Search handleSearch={this.handleSearch} value={this.state.searchValue}/>
