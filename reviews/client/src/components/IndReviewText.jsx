@@ -1,4 +1,5 @@
 import Truncate from 'react-truncate'
+import React from 'react';
 
 class IndReviewText extends React.Component {
   constructor(props) {
