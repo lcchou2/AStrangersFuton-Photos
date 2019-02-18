@@ -54,6 +54,7 @@ body {
   padding: 2%;
   width: 298px;
   height: 325px;
+  overflow: hidden;
 }
 
 .calendar-box-hidden {
@@ -71,6 +72,20 @@ body {
 
 .calendar-row {
   display: flex;
+  transition: margin .25s;
+}
+
+.calendar-items, .calendar-items-left, .calendar-items-right {
+  display: inline;
+}
+
+.calendar-items {
+  transition: margin .25s;
+}
+
+.dow-row {
+  display: flex;
+  height: auto;
 }
 
 .calendar-header {
@@ -159,7 +174,6 @@ body {
 .calendar-header-item {
   font-size: 12px;
   font-weight: bold;
-  min-height: 42px;
   min-width: 42px;
   color: gray;
   align-items: flex-end;

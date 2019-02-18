@@ -40,7 +40,7 @@ export const dateRange = function(start, end) {
 }
 
 export const calendarHeaderItems = (
-  <div className="calendar-row">
+  <div className="dow-row">
     {_.map(['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'], (dow) => <div className="calendar-header-item">{dow}</div>)}
   </div>
   );

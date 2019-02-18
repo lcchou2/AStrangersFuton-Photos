@@ -27,6 +27,9 @@ class App extends React.Component {
       },
       calendarViewHidden: true
     }
+
+    this.animationDuration = .25;
+
     this.resetCalendarState          = this.resetCalendarState.bind(this);
     this.handleArrowClick            = this.handleArrowClick.bind(this);
     this.handleDateClick             = this.handleDateClick.bind(this);
@@ -139,15 +142,15 @@ class App extends React.Component {
   handleArrowClick(event) {
     if (event.target.dataset.direction === 'left') {
       if (event.target.dataset.view === 'sidebar') {
-        this.setState({sidebarMoment: this.state.sidebarMoment.subtract(1, 'months')});
+        setTimeout(() => this.setState({sidebarMoment: this.state.sidebarMoment.subtract(1, 'months')}), 1000 * this.animationDuration);
       } else if (event.target.dataset.view === 'main') {
-        this.setState({mainMoment: this.state.mainMoment.subtract(1, 'months')});
+        setTimeout(() => this.setState({mainMoment: this.state.mainMoment.subtract(1, 'months')}), 1000 * this.animationDuration);
       }
     } else if (event.target.dataset.direction === 'right') {
       if (event.target.dataset.view === 'sidebar') {
-        this.setState({sidebarMoment: this.state.sidebarMoment.add(1, 'months')});
+        setTimeout(() => this.setState({sidebarMoment: this.state.sidebarMoment.add(1, 'months')}), 1000 * this.animationDuration);
       } else if (event.target.dataset.view === 'main') {
-        this.setState({mainMoment: this.state.mainMoment.add(1, 'months')});
+        setTimeout(() => this.setState({mainMoment: this.state.mainMoment.add(1, 'months')}), 1000 * this.animationDuration);
       }
     }
   }

@@ -10,6 +10,11 @@ const CalendarRow = function(props) {
       cols.push(<EmptyCalendarItem />);
     }
   }
+  
+  var className = "calendar-row";
+  className += (props.isLeft ? 'calendar-row-left' : '');
+  className += (props.isLeft ? 'calendar-row-right' : '');
+
   return (
     <div className="calendar-row">
       {cols}
