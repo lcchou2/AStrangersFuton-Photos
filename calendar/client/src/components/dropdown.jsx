@@ -1,3 +1,4 @@
+import React from 'react';
 import { pluralize } from './utils.jsx';
 import { DropdownButton } from './styledComponents.jsx';
 

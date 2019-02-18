@@ -1,3 +1,4 @@
+import React from 'react';
 
 const CalendarItem = function(props) {
   var itemCss = 'calendar-item-' + props.view;

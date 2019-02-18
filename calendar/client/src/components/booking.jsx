@@ -1,3 +1,5 @@
+import React from 'react';
+
 import { Calendar } from './calendar.jsx';
 import { Dropdown } from './dropdown.jsx';
 import { CalendarContainer, BookingButton } from './styledComponents.jsx';

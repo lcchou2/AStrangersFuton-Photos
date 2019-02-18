@@ -1,3 +1,4 @@
+import React from 'react';
 import {CalendarItem, EmptyCalendarItem} from './calendarItem.jsx';
 
 const CalendarRow = function(props) {
