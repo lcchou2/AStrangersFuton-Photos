@@ -31,6 +31,7 @@ class App extends React.Component {
     this.backToReviews = this.backToReviews.bind(this);
     this.changePage = this.changePage.bind(this);
     this.nextPage = this.nextPage.bind(this);
+    this.previousPage = this.previousPage.bind(this);
   }
 
   getListingData(listingId, successCB) {
@@ -117,9 +118,11 @@ class App extends React.Component {
   }
   
   nextPage() {
-    this.setState({reviewPage: this.state.reviewPage + 1}, () => {
-      console.log(this.state.reviewPage)
-    });
+    this.setState({reviewPage: this.state.reviewPage + 1});
+  }
+
+  previousPage() {
+    this.setState({reviewPage: this.state.reviewPage - 1});
   }
 
   render() {
@@ -175,7 +178,7 @@ class App extends React.Component {
       <br/>
       <br/>
       <hr/>
-      <Reviews reviews={this.state.reviews} sort={this.state.sort} value={this.state.searchValue} backToReviews={this.backToReviews} allReviews={this.state.allReviews} reviewPage={this.state.reviewPage} commentPerPage={this.state.commentPerPage} changePage={this.changePage} nextPage={this.nextPage}/>
+      <Reviews reviews={this.state.reviews} sort={this.state.sort} value={this.state.searchValue} backToReviews={this.backToReviews} allReviews={this.state.allReviews} reviewPage={this.state.reviewPage} commentPerPage={this.state.commentPerPage} changePage={this.changePage} nextPage={this.nextPage} previousPage={this.previousPage}/>
     </div>);
   }
 }
