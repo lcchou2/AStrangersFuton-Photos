@@ -2,6 +2,16 @@ import React from 'react';
 
 import styled from 'styled-components';
 
+const PricingDiv = styled.div`
+  display: flex;
+`;
+
+const PricingItem = styled.div`
+  display: inline;
+  margin-${props => props.isLeft ? 'left' : 'right'}: 0;
+  margin-${props => props.isLeft ? 'right' : 'left'}: auto;
+`;
+
 // border-color: rgba(0, 132, 137, 0.3) !important;
 const DropdownButton = styled.button`
   height: 32px;
@@ -15,6 +25,7 @@ const DropdownButton = styled.button`
 `;
 
 const BookingButton = styled.button`
+  margin-top: 15px;
   padding-top: 10px;
   padding-bottom: 10px;
   padding-left: 8px;
@@ -72,4 +83,4 @@ const BaseStyledCalendarItem = styled.div`
 const StyledCalendarItem = styled(BaseStyledCalendarItem)`
 `;
 
-export {CalendarBox, CalendarContainer, OffsetCalendarHeader, CenteredCalendarHeader, BookingButton, DropdownButton};
+export {CalendarBox, CalendarContainer, OffsetCalendarHeader, CenteredCalendarHeader, BookingButton, DropdownButton, PricingItem, PricingDiv};
