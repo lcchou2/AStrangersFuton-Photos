@@ -64,7 +64,7 @@
 .btnMid {
   position: absolute;
   top: 14%;
-  left: 34%;
+  left: 36%;
   background-color: white;
   color: #484848;
   font-size: 14px;
@@ -79,7 +79,7 @@
 .btnTop {
   position: absolute;
   top: 14%;
-  left: 67%;
+  left: 69%;
   color: #484848;
   font-size: 14px;
   font-weight: 400;
@@ -92,8 +92,8 @@
 
 .btnBot {
   position: absolute;
-  top: 60%;
-  left: 60%;
+  top: 58%;
+  left: 62%;
   background-color: white;
   color: #484848;
   font-size: 14px;

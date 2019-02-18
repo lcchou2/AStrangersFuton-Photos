@@ -1,11 +1,17 @@
 import React from 'react';
-import {shallow} from 'enzyme';
+import {shallow, mount, render} from 'enzyme';
 import App from '../src/components/app.jsx';
+import Photos from '../src/components/photos.jsx'
 import Carousel from '../src/components/carousel'
+import toJson from 'enzyme-to-json'
 
-// describe('something', function() {
+describe('something', function() {
 
-// });
+});
+
+const props = {
+  list: [{url:''}, {url:''},{url:''},{url:''},{url:''},{url:''}]
+}
 
 test('Should pass this test', ()=> {
   const wrapper = shallow(<App/>);
@@ -35,3 +41,20 @@ describe('Components', ()=> {
   })
 
 })
+
+
+
+test('render a small label', () => {
+  const wrapper = mount(
+    <App/>
+  );
+  expect(toJson(wrapper)).toMatchSnapshot();
+});
+
+test('render a small label', () => {
+  
+  const wrapper = mount(
+    <Photos list = {props.list}/>
+  );
+  expect(toJson(wrapper)).toMatchSnapshot();
+});

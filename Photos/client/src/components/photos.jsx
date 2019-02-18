@@ -18,7 +18,7 @@ class Photos extends React.Component {
           <div className = 'picShare' onClick={(e) => { this.props.shareHandler(e) }}>
             
             <img src = 'https://s3-us-west-1.amazonaws.com/lcchou2/Screen+Shot+2019-02-17+at+3.45.46+PM.png'></img>
-            <button class="btnShare" onClick = {(e) => {this.props.shareXHandler(e)}}>Heh</button>
+            <button className="btnShare" onClick = {(e) => {this.props.shareXHandler(e)}}>Heh</button>
           </div>
           </div>
         </div>
