@@ -1,3 +1,4 @@
+import React from 'react';
 import IndReviewText from './IndReviewText.jsx';
 import Flag from './Flag.jsx';
 import Pagination from './Pagination.jsx';

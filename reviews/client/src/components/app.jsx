@@ -1,4 +1,5 @@
 import React from 'react';
+import Ratings from './Ratings.jsx';
 import Search from './Search.jsx';
 import Sort from './Sort.jsx';
 import Reviews from './Reviews.jsx';
@@ -23,7 +24,7 @@ class App extends React.Component {
       sort: 'relevant',
       searchValue: '',
       reviewPage: 1,
-      commentPerPage: 3
+      commentPerPage: 7
     }
     this.getListingData = this.getListingData.bind(this);
     this.handleSort = this.handleSort.bind(this);
@@ -126,52 +127,14 @@ class App extends React.Component {
   }
 
   render() {
-    return (<div>
+    return (
+    <div>
+      <Ratings numOfReviews={this.state.numOfReviews} rating={this.state.rating} accuracy={this.state.accuracy} communication={this.state.communication} cleanliness={this.state.cleanliness} location={this.state.location} checkin={this.state.checkin} value={this.state.value}/>
       <div>
-        <span className="numOfReviews">{this.state.numOfReviews} Reviews</span>
-        <span className={"stars-container stars-" + this.state.rating}>★★★★★</span>
-      </div>
-      <br/>
-      <hr/>
-      <div className="left-ratings">
         <div>
-          <span>Accuracy</span>
-          <span className={"stars-container stars-" + this.state.accuracy + " center-stars"}>★★★★★</span>
-        </div>
-        <div>
-          <span>Communication</span>
-          <span className={"stars-container stars-" + this.state.communication + " center-stars"}>★★★★★</span>
-        </div>
-        <div>
-          <span>Cleanliness</span>
-          <span className={"stars-container stars-" + this.state.cleanliness + " center-stars"}>★★★★★</span>
-        </div>
-      </div>
-      <div className="right-ratings">
-        <div>
-          <span className="right-rating">Location</span>
-          <span className={"stars-container stars-" + this.state.location + " right-stars"}>★★★★★</span>
-        </div>
-        <div>
-          <span className="right-rating">Check-in</span>
-          <span className={"stars-container stars-" + this.state.checkin + " right-stars"}>★★★★★</span>
-        </div>
-        <div>
-          <span className="right-rating">Value</span>
-          <span className={"stars-container stars-" + this.state.value + " right-stars"}>★★★★★</span>
-        </div>
-      </div>
-      <br/>
-      <br/>
-      <br/>
-      <br/>
-      <br/>
-      <br/>
-      <div>
-        <div className="search-container">
           <Search handleSearch={this.handleSearch} value={this.state.searchValue}/>
         </div>
-        <div className="search-container">
+        <div>
           <Sort sort={this.state.sort} handleSort={this.handleSort}/>
         </div>
       </div>
