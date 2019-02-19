@@ -1,3 +1,4 @@
+import React from 'react'
 
 class Carouselpic extends React.Component {
   constructor(props) {
@@ -16,7 +17,7 @@ class Carouselpic extends React.Component {
         
         
         <div className = 'slider'>
-          {this.props.list.list[this.props.currentIndex].description}
+          {this.props.currentIndex + 1}/{this.props.list.list.length}                    {this.props.list.list[this.props.currentIndex].description}
         </div>
     
       </div>

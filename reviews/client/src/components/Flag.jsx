@@ -1,4 +1,5 @@
 import Modal, {closeStyle} from 'simple-react-modal'
+import React from 'react';
 
 class Flag extends React.Component {
   constructor(props) {
