@@ -25,6 +25,12 @@ class App extends React.Component {
         children: 0,
         infants: 0
       },
+      isMainAnimatingLeft: false,
+      isMainAnimatingRight: false,
+      isSidebarAnimatingLeft: false,
+      isSidebarAnimatingRight: false,
+      isSidebarAnimationEnabled: true,
+      isMainAnimationEnabled: true,
       calendarViewHidden: true
     }
 
@@ -142,19 +148,35 @@ class App extends React.Component {
   handleArrowClick(event) {
     if (event.target.dataset.direction === 'left') {
       if (event.target.dataset.view === 'sidebar') {
-        setTimeout(() => this.setState({sidebarMoment: this.state.sidebarMoment.subtract(1, 'months')}), 1000 * this.animationDuration);
+        this.setState({isSidebarAnimatingLeft: true}, () => {
+          setTimeout(() => this.setState({isSidebarAnimatingLeft: false, sidebarMoment: this.state.sidebarMoment.subtract(1, 'months')}), 1000 * this.animationDuration)
+        });
       } else if (event.target.dataset.view === 'main') {
-        setTimeout(() => this.setState({mainMoment: this.state.mainMoment.subtract(1, 'months')}), 1000 * this.animationDuration);
+        this.setState({isMainAnimatingLeft: true}, () => {
+          setTimeout(() => this.setState({isMainAnimatingLeft: false, mainMoment: this.state.mainMoment.subtract(1, 'months')}), 1000 * this.animationDuration)
+        });
       }
     } else if (event.target.dataset.direction === 'right') {
       if (event.target.dataset.view === 'sidebar') {
-        setTimeout(() => this.setState({sidebarMoment: this.state.sidebarMoment.add(1, 'months')}), 1000 * this.animationDuration);
+        this.setState({isSidebarAnimatingRight: true}, () => {
+          setTimeout(() => this.setState({isSidebarAnimatingRight: false, sidebarMoment: this.state.sidebarMoment.add(1, 'months')}), 1000 * this.animationDuration)
+        });
       } else if (event.target.dataset.view === 'main') {
-        setTimeout(() => this.setState({mainMoment: this.state.mainMoment.add(1, 'months')}), 1000 * this.animationDuration);
+        this.setState({isMainAnimatingRight: true}, () => {
+          setTimeout(() => this.setState({isMainAnimatingRight: false, mainMoment: this.state.mainMoment.add(1, 'months')}), 1000 * this.animationDuration)
+        });
       }
     }
   }
   render() {
+    var sidebarAnimationState = {
+      isSidebarAnimatingLeft: this.state.isSidebarAnimatingLeft,
+      isSidebarAnimatingRight: this.state.isSidebarAnimatingRight
+    };
+    var mainAnimationState = {
+      isMainAnimatingLeft: this.state.isMainAnimatingLeft,
+      isMainAnimatingRight: this.state.isMainAnimatingRight,
+    };
     return (
       <div>
         <BookingView
@@ -165,12 +187,12 @@ class App extends React.Component {
           selectedStartDate={this.state.selectedStartDate} selectedEndDate={this.state.selectedEndDate}
           dropdownState={this.state.dropdown} displaySidebarCalendar={this.displaySidebarCalendar}
           displayBookingGuestDropdown={this.displayBookingGuestDropdown} hideBookingGuestDropdown={this.hideBookingGuestDropdown}
-          handleDropdownButtonClick={this.handleDropdownButtonClick} />
+          handleDropdownButtonClick={this.handleDropdownButtonClick} animationState={sidebarAnimationState} />
         <br></br><button onClick={this.resetCalendarState}>Clear Dates</button><br></br>
         {<DualCalendar
         view={'main'} moment={this.state.mainMoment}
         handleArrowClick={this.handleArrowClick}
-        handleDateClick={this.handleDateClick} schedule={this.state.schedule} handleHover={this.handleHover} handleHoverExit={this.handleHoverExit} />}
+        handleDateClick={this.handleDateClick} schedule={this.state.schedule} handleHover={this.handleHover} handleHoverExit={this.handleHoverExit} animationState={mainAnimationState} />}
       </div>
     );
   }

@@ -3,6 +3,7 @@ import React from 'react';
 import { buildCalGrid, calendarHeaderItems } from './utils.jsx';
 import { CalendarRow } from './calendarRow.jsx';
 import { OffsetCalendarHeader, CenteredCalendarHeader } from './styledComponents.jsx';
+import moment  from "moment";
 
 const CalendarArrow = function(props) {
   if (props.direction === 'left') {
@@ -45,6 +46,20 @@ const Calendar = function(props) {
       sidebarCss += ' calendar-box-pop';
     }
   }
+  var animationCss = '';
+  if (props.view === 'main') {
+    if (props.animationState.isMainAnimatingLeft) {
+      animationCss += 'animation-enabled translateLeft ';
+    } else if (props.animationState.isMainAnimatingRight) {
+      animationCss += 'animation-enabled translateRight ';
+    }
+  } else if (props.view === 'sidebar') {
+    if (props.animationState.isSidebarAnimatingLeft) {
+      animationCss += 'animation-enabled translateLeft ';
+    } else if (props.animationState.isSidebarAnimatingRight) {
+      animationCss += 'animation-enabled translateRight ';
+    }
+  }
   return (
     <div className={"calendar-box" + sidebarCss}>
       <div className="calendar-header">
@@ -52,8 +67,18 @@ const Calendar = function(props) {
       </div>
       {calendarHeaderItems}
       <div className="cal-overflow">
-        <div className="calendar-items">
-          {_.map(Object.values(buildCalGrid(props.moment.month(), props.moment.year(), props.schedule)), (row) => <CalendarRow row={row} handleDateClick={props.handleDateClick} month={props.moment.month()} year={props.moment.year()} view={props.view} handleHover={props.handleHover} handleHoverExit={props.handleHoverExit} />)}
+        <div className={animationCss + "container"}>
+          <div className={"calendar-items-left"}>
+            {_.map(Object.values(buildCalGrid(moment(props.moment.toDate()).subtract(1, 'month').month(), moment(props.moment.toDate()).subtract(1, 'month').year(), props.schedule)), 
+            (row) => <CalendarRow row={row} handleDateClick={props.handleDateClick} month={props.moment.month()} year={props.moment.year()} view={props.view} />)}
+          </div>
+          <div className={"calendar-items"}>
+            {_.map(Object.values(buildCalGrid(props.moment.month(), props.moment.year(), props.schedule)), (row) => <CalendarRow row={row} handleDateClick={props.handleDateClick} month={props.moment.month()} year={props.moment.year()} view={props.view} handleHover={props.handleHover} handleHoverExit={props.handleHoverExit} />)}
+          </div>
+          <div className={"calendar-items-right"}>
+            {_.map(Object.values(buildCalGrid(moment(props.moment.toDate()).add(1, 'month').month(), moment(props.moment.toDate()).add(1, 'month').year(), props.schedule)),
+            (row) => <CalendarRow row={row} handleDateClick={props.handleDateClick} month={props.moment.month()} year={props.moment.year()} view={props.view} />)}
+          </div>
         </div>
       </div>
     </div>

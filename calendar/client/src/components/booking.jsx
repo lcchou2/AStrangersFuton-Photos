@@ -29,7 +29,7 @@ const BookingView = function(props){
           <Calendar
             view={props.view} moment={props.moment}
             handleLeftArrowClick={props.handleLeftArrowClick} handleRightArrowClick={props.handleRightArrowClick}
-            handleDateClick={props.handleDateClick} schedule={props.schedule} handleHover={props.handleHover} handleHoverExit={props.handleHoverExit}
+            handleDateClick={props.handleDateClick} schedule={props.schedule} handleHover={props.handleHover} handleHoverExit={props.handleHoverExit} animationState={props.animationState}
             />
         </CalendarContainer>
       </div>
