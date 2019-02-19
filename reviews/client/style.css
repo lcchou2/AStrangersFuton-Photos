@@ -183,7 +183,10 @@ input:focus {
   margin-left: 20px;
   margin-right: 20px;
 }
-.nextPage {
+.pageNum:hover {
+  text-decoration: underline;
+}
+.navPage {
   font-size: 15px;
   color: rgb(41, 126, 113) !important;
   margin-left: 20px;
@@ -191,7 +194,7 @@ input:focus {
   border: 1px solid rgb(41, 126, 113);
   padding-left: 10px;
   padding-right: 10px;
-  padding-bottom: 7px;
-  padding-top: 4px;
+  padding-bottom: 6px;
+  padding-top: 5px;
   border-radius: 15px;
 }

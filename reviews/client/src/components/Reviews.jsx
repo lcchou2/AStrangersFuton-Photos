@@ -1,5 +1,6 @@
 import IndReviewText from './IndReviewText.jsx';
 import Flag from './Flag.jsx';
+import Pagination from './Pagination.jsx';
 
 class Reviews extends React.Component {
   constructor(props) {
@@ -7,15 +8,6 @@ class Reviews extends React.Component {
   }
 
   render() {
-    var totalPages = Math.ceil(this.props.reviews.length / this.props.commentPerPage);
-    var pagesArr = [];
-    for (var i = 1; i <= totalPages; i++) {
-      pagesArr.push(i);
-    }
-    var numOfPages = pagesArr.map((pageNum, index) =>
-      <span className="pageNum" key={index} onClick={this.props.changePage}>{pageNum}</span>
-    )
-
     var start = (this.props.reviewPage - 1) * this.props.commentPerPage;
     var end = this.props.reviewPage * this.props.commentPerPage;
     var listOfReviews = this.props.reviews.slice(start, end).map((review, index) =>
@@ -47,12 +39,16 @@ class Reviews extends React.Component {
         <span className="someReviews">{this.props.reviews.length} guests have mentioned "<strong>{this.props.value}</strong>"</span>
         <span className="backToReviews" onClick={this.props.backToReviews}><u>Back to all reviews</u></span>
         <hr/>
-        <div>{listOfReviews} {numOfPages}</div>
+        <div>{listOfReviews} </div>
+        <Pagination reviews={this.props.reviews} reviewPage={this.props.reviewPage} nextPage={this.props.nextPage} previousPage={this.props.previousPage} commentPerPage={this.props.commentPerPage} changePage={this.props.changePage}/>
       </div>
       );
     } else {
       return (
-      <div>{listOfReviews} {numOfPages} <span className="nextPage" onClick={this.props.nextPage}>></span></div>
+        <div>
+          {listOfReviews}
+          <Pagination reviews={this.props.reviews} reviewPage={this.props.reviewPage} nextPage={this.props.nextPage} previousPage={this.props.previousPage} commentPerPage={this.props.commentPerPage} changePage={this.props.changePage}/>
+        </div>
       );
     }
   }

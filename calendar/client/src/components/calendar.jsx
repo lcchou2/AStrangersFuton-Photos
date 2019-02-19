@@ -1,79 +1,61 @@
 import _ from 'underscore';
 import React from 'react';
-import moment from 'moment';
-import { buildCalGrid } from '../utils';
+import { buildCalGrid, calendarHeaderItems } from './utils.jsx';
+import { CalendarRow } from './calendarRow.jsx';
+import { OffsetCalendarHeader, CenteredCalendarHeader } from './styledComponents.jsx';
 
-const calendarHeaderItems = (
-  <div className="calendar-row">
-    {_.map(['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'], (dow) => <div className="calendar-header-item">{dow}</div>)}
-  </div>
-  );
-
-function EmptyCalendarItem(props) {
-  return (
-    <div className="empty-calendar-item">
-    </div>
-  )
-}
-
-function CalendarItem(props) {
-  var itemCss = 'calendar-item-' + props.view;
-  var takenCss = ( props.isTaken ? ' calendar-item-taken-' + props.view : '');
-  return (
-    <div className={itemCss + takenCss}>
-      <div className="calendar-text" onClick={( props.isTaken ? ()=>{} : props.handleDateClick)} data-datestring={props.dateString} data-month={props.month} data-date={props.date} data-year={props.year}>
-        {props.text}
+const CalendarArrow = function(props) {
+  if (props.direction === 'left') {
+    return (
+      <div className="calendar-arrow calendar-arrow-left" role="button" data-view={props.view} data-direction={props.direction} onClick={props.handleClick}>
+        <svg style={{'pointerEvents': 'none'}} width="19px" height="19px" focusable="false" viewBox="0 0 1000 1000"><path d="M336.2 274.5l-210.1 210h805.4c13 0 23 10 23 23s-10 23-23 23H126.1l210.1 210.1c11 11 11 21 0 32-5 5-10 7-16 7s-11-2-16-7l-249.1-249c-11-11-11-21 0-32l249.1-249.1c21-21.1 53 10.9 32 32z"></path></svg>
       </div>
-    </div>
-  )
-};
-
-function CalendarRow(props) {
-  var cols = [];
-  for (var i=0; i<7; i++){
-    if (props.row[i]) {
-      cols.push(<CalendarItem text={props.row[i][0]} handleDateClick={props.handleDateClick} month={props.month} date={props.row[i][0]} year={props.year} dateString={props.row[i][1]} isTaken={props.row[i][2]} view={props.view} />);
-    } else {
-      cols.push(<EmptyCalendarItem />);
-    }
+    );
+  } else {
+    return (
+      <div className="calendar-arrow calendar-arrow-right" role="button" data-view={props.view} data-direction={props.direction} onClick={props.handleClick}>
+        <svg style={{'pointerEvents': 'none'}} width="19px" height="19px" focusable="false" viewBox="0 0 1000 1000"><path d="M694.4 242.4l249.1 249.1c11 11 11 21 0 32L694.4 772.7c-5 5-10 7-16 7s-11-2-16-7c-11-11-11-21 0-32l210.1-210.1H67.1c-13 0-23-10-23-23s10-23 23-23h805.4L662.4 274.5c-21-21.1 11-53.1 32-32.1z"></path></svg>
+      </div>
+    );
   }
-  return (
-    <div className="calendar-row">
-      {cols}
-    </div>
-  )
 }
 
 const Calendar = function(props) {
   var calendarBody = [];
   if (props.handleLeftArrowClick) {
-    calendarBody.push(<button data-view={props.view} data-direction="left" onClick={props.handleLeftArrowClick}>&lt;--</button>)
+    calendarBody.push(<CalendarArrow handleClick={props.handleLeftArrowClick} direction={"left"} view={props.view} />);
+    if (props.view === 'main') {
+      calendarBody.push(<OffsetCalendarHeader isLeft={true}>{props.moment.format("MMMM YYYY")}</OffsetCalendarHeader>);
+    }
   }
-  calendarBody.push(props.moment.format("MMMM YYYY"));
+  if (props.view === 'sidebar') {
+    calendarBody.push(<CenteredCalendarHeader>{props.moment.format("MMMM YYYY")}</CenteredCalendarHeader>);
+  }
   if (props.handleRightArrowClick) {
-    calendarBody.push(<button data-view={props.view} data-direction="right" onClick={props.handleRightArrowClick}>--&gt;</button>)
+    if (props.view === 'main') {
+      calendarBody.push(<OffsetCalendarHeader isRight={false}>{props.moment.format("MMMM YYYY")}</OffsetCalendarHeader>);
+    }
+    calendarBody.push(<CalendarArrow handleClick={props.handleRightArrowClick} direction={"right"} view={props.view} />);
   }
-
+  var sidebarCss = '';
+  if (props.view === 'sidebar') {
+    if (props.calendarViewHidden) {
+      sidebarCss += ' calendar-box-hidden';
+    } else {
+      sidebarCss += ' calendar-box-pop';
+    }
+  }
   return (
-    <div className="calendar-box">
+    <div className={"calendar-box" + sidebarCss}>
       <div className="calendar-header">
         {calendarBody}
       </div>
       {calendarHeaderItems}
-      {_.map(Object.values(buildCalGrid(props.moment.month(), props.moment.year(), props.takenSchedule)), (row) => <CalendarRow row={row} handleDateClick={props.handleDateClick} month={props.moment.month()} year={props.moment.year()} view={props.view} />)}
+      <div className="calendar-items">
+        {_.map(Object.values(buildCalGrid(props.moment.month(), props.moment.year(), props.schedule)), (row) => <CalendarRow row={row} handleDateClick={props.handleDateClick} month={props.moment.month()} year={props.moment.year()} view={props.view} handleHover={props.handleHover} handleHoverExit={props.handleHoverExit} />)}
+      </div>
     </div>
   )
 }
 
-const DualCalendar = function(props) {
-  return (
-    <div className="calendar-container">
-      <Calendar view={props.view} moment={props.moment}
-       handleLeftArrowClick={props.handleArrowClick} handleDateClick={props.handleDateClick} takenSchedule={props.takenSchedule} />
-      <Calendar view={props.view} moment={moment(props.moment).add(1, 'month')}
-       handleRightArrowClick={props.handleArrowClick} handleDateClick={props.handleDateClick} takenSchedule={props.takenSchedule} />
-    </div>
-  )
-}
-
-export {Calendar, DualCalendar};
+export {Calendar};
