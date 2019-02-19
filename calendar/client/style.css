@@ -53,8 +53,7 @@ body {
   margin: 1%;
   padding: 2%;
   width: 298px;
-  height: 325px;
-  overflow: hidden;
+  height: auto;
 }
 
 .calendar-box-hidden {
@@ -66,6 +65,7 @@ body {
 }
 
 .booking-date {
+  color: #484848;
   padding: 3%;
   min-width: 95px;
 }
@@ -180,7 +180,9 @@ body {
 }
 
 .dropdown-items {
-  min-width: 298px;
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 6px, rgba(0, 0, 0, 0.07) 0px 0px 0px 1px !important;
+  border-radius: 3px !important;
+  max-width: 298px;
   position: absolute;
   background-color: white;
 }
@@ -190,11 +192,17 @@ body {
 }
 
 .dropdown-text {
+  padding-left: 16px;
+  margin-top: auto;
+  margin-bottom: auto;
   margin-left: 0;
   margin-right: auto;
 }
 
 .dropdown-tracker {
+  padding-right: 16px;
+  margin-top: auto;
+  margin-bottom: auto;
   margin-right: 0;
   margin-left: auto;
   display: flex;

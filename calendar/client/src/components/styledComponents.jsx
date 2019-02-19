@@ -2,6 +2,33 @@ import React from 'react';
 
 import styled from 'styled-components';
 
+const LargeBoldedBookingItem = styled.span`
+  font-size: 22px;
+  font-weight: 800;
+  line-height: 1.44444em;
+  color: #4A4A4A;
+`;
+
+const MediumBoldedBookingItem = styled.span`
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.28571em;
+  color: #484848;
+`;
+
+const SmallBoldedBookingItem = styled.span`
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.333em;
+  color: #484848;
+`;
+
+const SubtextBookingItem = styled.span`
+  font-size: 12px;
+  line-height: 1.333em;
+  color: #484848;
+`;
+
 const PricingDiv = styled.div`
   display: flex;
 `;
@@ -22,6 +49,8 @@ const DropdownButton = styled.button`
   border-radius: 50%;
   border-color: ${props => props.isActive ? 'rgb(0, 132, 137)' : 'rgb(0, 132, 137, 0.3)'};
   border-width: 1px;
+  margin-top: auto;
+  margin-bottom: auto;
 `;
 
 const BookingButton = styled.button`
@@ -31,6 +60,7 @@ const BookingButton = styled.button`
   padding-left: 8px;
   padding-right: 8px; 
   font-size: 16px;
+  font-weight: 800;
   line-height: 24px;
   border-color: transparent;
   border-radius: 4px;
@@ -38,7 +68,7 @@ const BookingButton = styled.button`
   border-style: solid;
   width: 100%;
   color: #FFF3FF;
-  background-color: #FF3F50;
+  background-color: rgb(255, 90, 95);
 `;
 
 const BookingBorder = styled.div`
@@ -83,4 +113,4 @@ const BaseStyledCalendarItem = styled.div`
 const StyledCalendarItem = styled(BaseStyledCalendarItem)`
 `;
 
-export {CalendarBox, CalendarContainer, OffsetCalendarHeader, CenteredCalendarHeader, BookingButton, DropdownButton, PricingItem, PricingDiv};
+export {CalendarBox, CalendarContainer, OffsetCalendarHeader, CenteredCalendarHeader, BookingButton, DropdownButton, PricingItem, PricingDiv, SmallBoldedBookingItem, LargeBoldedBookingItem, MediumBoldedBookingItem, SubtextBookingItem};

@@ -51,8 +51,10 @@ const Calendar = function(props) {
         {calendarBody}
       </div>
       {calendarHeaderItems}
-      <div className="calendar-items">
-        {_.map(Object.values(buildCalGrid(props.moment.month(), props.moment.year(), props.schedule)), (row) => <CalendarRow row={row} handleDateClick={props.handleDateClick} month={props.moment.month()} year={props.moment.year()} view={props.view} handleHover={props.handleHover} handleHoverExit={props.handleHoverExit} />)}
+      <div className="cal-overflow">
+        <div className="calendar-items">
+          {_.map(Object.values(buildCalGrid(props.moment.month(), props.moment.year(), props.schedule)), (row) => <CalendarRow row={row} handleDateClick={props.handleDateClick} month={props.moment.month()} year={props.moment.year()} view={props.view} handleHover={props.handleHover} handleHoverExit={props.handleHoverExit} />)}
+        </div>
       </div>
     </div>
   )
