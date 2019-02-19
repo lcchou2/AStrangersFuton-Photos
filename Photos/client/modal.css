@@ -5,7 +5,8 @@
   position: fixed; 
   top: 0; 
   left: 0; 
-  background: rgb(40,40,40)
+  background: rgb(38,38,38)
+  
 }
 
 .modal {
@@ -26,17 +27,36 @@ position: absolute;
 top: 11.5%;
 left: 25%
 }
+
 .left {
   position: absolute;
-  bottom:50%;
-  left: 1%;
+bottom: 47%;
+right: 90.8%;
 
+}
+
+.left img {
+
+  height: 13.3%;
+  width: 50%;
+  -moz-transform: scaleX(-1);
+  -o-transform: scaleX(-1);
+  -webkit-transform: scaleX(-1);
+  transform: scaleX(-1);
+  filter: FlipH;
+  -ms-filter: "FlipH";
 
 }
 .right {
-  position: absolute;
-bottom: 50%;
-right: 1%
+position: absolute;
+bottom: 47%;
+left: 95.8%;
+
+}
+
+.right img {
+  height: 13.3%;
+  width: 97.4%;
 
 }
 

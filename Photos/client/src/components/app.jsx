@@ -1,7 +1,7 @@
 import ajax from '../lib/ajax';
 import Photos from './photos.jsx'
 import Carousel from './carousel.jsx'
-
+import React from 'react'
 
 // const appStyle = {
 //   position: 'relative',
@@ -16,11 +16,16 @@ class App extends React.Component {
     super(props);
     this.state = {
       list : [{url:''}, {url:''},{url:''},{url:''},{url:''},{url:''}],
-      display : 'none'
+      display : 'none',
+      displayShare: 'none',
+      displaySave: 'none'
     }
 
     this.modalHandler = this.modalHandler.bind(this);
+    this.saveHandler = this.saveHandler.bind(this);
+    this.shareHandler = this.shareHandler.bind(this);
     this.switchBack = this.switchBack.bind(this);
+    this.shareXHandler = this.shareXHandler.bind(this);
   }
 
   componentWillMount() {
@@ -35,6 +40,31 @@ class App extends React.Component {
     })
   }
 
+
+
+  shareHandler(e) {
+    e.stopPropagation();
+    this.setState ({
+      displayShare : 'block'
+    })
+  }
+
+  saveHandler(e) {
+    e.stopPropagation();
+    this.setState ({
+      displaySave : 'block'
+    })
+  }
+
+  shareXHandler(e) {
+    e.stopPropagation();
+    this.setState ({
+      display : 'none',
+      displayShare: 'none',
+      displaySave: 'none'
+    })
+  }
+
   modalHandler() {
     this.setState ({
       display : 'block'
@@ -43,14 +73,22 @@ class App extends React.Component {
 
   switchBack() {
     this.setState ({
-      display : 'none'
+      display : 'none',
+      displayShare: 'none',
+      displaySave: 'none'
+
     })
   }
 
   render() {
     return(
       <div >
-       <Photos list = {this.state.list} modalHandler = {this.modalHandler} />
+       
+        <div>
+          <Photos list = {this.state.list} modalHandler = {this.modalHandler} saveHandler = {this.saveHandler} switchBack = {this.switchBack} shareHandler = {this.shareHandler} displayShare = {this.state.displayShare} displaySave = {this.state.displaySave} shareXHandler = {this.shareXHandler}/>
+
+        </div>
+       
 
 
       <div className = 'modal__inner' style = {{display:this.state.display}}>

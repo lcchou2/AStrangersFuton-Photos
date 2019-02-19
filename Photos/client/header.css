@@ -2,8 +2,9 @@
 
   /* Container 1*/
 
+
 .innercon1 {
-  display:flex;
+  display: flex
 }
 
 .pic {
@@ -22,46 +23,73 @@ li {
   float: left;
 }
 
+
+
 li a {
+  font-family: 'Circular', -apple-system, BlinkMacSystemFont, Roboto, Helvetic Neue, sans-serif;
+  font-weight: 440;
   display: block;
-  color: 	#3d3b3b;
+  color: 	#484848;
   text-align: center;
   padding: 14px 16px;
   text-decoration: none;
+  height: 44px;
 }
 
 li a:hover {
+  color: #3d3b3b;
   border-bottom: 2px solid
 }
 
 .container1 {
   display:flex;
   justify-content: space-between ;
-  font-family: 'lucida grande', tahoma, verdana, arial, sans-serif;
+  
   font-size: 14px;
   /* need to change once we add in side picture */
   /* border-bottom: 5px black */
 }
 
 .search {
-  display:flex;
   padding: 10px;
   margin-right: 10px
 }
 
+/* outline: none, text-indent: 16px*/
+
 .search input {
-  background-color: transparent;
-  font-weight: 400;
+  font-family: Circular , -apple-system, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;
   font-size: 17px;
-  padding: 0px 36px 0px 0px;
+  background-color: transparent;
+  font-weight: 600;
+  padding: 0px 50px 0px 0px;
   color: black;
   width: 100%;
   background-color: #ffffff;
   border: 1px solid #EBEBEB;
   border-radius: 4px;
   box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  height:50px;
+  width: 458px;
 }
 
+
+::-webkit-input-placeholder {
+  padding-left: 50px;
+}
+
+.input-icon{
+ 
+  position: absolute;
+  left: 15px;
+  top: calc(55% - 0.5em); 
+}
+input{
+  padding-left: 17px;
+}
+.input-wrapper{
+  position: relative;
+}
 
 
 /* Modal */
