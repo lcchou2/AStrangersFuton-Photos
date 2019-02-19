@@ -5,7 +5,7 @@ export default {
     $.get({
       url: `http://localhost:3001/api/photos/${listingId}`,
       success: (data) => {
-        callback(null, data);
+        callback(data);
       },
       error: (err) => {
         callback(err);

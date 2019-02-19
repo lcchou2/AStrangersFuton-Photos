@@ -37,8 +37,6 @@ class App extends React.Component {
     })
   }
 
-
-
   shareHandler(e) {
     e.stopPropagation();
     this.setState ({
