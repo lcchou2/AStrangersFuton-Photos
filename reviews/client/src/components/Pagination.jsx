@@ -11,9 +11,13 @@ class Pagination extends React.Component {
     for (var i = 1; i <= totalPages; i++) {
       pagesArr.push(i);
     }
-    var numOfPages = pagesArr.map((pageNum, index) =>
-      <span className="pageNum" key={index} onClick={this.props.changePage}>{pageNum}</span>
-    )
+    var numOfPages = pagesArr.map((pageNum, index) => {
+      if (this.props.reviewPage === pageNum) {
+        return <span className="pageNum currentPage" key={index} onClick={this.props.changePage}>{pageNum}</span>
+      } else {
+        return <span className="pageNum" key={index} onClick={this.props.changePage}>{pageNum}</span>
+      }
+    });
 
     var right = (<i className="fa fa-chevron-right"></i>);
     var left = (<i className="fa fa-chevron-left"></i>);
