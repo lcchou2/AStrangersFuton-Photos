@@ -2,28 +2,32 @@ import React from 'react';
 
 import styled from 'styled-components';
 
-const LargeBoldedBookingItem = styled.span`
+const LargeBoldedBookingItem = styled.div`
+  display: inline-block;
   font-size: 22px;
   font-weight: 800;
   line-height: 1.44444em;
   color: #4A4A4A;
 `;
 
-const MediumBoldedBookingItem = styled.span`
+const MediumBoldedBookingItem = styled.div`
+  display: inline-block;
   font-size: 14px;
   font-weight: 600;
   line-height: 1.28571em;
   color: #484848;
 `;
 
-const SmallBoldedBookingItem = styled.span`
+const SmallBoldedBookingItem = styled.div`
+  display: inline-block;
   font-size: 12px;
   font-weight: 600;
   line-height: 1.333em;
   color: #484848;
 `;
 
-const SubtextBookingItem = styled.span`
+const SubtextBookingItem = styled.div`
+  display: inline-block;
   font-size: 12px;
   line-height: 1.333em;
   color: #484848;
@@ -31,10 +35,22 @@ const SubtextBookingItem = styled.span`
 
 const PricingDiv = styled.div`
   display: flex;
+  margin-top: 16px;
 `;
 
+// const PricingItem = styled.div`
+//   display: inline;
+//   margin-${props => props.isLeft ? 'left' : 'right'}: 0;
+//   margin-${props => props.isLeft ? 'right' : 'left'}: auto;
+// `;
+
 const PricingItem = styled.div`
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.2857em;
   display: inline;
+  margin-top: auto;
+  margin-bottom: auto;
   margin-${props => props.isLeft ? 'left' : 'right'}: 0;
   margin-${props => props.isLeft ? 'right' : 'left'}: auto;
 `;

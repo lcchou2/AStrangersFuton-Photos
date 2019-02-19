@@ -37,7 +37,9 @@ const BookingView = function(props){
       handleDropdownButtonClick={props.handleDropdownButtonClick} />
       <Pricing price={props.price} selectedStartDate={props.selectedStartDate} selectedEndDate={props.selectedEndDate} guests={guestCount} />
       <BookingButton role="button">Request to Book</BookingButton>
-      <SmallBoldedBookingItem>You won't be charged yet</SmallBoldedBookingItem>
+      <div style={{display: "flex"}}>
+        <SmallBoldedBookingItem style={{marginLeft: 'auto', marginRight: 'auto', marginTop: '16px', fontSize: '10px'}}>You won't be charged yet</SmallBoldedBookingItem>
+      </div>
       <hr></hr>
       <SmallBoldedBookingItem>This home is on people's minds.</SmallBoldedBookingItem>
       <br></br>

@@ -33,7 +33,7 @@ const Dropdown = function(props) {
           <DropdownButton isActive={infants < 5} onClick={props.handleDropdownButtonClick} data-increment="1" data-guesttype="infants" disabled={!(infants < 5)}>+</DropdownButton>
         </div>
       </div>
-      <SubtextBookingItem>4 guests maximum. Infants don't count toward the number of guests.</SubtextBookingItem>
+      <div className="dropdown-item" style={{margin: '16px', fontSize: '10px'}}><SubtextBookingItem>4 guests maximum. Infants don't count toward the number of guests.</SubtextBookingItem></div>
     </div>
     ));
   }
