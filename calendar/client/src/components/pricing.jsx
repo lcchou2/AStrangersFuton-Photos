@@ -2,7 +2,7 @@ import React from 'react';
 import moment from 'moment';
 
 import { randInt } from './utils.jsx';
-import { PricingItem, PricingDiv } from './styledComponents.jsx';
+import { PricingItem, PricingDiv, SubtextBookingItem } from './styledComponents.jsx';
 
 export function Pricing(props) {
   if (props.selectedStartDate === null || props.selectedEndDate === null) {
