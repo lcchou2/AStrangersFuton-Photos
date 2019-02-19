@@ -15,7 +15,8 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      list : [{url:''}, {url:''},{url:''},{url:''},{url:''},{url:''}],
+      listingId: 5,
+      list : [{url:''}, {url:''},{url:''},{url:''},{url:''}],
       display : 'none',
       displayShare: 'none',
       displaySave: 'none'
@@ -28,12 +29,8 @@ class App extends React.Component {
     this.shareXHandler = this.shareXHandler.bind(this);
   }
 
-  componentWillMount() {
-    ajax.getAjax((err, photoobj) => {
-      if (err) {
-        console.log(err);
-        return;
-      }
+  componentDidMount() {
+    ajax.getAjax(this.state.listingId,(photoobj) => {
       this.setState({
         list : photoobj
       });
@@ -83,6 +80,9 @@ class App extends React.Component {
   render() {
     return(
       <div >
+        <div>
+          {console.log(this.state.list)}
+        </div>
        
         <div>
           <Photos list = {this.state.list} modalHandler = {this.modalHandler} saveHandler = {this.saveHandler} switchBack = {this.switchBack} shareHandler = {this.shareHandler} displayShare = {this.state.displayShare} displaySave = {this.state.displaySave} shareXHandler = {this.shareXHandler}/>

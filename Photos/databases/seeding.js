@@ -1,14 +1,4 @@
-const mongoose = require('mongoose');
-const photos = require('./schema');
-mongoose.connect('mongodb://localhost/airbnbss');
-
-var db = mongoose.connection;
-
-
-db.on('error', console.error.bind(console, 'connection error:'));
-db.once('open', () => {
-  console.log('connected to Mongo')
-});
+var db = require('./index.js');
 
 function getRndInteger(min, max) {
   return Math.floor(Math.random() * (max - min + 1) ) + min;
@@ -33,31 +23,19 @@ var generate = function(){
   arr.push(obj)
 }
 
-// for (var i=0; i < 20; i ++) {
-//   generate()
-// }
+for (var i=0; i < 500; i ++) {
+  generate()
+}
 
-const Photos = mongoose.model('Photos', photos);
+
 
 // {ordered:false} as second argument for insertMany
 
-
-Photos.insertMany(arr, (err)=>{
-  if (err){
-    console.log(err)
+db.saveListings(arr, (err, data) => {
+  if (err) {
+    console.log(err);
+  } else {
+    console.log('saved to database', data);
   }
-  console.log('whoo')
-  // mongoose.disconnect();
-})
+});
 
-
-const getAllListings=(callback) => {
-  Photos.find({}, '-_id -__v',(err,data) => {
-    if (err) {
-      callback(err)
-    }
-    callback(null,data)
-  })
-}
-
-module.exports = {getAllListings}

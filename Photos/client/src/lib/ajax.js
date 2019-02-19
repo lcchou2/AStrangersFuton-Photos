@@ -1,9 +1,9 @@
 import $ from 'jquery';
 
 export default {
-  getAjax: (callback) => {
+  getAjax: (listingId, callback) => {
     $.get({
-      url: 'http://localhost:3001/api/photos',
+      url: `http://localhost:3001/api/photos/${listingId}`,
       success: (data) => {
         callback(null, data);
       },
