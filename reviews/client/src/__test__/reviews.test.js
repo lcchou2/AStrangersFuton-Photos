@@ -6,5 +6,5 @@ import IndReviewText from '../components/IndReviewText.jsx';
 import Flag from '../components/Flag.jsx';
 
 describe('Reviews section', () => {
-
+  
 });

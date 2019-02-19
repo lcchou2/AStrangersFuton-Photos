@@ -20,18 +20,25 @@ class Pagination extends React.Component {
     
     if (this.props.reviews.length < this.props.commentPerPage) {
       return (
-        <div> {numOfPages} </div>
+        <div></div>
         );
     }
 
-    if (this.props.reviewPage > 1) {
+    if (this.props.reviewPage >= pagesArr.length) {
       return (
         <div>
            <span className="navPage" onClick={this.props.previousPage}>{left}</span> 
            {numOfPages} 
-           <span className="navPage" onClick={this.props.nextPage}>{right}</span>
         </div>
         );
+    } else if (this.props.reviewPage > 1) {
+        return (
+          <div>
+             <span className="navPage" onClick={this.props.previousPage}>{left}</span> 
+             {numOfPages} 
+             <span className="navPage" onClick={this.props.nextPage}>{right}</span>
+          </div>
+          );
     } else {
       return (
       <div>
