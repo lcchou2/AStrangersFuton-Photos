@@ -13,9 +13,9 @@ class Pagination extends React.Component {
     }
     var numOfPages = pagesArr.map((pageNum, index) => {
       if (this.props.reviewPage === pageNum) {
-        return <span className="pageNum currentPage" key={index} onClick={this.props.changePage}>{pageNum}</span>
+        return <span className="rev-pageNum rev-currentPage" key={index} onClick={this.props.changePage}>{pageNum}</span>
       } else {
-        return <span className="pageNum" key={index} onClick={this.props.changePage}>{pageNum}</span>
+        return <span className="rev-pageNum" key={index} onClick={this.props.changePage}>{pageNum}</span>
       }
     });
 
@@ -31,23 +31,23 @@ class Pagination extends React.Component {
     if (this.props.reviewPage >= pagesArr.length) {
       return (
         <div>
-           <span className="navPage" onClick={this.props.previousPage}>{left}</span> 
+           <span className="rev-navPage" onClick={this.props.previousPage}>{left}</span> 
            {numOfPages} 
         </div>
         );
     } else if (this.props.reviewPage > 1) {
         return (
           <div>
-             <span className="navPage" onClick={this.props.previousPage}>{left}</span> 
+             <span className="rev-navPage" onClick={this.props.previousPage}>{left}</span> 
              {numOfPages} 
-             <span className="navPage" onClick={this.props.nextPage}>{right}</span>
+             <span className="rev-navPage" onClick={this.props.nextPage}>{right}</span>
           </div>
           );
     } else {
       return (
       <div>
         {numOfPages} 
-        <span className="navPage" onClick={this.props.nextPage}>{right}</span>
+        <span className="rev-navPage" onClick={this.props.nextPage}>{right}</span>
       </div>
       );
     }

@@ -18,15 +18,15 @@ class IndReviewText extends React.Component {
 
   render() {
     var truncate = (
-      <div className="review">
-        <Truncate lines={4} ellipsis={<span className="readMore" onClick={this.showFullReview}>... <u>Read more</u></span>}>
+      <div className="rev-review">
+        <Truncate lines={4} ellipsis={<span className="rev-readMore" onClick={this.showFullReview}>... <u>Read more</u></span>}>
           {this.props.reviewText}
         </Truncate>
       </div>
     );
 
     var fullText = (
-      <div className="review">
+      <div className="rev-review">
         {this.props.reviewText}
       </div>
     );

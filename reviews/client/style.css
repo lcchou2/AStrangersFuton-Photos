@@ -1,7 +1,7 @@
 body {
   font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;
 }
-.numOfReviews {
+.rev-numOfReviews {
   font-size: 24px;
   font-weight: bold;
   color: #484848;
@@ -12,16 +12,21 @@ hr {
   border-top: 1px solid rgb(212, 212, 212);
   margin: 1em 0;
 }
+.rev-container {
+  border: transparent;
+  margin-left: 10%;
+  width: 50%;
+}
 
 /**********STAR COMPONENT**********/
-.stars-container {
+.rev-stars-container {
   position: relative;
   display: inline-block;
   color: transparent;
   font-size: 20px;
   letter-spacing: 6px;
 }
-.stars-container:before{
+.rev-stars-container:before{
   position: absolute;
   top: 0;
   left: 0;
@@ -29,7 +34,7 @@ hr {
   color:lightgray;
   letter-spacing: 6px;
 }
-.stars-container:after {
+.rev-stars-container:after {
   position: absolute;
   top: 0;
   left: 0;
@@ -39,80 +44,78 @@ hr {
   letter-spacing: 6px;
 }
 
-.stars-0:after { width: 0%; }
-.stars-1:after { width: 7%; }
-.stars-2:after { width: 20%; }
-.stars-3:after { width: 27%; }
-.stars-4:after { width: 40%; }
-.stars-5:after { width: 47%; }
-.stars-6:after { width: 60%; }
-.stars-7:after { width: 67%; }
-.stars-8:after { width: 80%; }
-.stars-9:after { width: 87%; }
-.stars-10:after { width: 100%;}
+.rev-stars-0:after { width: 0%; }
+.rev-stars-1:after { width: 7%; }
+.rev-stars-2:after { width: 20%; }
+.rev-stars-3:after { width: 27%; }
+.rev-stars-4:after { width: 40%; }
+.rev-stars-5:after { width: 47%; }
+.rev-stars-6:after { width: 60%; }
+.rev-stars-7:after { width: 67%; }
+.rev-stars-8:after { width: 80%; }
+.rev-stars-9:after { width: 87%; }
+.rev-stars-10:after { width: 100%;}
 
 
 /**********RATING COMPONENT**********/
-.container {
+.rev-ratings-container {
   display: flex;
   position: relative;
   width: auto;
 }
-.left-container {
+.rev-left-container {
   display: flex;
   font-size: 16px !important;
   font-weight: 400 !important;
   color: #484848;
   width: 100%;
 }
-.left-text-container {
+.rev-left-text-container {
   display: flex;
   flex-direction: column;
 }
-.left-star-container {
+.rev-left-star-container {
   display: flex;
   flex-direction: column;
 }
-.left-rating {
+.rev-left-rating {
   margin-bottom: 15px;
 }
-.left-stars {
+.rev-left-stars {
   left: 50px;
   margin-bottom: 10px;
 }
-.right-container {
+.rev-right-container {
   display: flex;
   font-size: 16px !important;
   font-weight: 400 !important;
   color: #484848;
   width: 100%;
 }
-.right-text-container {
+.rev-right-text-container {
   display: flex;
   flex-direction: column;
 }
-.right-star-container {
+.rev-right-star-container {
   display: flex;
   flex-direction: column;
 }
-.right-rating {
+.rev-right-rating {
   margin-bottom: 15px;
-  /* float: left; */
 }
-.right-stars {
+.rev-right-stars {
   left: 50px;
-  /* float: right; */
   margin-bottom: 10px;
 }
 
 /**********SEARCH COMPONENT**********/
-.input-icon{
+.rev-input-icon{
   position: absolute;
   left: 3px;
   top: calc(50% - 0.5em);
   color: grey;
 }
-input{
+.rev-search {
   padding-left: 17px;
   width: 150px;
   text-indent: 15px;
@@ -123,16 +126,16 @@ input{
   padding: 8px;
   border-radius: 5px;
 }
-input:focus {
+.rev-search:focus {
   border: 1px solid rgb(41, 126, 113);
 }
-.input-wrapper{
+.rev-input-wrapper{
   position: relative;
   float: left;
 }
 
 /**********SORT COMPONENT**********/
-.sort { 
+.rev-sort { 
   position: relative;
   float: right;
   width: 175px;
@@ -144,66 +147,68 @@ input:focus {
   outline: none;
   background-color: white;
  }
-.sort:focus {
+.rev-sort:focus {
   border: 1px solid rgb(41, 126, 113);
 }
-.sort option {
+.rev-sort option {
   width: 175px;
   height: 33px;
 }
 
 /**********REVIEWS COMPONENT**********/
-.avatar {
+.rev-avatar {
   border-radius: 100px;
   display: inline-block;
   margin-right: 25px; 
 }
-.profileInfo {
+.rev-profileInfo {
   display: inline-block;
 }
-.username {
+.rev-username {
   font-size: 16px !important;
   font-weight: 600 !important;
   color: #484848 !important;
 }
-.date {
+.rev-date {
   font-size: 14px;
   color: #484848 !important;
 }
-.review {
+.rev-review {
   font-size: 15px;
   color: #484848 !important;
 }
-.noReviews {
+.rev-noReviews {
   font-size: 15px;
   margin-left: 50px;
 }
-.someReviews {
+.rev-someReviews {
   font-size: 15px;
   color: #484848 !important;
 }
-.backToReviews {
+.rev-backToReviews {
   font-size: 15px;
   float: right;
   color: rgb(41, 126, 113);
   cursor: pointer;
 }
-.readMore {
+.rev-readMore {
   font-size: 15px;
   color: rgb(41, 126, 113);
   cursor: pointer;
 }
-.pageNum {
+
+/**********PAGINATION COMPONENT**********/
+.rev-pageNum {
   font-size: 15px;
   color: rgb(41, 126, 113) !important;
   margin-left: 20px;
   margin-right: 20px;
   cursor: pointer;
 }
-.pageNum:hover {
+.rev-pageNum:hover {
   text-decoration: underline;
 }
-.currentPage {
+.rev-currentPage {
   color: white !important;
   border: 1px solid rgb(41, 126, 113);
   background-color: rgb(41, 126, 113);
@@ -213,14 +218,14 @@ input:focus {
   padding-top: 5px;
   border-radius: 15px;
 }
-.navPage {
+.rev-navPage {
   font-size: 15px;
   color: rgb(41, 126, 113) !important;
   margin-left: 20px;
   margin-right: 20px;
   border: 1px solid rgb(41, 126, 113);
   padding-left: 10px;
-  padding-right: 10px;
+  padding-right: 0px;
   padding-bottom: 6px;
   padding-top: 5px;
   border-radius: 15px;
@@ -228,7 +233,7 @@ input:focus {
 }
 
 /**********FLAG MODAL COMPONENT**********/
-.flag {
+.rev-flag {
   float: right;
   height: 1em;
   width: 1em;
@@ -237,24 +242,24 @@ input:focus {
   margin-top: -30px;
   cursor: pointer;
 }
-.modal-container {
+.rev-modal-container {
   position: absolute;
-  top: 20%;
-  left: 30%;
+  top: 10%;
+  left: 25%;
   background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5));
 }
-.modal {
+.rev-modal {
   z-index: 9999;
-  height: 500px;
+  height: 650px;
 }
-.closeBtn {
+.rev-closeBtn {
   position: absolute;
-  top: 22%;
-  left: 31%;
-  padding: 15px;
+  top: 12%;
+  left: 26%;
+  padding: 22px;
   border-radius: 10px;
   cursor: pointer;
   background: transparent;
-  border: none; 
+  border: none;
   outline: none;
 }
