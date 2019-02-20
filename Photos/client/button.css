@@ -64,9 +64,10 @@
 
 
 .phobtnMid {
+  z-index: 1;
   position: absolute;
   top: 8%;
-  left: 36%;
+  right: 9.5%;
   background-color: white;
   color: #484848;
   font-size: 14px;
@@ -79,9 +80,10 @@
 }
 
 .phobtnTop {
+  z-index: 1;
   position: absolute;
   top: 8%;
-  left: 69%;
+ right: 1.5%;
   color: #484848;
   font-size: 14px;
   font-weight: 400;
@@ -93,9 +95,10 @@
 }
 
 .phobtnBot {
+  z-index:1;
   position: absolute;
-  top: 80%;
-  left: 62%;
+  right:1.5%;
+  bottom: 8%;
   background-color: white;
   color: #484848;
   font-size: 14px;
