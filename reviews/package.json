@@ -2,7 +2,7 @@
   "name": "reviews",
   "version": "1.0.0",
   "description": "",
-  "main": "server/index.js",
+  "main": "index.js",
   "scripts": {
     "test": "jest",
     "react-dev": "webpack -d --watch",
@@ -11,7 +11,7 @@
     "start": "node server/index.js",
     "seed": "node database/seeding.js"
   },
-  "author": "",
+  "author": "irene shao",
   "license": "ISC",
   "devDependencies": {
     "@babel/core": "^7.2.2",

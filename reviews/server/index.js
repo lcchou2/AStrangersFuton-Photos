@@ -4,6 +4,13 @@ var app = express();
 var path = require('path');
 var db = require('../database/index.js');
 
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
+
+
 app.set('port', 3003);
 app.use(express.json());
 

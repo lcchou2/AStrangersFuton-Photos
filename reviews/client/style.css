@@ -142,6 +142,7 @@ input:focus {
   border-radius: 5px;
   font-size: 12px;
   outline: none;
+  background-color: white;
  }
 .sort:focus {
   border: 1px solid rgb(41, 126, 113);
@@ -168,11 +169,6 @@ input:focus {
 .date {
   font-size: 14px;
   color: #484848 !important;
-}
-.flag {
-  float:right;
-  height: 15px;
-  margin-right: 5px;
 }
 .review {
   font-size: 15px;
@@ -207,6 +203,16 @@ input:focus {
 .pageNum:hover {
   text-decoration: underline;
 }
+.currentPage {
+  color: white !important;
+  border: 1px solid rgb(41, 126, 113);
+  background-color: rgb(41, 126, 113);
+  padding-left: 11px;
+  padding-right: 11px;
+  padding-bottom: 6px;
+  padding-top: 5px;
+  border-radius: 15px;
+}
 .navPage {
   font-size: 15px;
   color: rgb(41, 126, 113) !important;
@@ -219,4 +225,36 @@ input:focus {
   padding-top: 5px;
   border-radius: 15px;
   cursor: pointer;
+}
+
+/**********FLAG MODAL COMPONENT**********/
+.flag {
+  float: right;
+  height: 1em;
+  width: 1em;
+  fill: rgb(118, 118, 118);
+  margin-right: 5px;
+  margin-top: -30px;
+  cursor: pointer;
+}
+.modal-container {
+  position: absolute;
+  top: 20%;
+  left: 30%;
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5));
+}
+.modal {
+  z-index: 9999;
+  height: 500px;
+}
+.closeBtn {
+  position: absolute;
+  top: 22%;
+  left: 31%;
+  padding: 15px;
+  border-radius: 10px;
+  cursor: pointer;
+  background: transparent;
+  border: none; 
+  outline: none;
 }
