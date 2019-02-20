@@ -59,7 +59,7 @@ class Photos extends React.Component {
           </div>
   
           <div className = 'smaller'>
-            <img src = {this.props.list[5].url}></img>
+            <img src = {this.props.list[4].url}></img>
             <button className="btnBot" onClick={() => { this.props.modalHandler() }}>View Photos</button>
           </div>
         </div>
