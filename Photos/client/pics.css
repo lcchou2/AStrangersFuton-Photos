@@ -27,17 +27,22 @@
   position: relative;
   border: 1px solid #333;
   overflow: hidden;
-  width: 100%;
+  width: 50%;
   height: 292px;
 }
 
+.phosmallers{
+  width:50%;
+  display:flex;
+}
+
 .phoinnercontainer {
- width: 50%;
+  width: 50%;
  position: relative;
 }
 
 .phobigger img {
-  max-width: 100%;
+  width: 100%;
   -moz-transition: all 0.5s;
   -webkit-transition: all 0.5s;
   transition: all 0.5s;
@@ -54,7 +59,7 @@
 }
 
 .phosmaller {
-  position: relative;
+  
   border: 1px solid #333;
   overflow: hidden;
   width: auto;
@@ -62,7 +67,7 @@
 }
 
 .phosmaller img {
-  max-width: 100%;
+  width: 100%;
   -moz-transition: all 0.5s;
   -webkit-transition: all 0.5s;
   transition: all 0.5s;
