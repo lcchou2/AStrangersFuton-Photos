@@ -1,26 +1,39 @@
 /* APP */
 
 .phooutside {
-  
+  position: relative;
+  margin-left: -15px;
+  margin-right: -15px;
   display: flex;
  
 }
+
 .phooutside:hover img {
   -webkit-filter: brightness(70%);
    filter: brightness(70%);
 }
+
+.phocontainer {
+  display: flex;
+  max-width:100%;
+ 
+}
+
+
+
 
 /*bigger*/
 .phobigger {
   position: relative;
   border: 1px solid #333;
   overflow: hidden;
-  width: auto;
+  width: 100%;
   height: 292px;
 }
 
 .phoinnercontainer {
-  width:716px;
+ width: 50%;
+ position: relative;
 }
 
 .phobigger img {
@@ -28,6 +41,8 @@
   -moz-transition: all 0.5s;
   -webkit-transition: all 0.5s;
   transition: all 0.5s;
+  
+  
 }
 .phobigger:hover img {
   -moz-transform: scale(1.05);
@@ -35,6 +50,7 @@
   transform: scale(1.05);
   -webkit-filter: brightness(100%);
    filter: brightness(100%);
+   
 }
 
 .phosmaller {
@@ -60,9 +76,4 @@
    filter: brightness(100%);
 }
 
-.phocontainer {
-  display: flex;
-  position: relative;
-  margin-left: -15px;
-  margin-right: -15px;
-}
+

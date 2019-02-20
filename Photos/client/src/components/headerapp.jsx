@@ -14,9 +14,11 @@ class Header extends React.Component {
       <div>
         <div className = 'phocontainer1'>
         <div className = 'phoinnercon1'> 
-        <div className = 'phopic'>
-            
-        </div>
+          <div className = 'phopicCon'>
+          <div className = 'phopic'>
+            <img src = 'https://s3-us-west-1.amazonaws.com/lcchou2/airbnb.png'></img>
+          </div>
+          </div>
         <div className="phosearch">
             <div className="phoinput-wrapper">
               <input id="stuff" placeholder="Search"></input>
