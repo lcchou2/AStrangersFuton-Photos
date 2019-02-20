@@ -179,20 +179,22 @@ class App extends React.Component {
     };
     return (
       <div>
-        <BookingView
-          price={this.state.price} calendarViewHidden={this.state.calendarViewHidden}
-          view={'sidebar'} moment={this.state.sidebarMoment}
-          handleLeftArrowClick={this.handleArrowClick} handleRightArrowClick={this.handleArrowClick}
-          handleDateClick={this.handleDateClick} schedule={this.state.schedule} handleHover={this.handleHover} handleHoverExit={this.handleHoverExit}
-          selectedStartDate={this.state.selectedStartDate} selectedEndDate={this.state.selectedEndDate}
-          dropdownState={this.state.dropdown} displaySidebarCalendar={this.displaySidebarCalendar}
-          displayBookingGuestDropdown={this.displayBookingGuestDropdown} hideBookingGuestDropdown={this.hideBookingGuestDropdown}
-          handleDropdownButtonClick={this.handleDropdownButtonClick} animationState={sidebarAnimationState} />
-        <br></br><button onClick={this.resetCalendarState}>Clear Dates</button><br></br>
+        <div style={{position: 'absolute', right: '15px'}}>
+          <BookingView
+            price={this.state.price} calendarViewHidden={this.state.calendarViewHidden}
+            view={'sidebar'} moment={this.state.sidebarMoment}
+            handleLeftArrowClick={this.handleArrowClick} handleRightArrowClick={this.handleArrowClick}
+            handleDateClick={this.handleDateClick} schedule={this.state.schedule} handleHover={this.handleHover} handleHoverExit={this.handleHoverExit}
+            selectedStartDate={this.state.selectedStartDate} selectedEndDate={this.state.selectedEndDate}
+            dropdownState={this.state.dropdown} displaySidebarCalendar={this.displaySidebarCalendar}
+            displayBookingGuestDropdown={this.displayBookingGuestDropdown} hideBookingGuestDropdown={this.hideBookingGuestDropdown}
+            handleDropdownButtonClick={this.handleDropdownButtonClick} animationState={sidebarAnimationState} />
+        </div>
         {<DualCalendar
         view={'main'} moment={this.state.mainMoment}
-        handleArrowClick={this.handleArrowClick}
+        handleArrowClick={this.handleArrowClick} resetCalendarState={this.resetCalendarState}
         handleDateClick={this.handleDateClick} schedule={this.state.schedule} handleHover={this.handleHover} handleHoverExit={this.handleHoverExit} animationState={mainAnimationState} />}
+        <br></br>
       </div>
     );
   }
