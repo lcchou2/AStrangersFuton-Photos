@@ -11,8 +11,8 @@ class Ratings extends React.Component {
         <span className="rev-numOfReviews">{this.props.numOfReviews} Reviews</span>
         <span className={"rev-stars-container rev-stars-" + this.props.rating}>★★★★★</span>
       </div>
-      <br/>
-      <hr/>
+      {/* <br/> */}
+      <hr className="rev-below-numOfReviews"/>
       <div className="rev-ratings-container">
         <div className="rev-left-container">
           <div className="rev-left-text-container">

@@ -120,6 +120,7 @@ class App extends React.Component {
   render() {
     return (
     <div className="rev-container">
+      <hr className="rev-above-ratings"/>
       <Ratings numOfReviews={this.state.numOfReviews} rating={this.state.rating} accuracy={this.state.accuracy} communication={this.state.communication} cleanliness={this.state.cleanliness} location={this.state.location} checkin={this.state.checkin} value={this.state.value}/>
       <div>
         <div>
@@ -129,9 +130,7 @@ class App extends React.Component {
           <Sort sort={this.state.sort} handleSort={this.handleSort}/>
         </div>
       </div>
-      <br/>
-      <br/>
-      <hr/>
+      <hr className="rev-above-reviews"/>
       <Reviews reviews={this.state.reviews} sort={this.state.sort} value={this.state.searchValue} backToReviews={this.backToReviews} allReviews={this.state.allReviews} reviewPage={this.state.reviewPage} commentPerPage={this.state.commentPerPage} changePage={this.changePage} nextPage={this.nextPage} previousPage={this.previousPage}/>
     </div>);
   }
