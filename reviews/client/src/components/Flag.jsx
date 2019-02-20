@@ -14,9 +14,7 @@ class Flag extends React.Component {
   }
 
   showModal() {
-    this.setState({display: 'block'}, () => {
-      console.log(this.state.display)
-    });
+    this.setState({display: 'block'});
   }
 
   hideModal(){

@@ -119,7 +119,7 @@ class App extends React.Component {
 
   render() {
     return (
-    <div>
+    <div className="reviews-container">
       <Ratings numOfReviews={this.state.numOfReviews} rating={this.state.rating} accuracy={this.state.accuracy} communication={this.state.communication} cleanliness={this.state.cleanliness} location={this.state.location} checkin={this.state.checkin} value={this.state.value}/>
       <div>
         <div>

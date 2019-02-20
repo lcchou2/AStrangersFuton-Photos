@@ -12,6 +12,11 @@ hr {
   border-top: 1px solid rgb(212, 212, 212);
   margin: 1em 0;
 }
+.reviews-container {
+  border: transparent;
+  margin-left: 10%;
+  width: 50%;
+}
 
 /**********STAR COMPONENT**********/
 .stars-container {
@@ -97,11 +102,9 @@ hr {
 }
 .right-rating {
   margin-bottom: 15px;
-  /* float: left; */
 }
 .right-stars {
   left: 50px;
-  /* float: right; */
   margin-bottom: 10px;
 }
 
