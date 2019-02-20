@@ -11,16 +11,20 @@ class Carouselpic extends React.Component {
   render() {
     return(
       <div className = 'phomodalCon'> 
+        <div className = 'phoempty'></div>
         <div className = 'phoimage' >
 
-          <img src = {this.props.list.list[this.props.currentIndex].url} style = {{width: '720.3',height: '482.59', marginLeft: 'auto', marginRight: 'auto'}} onClick = {this.props.clickFunction}></img>
-
+          <div className = 'phofill'></div>
+          <div className = 'photarget'>
+          <img src = {this.props.list.list[this.props.currentIndex].url}  onClick = {this.props.clickFunction}></img>
+          </div>
 
           <div className = 'phoslider'>
             {this.props.currentIndex + 1}/{this.props.list.list.length}                    {this.props.list.list[this.props.currentIndex].description}
           </div>
 
         </div>
+        <div className = 'phoempty'></div>
 
       </div>
       

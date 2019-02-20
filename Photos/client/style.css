@@ -252,22 +252,43 @@ input{
   top: 0; 
   left: 0; 
   background: rgb(38,38,38)
-  
 }
 
 .phomodalcon {
+  display:flex;
   z-index: 2;
   width: 100%; 
   height: 100%; 
 }
 
-.phoimage  {
- width: 700px;
-margin-left: auto;
-margin-right: auto;
-padding-top: 50px;
- 
+.phoempty {
+  width: 27%;
 }
+.phoimage  {
+  display:flex;
+  flex-direction: column;
+ max-width: 46%;
+
+}
+
+.photarget {
+  height: 70%;
+  object-fit: cover;
+  
+}
+
+.photarget img {
+  object-fit: cover;
+  display:absolute;
+  max-height: 100%;
+  max-width: 100%;
+  object-fit: contain;
+}
+.phofill {
+  height:10%;
+}
+
+
 
 .phomodal {
   opacity: 0;
@@ -441,4 +462,5 @@ left: 95.8%;
   text-transform: uppercase;
   font-size: 15px;
   font-weight: 200;
+  height: 20%
 }
