@@ -15,9 +15,9 @@ class Search extends React.Component {
     return (
     <div>
       <link href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet"/>
-      <div className="input-wrapper">
+      <div className="rev-input-wrapper">
         <input placeholder="Search reviews" value={this.props.value} onChange={this.props.handleSearch}/>
-        <label className="fa fa-search input-icon"></label>
+        <label className="fa fa-search rev-input-icon"></label>
       </div>
     </div>
     );
