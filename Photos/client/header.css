@@ -10,6 +10,8 @@
 .pic {
   display: flex;
   text-align: center;
+  width: 63px;
+  height: 11%;
 }
 
 ul {

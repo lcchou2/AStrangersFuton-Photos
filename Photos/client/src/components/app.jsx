@@ -2,6 +2,7 @@ import ajax from '../lib/ajax';
 import Photos from './photos.jsx'
 import Carousel from './carousel.jsx'
 import React from 'react'
+import Header from './headerapp.jsx'
 
 // const appStyle = {
 //   position: 'relative',
@@ -79,7 +80,7 @@ class App extends React.Component {
     return(
       <div >
         <div>
-          {console.log(this.state.list)}
+          <Header/>
         </div>
        
         <div>
