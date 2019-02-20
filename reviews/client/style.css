@@ -1,6 +1,11 @@
 body {
   font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;
 }
+.rev-container {
+  border: transparent;
+  margin-left: 12%;
+  width: 85%;
+}
 .rev-numOfReviews {
   font-size: 24px;
   font-weight: bold;
@@ -12,10 +17,14 @@ hr {
   border-top: 1px solid rgb(212, 212, 212);
   margin: 1em 0;
 }
-.rev-container {
-  border: transparent;
-  margin-left: 10%;
-  width: 80%;
+.rev-above-ratings {
+  margin-bottom: 40px;
+}
+.rev-below-numOfReviews {
+  margin-top: 20px;
+}
+.rev-above-reviews {
+  margin-top: 50px;
 }
 
 /**********STAR COMPONENT**********/
@@ -246,7 +255,7 @@ hr {
   position: absolute;
   top: 10%;
   left: 25%;
-  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5));
+  background-color: rgba(0,0,0,0.5);
 }
 .rev-modal {
   z-index: 9999;
