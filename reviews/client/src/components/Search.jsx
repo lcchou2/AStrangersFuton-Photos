@@ -9,7 +9,6 @@ class Search extends React.Component {
 
   // newBorder(event) {
   //   event.target.classList.add('newBorder');
-  //   console.log(event.target)
   // }
 
   render() {

@@ -20,7 +20,6 @@ app.listen(app.get('port'));
 
 
 app.get('/api/reviews/:listingId', function (req, res) {
-  console.log(req.params.listingId)
   db.returnListing(Number(req.params.listingId), function(err, data) {
     if (err) {
       throw (err);
