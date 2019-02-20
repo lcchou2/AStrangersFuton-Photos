@@ -25,15 +25,32 @@
 <body>
   
 
-  <div id = 'app1'></div>
-  <div id = 'app2' ></div>
-  <div id = 'app3' ></div>
+  <style>
+    .allContainer {
+      display: flex;
+    }
   
+    .allMain {
+      width: 60%;
+      min-height: 400px;
+    }
   
-  
-
-    
-
+    .allSidebar {
+      min-height: 400px;
+      width: 40%;
+      margin-right: 0;
+      margin-left: auto;
+    }  
+    </style>
+    <div id="app1"></div>
+    <div class="allContainer">
+      <div class="allMain">
+        <div id="app3"></div>
+      </div>
+      <div class="allSidebar"> 
+        <div id="app2"></div>
+      </div>
+    </div>
 
 
 <script src="http://127.0.0.1:3001/dist/bundle.js"></script>
