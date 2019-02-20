@@ -37,34 +37,37 @@ class Photos extends React.Component {
       <div className = "phooutside" onClick={() => { this.props.modalHandler() }}>
         <div className = 'phocontainer'>
         
-        <div className = 'phobigger'>
-        
-          <img src = {this.props.list[0].url}></img>
-        </div>
-  
-        <div className = 'phoinnerContainer'>
-          <div className = 'phosmaller'>
-            <img src = {this.props.list[1].url}></img>
+          <div className = 'phobigger'>
+          
+            <img src = {this.props.list[0].url}></img>
           </div>
+
+          <div className = 'phosmallers'>
   
-          <div className = 'phosmaller'>
-            <img src = {this.props.list[2].url}></img>
-          </div>
-        </div>
+            <div className = 'phoinnerContainer'>
+              <div className = 'phosmaller'>
+                <img src = {this.props.list[1].url}></img>
+              </div>
+      
+              <div className = 'phosmaller'>
+                <img src = {this.props.list[2].url}></img>
+              </div>
+            </div>
   
-        <div className = 'phoinnerContainer'>
-          <div className = 'phosmaller'>
-            <img src = {this.props.list[3].url}></img>
-            <button className="phobtnMid" onClick={(e) => { this.props.shareHandler(e) }}><i className="fa fa-upload"></i>  Share</button>
-            <button className="phobtnTop" onClick={(e) => { this.props.saveHandler(e) }}><i className="far fa-heart"></i>                  Save</button>
-          </div>
-  
-          <div className = 'phosmaller'>
-            <img src = {this.props.list[4].url}></img>
-            <button className="phobtnBot" onClick={() => { this.props.modalHandler() }}>View Photos</button>
-          </div>
-        </div>
-      </div>
+            <div className = 'phoinnerContainer'>
+              <div className = 'phosmaller'>
+                <img src = {this.props.list[3].url}></img>
+                <button className="phobtnMid" onClick={(e) => { this.props.shareHandler(e) }}><i className="fa fa-upload"></i>  Share</button>
+                <button className="phobtnTop" onClick={(e) => { this.props.saveHandler(e) }}><i className="far fa-heart"></i>                  Save</button>
+              </div>
+      
+              <div className = 'phosmaller'>
+                <img src = {this.props.list[4].url}></img>
+                <button className="phobtnBot" onClick={() => { this.props.modalHandler() }}>View Photos</button>
+              </div>
+            </div>
+            </div>
+            </div>
       </div>
       </div>
     )
