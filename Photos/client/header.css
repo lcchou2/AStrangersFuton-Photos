@@ -52,7 +52,8 @@ li a:hover {
 
 .search {
   padding: 10px;
-  margin-right: 10px
+  margin-right: 10px;
+  outline: none;
 }
 
 /* outline: none, text-indent: 16px*/
@@ -71,8 +72,14 @@ li a:hover {
   box-shadow: 0 2px 4px rgba(0,0,0,0.1);
   height:50px;
   width: 458px;
+  text-indent: 50px;
+  outline:none;
+
 }
 
+::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  text-indent: 0px;
+}
 
 ::-webkit-input-placeholder {
   padding-left: 50px;
