@@ -1,4 +1,4 @@
-.close {
+.phoclose {
   display: block;
   position: absolute;
   right: 32px;
@@ -8,7 +8,7 @@
 
 }
 
-.close:before, .close:after {
+.phoclose:before, .phoclose:after {
   position: absolute;
   left: 20.5px;
   top: -27px;
@@ -17,9 +17,9 @@
   width: 1.5px;
   background-color: white;
 }
-.close:before {
+.phoclose:before {
   transform: rotate(45deg);
 }
-.close:after {
+.phoclose:after {
   transform: rotate(-45deg);
 }

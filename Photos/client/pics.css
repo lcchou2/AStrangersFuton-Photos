@@ -1,17 +1,17 @@
 /* APP */
 
-.outside {
+.phooutside {
   
   display: flex;
  
 }
-.outside:hover img {
+.phooutside:hover img {
   -webkit-filter: brightness(70%);
    filter: brightness(70%);
 }
 
 /*bigger*/
-.bigger {
+.phobigger {
   position: relative;
   border: 1px solid #333;
   overflow: hidden;
@@ -19,13 +19,13 @@
   height: 292px;
 }
 
-.bigger img {
+.phobigger img {
   max-width: 100%;
   -moz-transition: all 0.5s;
   -webkit-transition: all 0.5s;
   transition: all 0.5s;
 }
-.bigger:hover img {
+.phobigger:hover img {
   -moz-transform: scale(1.05);
   -webkit-transform: scale(1.05);
   transform: scale(1.05);
@@ -33,7 +33,7 @@
    filter: brightness(100%);
 }
 
-.smaller {
+.phosmaller {
   position: relative;
   border: 1px solid #333;
   overflow: hidden;
@@ -41,14 +41,14 @@
   height: 145px;
 }
 
-.smaller img {
+.phosmaller img {
   max-width: 100%;
   -moz-transition: all 0.5s;
   -webkit-transition: all 0.5s;
   transition: all 0.5s;
 
 }
-.smaller:hover img {
+.phosmaller:hover img {
   -moz-transform: scale(1.05);
   -webkit-transform: scale(1.05);
   transform: scale(1.05);
@@ -56,7 +56,7 @@
    filter: brightness(100%);
 }
 
-.container {
+.phocontainer {
   display: flex;
   margin-left: -15px;
 }

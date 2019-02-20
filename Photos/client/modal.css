@@ -1,4 +1,4 @@
-.carousel {
+.phocarousel {
   z-index: 9999; 
   width: 100%; 
   height: 100%; 
@@ -9,7 +9,7 @@
   
 }
 
-.modal {
+.phomodal {
   opacity: 0;
   visibility: hidden;
   position: fixed;
@@ -22,20 +22,20 @@
   
 }
 
-.image {
+.phoimage {
 position: absolute;
 top: 11.5%;
 left: 25%
 }
 
-.left {
+.pholeft {
   position: absolute;
 bottom: 47%;
 right: 90.8%;
 
 }
 
-.left img {
+.pholeft img {
   height: 13.3%;
   width: 50%;
   -moz-transform: scaleX(-1);
@@ -46,14 +46,14 @@ right: 90.8%;
   -ms-filter: "FlipH";
 
 }
-.right {
+.phoright {
 position: absolute;
 bottom: 47%;
 left: 95.8%;
 
 }
 
-.right img {
+.phoright img {
   height: 13.3%;
   width: 97.4%;
 

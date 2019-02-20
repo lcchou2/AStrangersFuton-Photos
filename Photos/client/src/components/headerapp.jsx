@@ -12,13 +12,13 @@ class Header extends React.Component {
   render(){
     return(
       <div>
-        <div class = 'container1'>
-    <div class = 'innercon1'> 
-        <div className = 'pic'>
+        <div className = 'phocontainer1'>
+        <div className = 'phoinnercon1'> 
+        <div className = 'phopic'>
             
         </div>
-        <div class="search">
-            <div class="input-wrapper">
+        <div className="phosearch">
+            <div className="phoinput-wrapper">
               <input id="stuff" placeholder="Search"></input>
               <label for="stuff" class="fa fa-search input-icon fa-lg"></label>
             </div>
