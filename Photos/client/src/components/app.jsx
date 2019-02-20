@@ -90,7 +90,7 @@ class App extends React.Component {
        
 
 
-      <div className = 'modal__inner' style = {{display:this.state.display}}>
+      <div style = {{display:this.state.display}}>
         <Carousel list = {this.state.list} display = {this.state.display} switchBack = {this.switchBack}/>
       </div>
        

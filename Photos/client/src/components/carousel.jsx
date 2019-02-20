@@ -38,7 +38,7 @@ class Carousel extends React.Component {
   render() {
     return(
 
-      <div className = 'carousel' style = {{display: this.props.display}}>
+      <div className = 'phocarousel' style = {{display: this.props.display}}>
 
         <Arrow
           direction="left"
@@ -50,7 +50,7 @@ class Carousel extends React.Component {
         <div>
           
         <div>
-          <a href="#" className = 'close' onClick = {this.props.switchBack}></a>
+          <a href="#" className = 'phoclose' onClick = {this.props.switchBack}></a>
         </div>
         </div>
 
