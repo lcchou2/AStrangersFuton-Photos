@@ -1,5 +1,5 @@
 #!/usr/bin/bash env
 
-cd calendar && npm build && cd ..
-cd reviews && npm build && cd ..
-cd Photos && npm build && cd ..
+cd calendar && npm run build && cd ..
+cd reviews && npm run build && cd ..
+cd Photos && npm run build && cd ..
