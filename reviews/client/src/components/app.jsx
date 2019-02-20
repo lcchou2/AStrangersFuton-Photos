@@ -26,7 +26,6 @@ class App extends React.Component {
       reviewPage: 1,
       commentPerPage: 7
     }
-    this.getListingData = this.getListingData.bind(this);
     this.handleSort = this.handleSort.bind(this);
     this.handleSearch = this.handleSearch.bind(this);
     this.backToReviews = this.backToReviews.bind(this);
@@ -35,29 +34,22 @@ class App extends React.Component {
     this.previousPage = this.previousPage.bind(this);
   }
 
-  getListingData(listingId, successCB) {
-    $.ajax({
-      url: `http://localhost:3003/api/reviews/${listingId}`,
-      method: 'GET',
-      success: successCB
-    });
-  }
-
   componentDidMount() {
-    this.getListingData(this.state.listingId, (data) => {
-      this.setState({
-        rating: Math.round(data[0].rating * 2),
-        accuracy: Math.round(data[0].accuracy * 2),
-        communication: Math.round(data[0].communication * 2),
-        cleanliness: Math.round(data[0].cleanliness * 2),
-        location: Math.round(data[0].location * 2), 
-        checkin: Math.round(data[0].checkin * 2),
-        value: Math.round(data[0].value * 2),
-        reviews: data[0].reviews,
-        allReviews: data[0].reviews
-      });
+    fetch(`http://localhost:3003/api/reviews/${this.state.listingId}`)
+    .then((res) => res.json())
+    .then((jsonRes) => this.setState({
+      rating: Math.round(jsonRes[0].rating * 2),
+      accuracy: Math.round(jsonRes[0].accuracy * 2),
+      communication: Math.round(jsonRes[0].communication * 2),
+      cleanliness: Math.round(jsonRes[0].cleanliness * 2),
+      location: Math.round(jsonRes[0].location * 2), 
+      checkin: Math.round(jsonRes[0].checkin * 2),
+      value: Math.round(jsonRes[0].value * 2),
+      reviews: jsonRes[0].reviews,
+      allReviews: jsonRes[0].reviews
+    }, () => {
       this.setState({numOfReviews: this.state.reviews.length});
-    });
+    }))
   }
 
   handleSort(event) {
