@@ -4,17 +4,24 @@ const port = 3001;
 
 const app = express();
 const path = require('path');
-const {getAllListings} = require('../databases/seeding.js')
+const db = require('../databases/index.js')
+
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
 
 app.use(express.static(path.join(__dirname, '../client')));
 
-app.get('/api/photos', (req, res) => {
-  console.log('got all of them!!')
-  getAllListings((err, document) => {
+app.get('/api/photos/:listingId', function (req, res) {
+  console.log(req.params.listingId)
+  db.returnListing(Number(req.params.listingId), function(err, data) {
     if (err) {
-      res.status(400).send(err);
+      throw (err);
+    } else {
+      res.send(data);
     }
-    res.status(200).send(document);
   });
 });
 
