@@ -67,7 +67,7 @@ export const buildCalGrid = function (month, year, schedule) {
   var currWeek = 0;
   while (m.month() === month) {
     if (!grid[currWeek]) grid[currWeek] = {};
-    grid[currWeek][m.day()] = schedule[m.toDate().toISOString()];
+    grid[currWeek][m.day()] = schedule[m.utc().startOf('day').utc().toDate().toISOString()];
 
     m = m.add(1, 'day');
 
