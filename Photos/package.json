@@ -8,7 +8,7 @@
     "react-dev": "webpack -d --watch",
     "start-dev": "nodemon server/index.js",
     "build": "webpack -d",
-    "start": "node server/index.js",
+    "start": "node server/index.js & npm run seed",
     "seed": "node databases/seeding.js"
   },
   "author": "Lawrence Chou",

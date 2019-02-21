@@ -5,7 +5,7 @@ const port = 3001;
 const app = express();
 const path = require('path');
 const db = require('../databases/index.js')
-
+// 172.17.0.2
 app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
