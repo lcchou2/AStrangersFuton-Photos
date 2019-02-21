@@ -16,8 +16,8 @@ class App extends React.Component {
       price: randInt(100, 700),
       selectedStartDate: null,
       selectedEndDate: null,
-      sidebarMoment: moment().startOf('month'),
-      mainMoment: moment().startOf('month'),
+      sidebarMoment: moment(moment.utc().startOf('month').format()),
+      mainMoment: moment(moment.utc().startOf('month').format()),
       schedule: {},
       dropdown: {
         isActive: false,
@@ -67,11 +67,10 @@ class App extends React.Component {
   handleDropdownButtonClick(event) {
     var value = Number(event.target.dataset.increment);
     var guestKey = event.target.dataset.guesttype;
-    console.log(value, guestKey);
     var newDropdownState = this.state.dropdown;
 
     newDropdownState[guestKey] = newDropdownState[guestKey] + value;
-    this.setState({dropdown: newDropdownState}, () => console.log(this.state));
+    this.setState({dropdown: newDropdownState});
   }
   handleHover(event) {
     var dateString = event.target.children[0].dataset.datestring;

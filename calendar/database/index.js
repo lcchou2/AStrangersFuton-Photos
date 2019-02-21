@@ -1,6 +1,6 @@
 var mongoose = require('mongoose');
 
-mongoose.connect('mongodb://localhost/schedule', function(error) {
+mongoose.connect('mongodb://172.17.0.2:27017/schedule', { useNewUrlParser: true }, function(error) {
   if (error) {
     console.log('ERROR', error);
   } 
