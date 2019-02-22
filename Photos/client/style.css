@@ -272,7 +272,8 @@ input{
 }
 
 .photarget {
-  height: 70%;
+  height: 80%;
+  
   object-fit: cover;
   
 }
@@ -399,6 +400,7 @@ left: 95.8%;
   overflow: hidden;
   width: 50%;
   height: 292px;
+  text-align:center;
 }
 
 .phosmallers{
@@ -434,6 +436,7 @@ left: 95.8%;
   overflow: hidden;
   width: auto;
   height: 145px;
+  text-align:center;
 }
 
 .phosmaller img {

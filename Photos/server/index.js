@@ -15,7 +15,7 @@ app.use(function(req, res, next) {
 app.use(express.static(path.join(__dirname, '../client')));
 
 app.get('/api/photos/:listingId', function (req, res) {
-  console.log(req.params.listingId)
+  
   db.returnListing(Number(req.params.listingId), function(err, data) {
     if (err) {
       throw (err);

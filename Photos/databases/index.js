@@ -1,6 +1,7 @@
 var mongoose = require('mongoose');
 var photos = require('./schema.js');
-mongoose.connect('mongodb://172.17.0.2:27017/help');
+mongoose.connect('mongodb://localhost/newnewnew');
+// mongoose.connect('mongodb://172.17.0.2:27017/help');
 var db = mongoose.connection;
 
 db.on('error', console.error.bind(console, 'connection error:'));
