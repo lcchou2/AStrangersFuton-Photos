@@ -343,6 +343,7 @@ left: 95.8%;
 
 /* Modal X */
 .phoclose {
+  
   display: block;
   position: absolute;
   right: 32px;
@@ -354,8 +355,8 @@ left: 95.8%;
 
 .phoclose:before, .phoclose:after {
   position: absolute;
-  right: 1%;
-  bottom: 55%;
+  right: 30%;
+  bottom: 48%;
   content: ' ';
   height: 38px;
   width: 1.5px;
@@ -368,6 +369,22 @@ left: 95.8%;
   transform: rotate(-45deg);
 }
 
+.phoinvis {
+  display: block;
+  color: transparent;
+  position: absolute;
+  background: transparent;
+  top: 2.5%;
+  left: 96%;
+  z-index: 2;
+  font-size: 16px;
+  padding: 6px 6px;
+  
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  
+}
 
 
 

@@ -50,7 +50,9 @@ class Carousel extends React.Component {
         <div>
           
         <div>
-          <a href="#" className = 'phoclose' onClick = {this.props.switchBack}></a>
+          <a href="#" className = 'phoclose'></a>
+          <button className= 'phoinvis' onClick = {this.props.switchBack}>He</button>
+         
         </div>
         </div>
 
