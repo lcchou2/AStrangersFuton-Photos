@@ -160,7 +160,8 @@ margin-right: 10px;
 ul {
   list-style-type: none;
   margin: 0;
-  padding: 0;
+  padding-top: 9px;
+  margin-right: -10px;
   background-color: white;
 }
 
@@ -178,25 +179,26 @@ li a {
   text-align: center;
   padding: 14px 16px;
   text-decoration: none;
-  height: 46px;
+  height: 34px;
 }
 
 li a:hover {
   color: #3d3b3b;
-  border-bottom: 2px solid
+  border-bottom: 2px solid #606060
+  
 }
 
 .phocontainer1 {
   display:flex;
   justify-content: space-between ;
-  
   font-size: 14px;
+  margin-bottom: -4px;
   /* need to change once we add in side picture */
   /* border-bottom: 5px black */
 }
 
 .phosearch {
-  padding: 10px;
+  padding: 9px;
   margin-right: 10px;
   outline: none;
 }
