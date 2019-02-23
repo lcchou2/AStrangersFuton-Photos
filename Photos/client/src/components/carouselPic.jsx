@@ -10,7 +10,7 @@ class Carouselpic extends React.Component {
 
   render() {
     return(
-      <div className = 'phomodalCon'> 
+      <div className = 'phomodalcon'> 
         <div className = 'phoempty'></div>
         <div className = 'phoimage' >
 

@@ -3,7 +3,7 @@ import $ from 'jquery';
 export default {
   getAjax: (listingId, callback) => {
     $.get({
-      url: `/api/photos/${listingId}`,
+      url: `http://ec2-13-56-13-87.us-west-1.compute.amazonaws.com/api/photos/${listingId}`,
       success: (data) => {
         callback(data);
       },
