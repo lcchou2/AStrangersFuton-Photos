@@ -379,7 +379,7 @@ left: 95.8%;
   z-index: 2;
   font-size: 16px;
   padding: 6px 6px;
-  
+  outline: none;
   border: none;
   cursor: pointer;
   border-radius: 5px;
