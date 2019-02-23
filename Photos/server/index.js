@@ -1,7 +1,7 @@
 const express = require('express');
 
 const port = 3001;
-
+const expressStaticGzip = require("express-static-gzip");
 const app = express();
 const path = require('path');
 const db = require('../databases/index.js')
@@ -12,7 +12,15 @@ app.use(function(req, res, next) {
   next();
 });
 
-app.use(express.static(path.join(__dirname, '../client')));
+app.use('/', expressStaticGzip(path.join(__dirname, '../client'), {
+  enableBrotli: true,
+  customCompressions: [{
+      encodingName: 'deflate',
+      fileExtension: 'zz'
+  }],
+  orderPreference: ['br', 'gz']
+}));
+
 
 app.get('/api/photos/:listingId', function (req, res) {
   

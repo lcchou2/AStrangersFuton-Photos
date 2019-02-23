@@ -1,6 +1,7 @@
 var path = require('path');
 var SRC_DIR = path.join(__dirname, '/client/src');
 var DIST_DIR = path.join(__dirname, '/client/dist');
+var Compression = require('compression-webpack-plugin');
 
 module.exports = {
   entry: `${SRC_DIR}/index.jsx`,
@@ -18,16 +19,19 @@ module.exports = {
           presets: ['@babel/react']
        }
       }
-      // ,
-      // {
-      //   test: /\.(css|less)$/,
-      //   use: "css-loader",
-      //   options: { 
-      //     modules: true
-      //   }
-      // }
-      
+  
     ],
     
-  }
+    
+  },
+
+  plugins: [
+    new Compression({
+      filename: '[path].gz[query]',
+      algorithm: 'gzip',
+      test: /\.js$|\.css$|\.html$/,
+      threshold: 10240,
+      minRatio: 0.7
+    })
+  ]
 };
