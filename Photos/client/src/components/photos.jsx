@@ -47,7 +47,7 @@ class Photos extends React.Component {
                 <button className="phobtnTop" onClick={(e) => { this.props.saveHandler(e) }}><i className="far fa-heart"></i>                  Save</button>
 
                 <button className="phobtnBot" onClick={() => { this.props.modalHandler() }}>View Photos</button>
-            <div className = 'phoinnerContainer'>
+            <div className = 'phoinnercontainer'>
               <div className = 'phosmaller'>
                 <img src = {this.props.list[1].url}></img>
               </div>
@@ -57,7 +57,7 @@ class Photos extends React.Component {
               </div>
             </div>
   
-            <div className = 'phoinnerContainer'>
+            <div className = 'phoinnercontainer'>
               <div className = 'phosmaller'>
                 <img src = {this.props.list[3].url}></img>
                
