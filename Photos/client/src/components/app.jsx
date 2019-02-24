@@ -14,9 +14,21 @@ import Header from './headerapp.jsx'
 // }
 class App extends React.Component {
   constructor(props) {
+
+
+
+
+
+
     super(props);
+    var id = 1;
+    var path = window.location.pathname.split('/');
+    var pathId = Number.parseInt(path[1], 10);
+    if (!Number.isNaN(pathId)) {
+      id = pathId;
+    }
     this.state = {
-      listingId: 3,
+      listingId: id,
       list : [{url:''}, {url:''},{url:''},{url:''},{url:''}],
       display : 'none',
       displayShare: 'none',

@@ -21,6 +21,8 @@ app.use('/', expressStaticGzip(path.join(__dirname, '../client'), {
   orderPreference: ['br', 'gz']
 }));
 
+app.use('/:id', express.static(path.join(__dirname, '../client')));
+
 
 app.get('/api/photos/:listingId', function (req, res) {
   
