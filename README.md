@@ -1,6 +1,6 @@
 # A Stranger's Futon
 
-> This was a collaborative project                      
+> This portion of the project showcases the main photos of a specific service listing while utilizing modals to display carousels and ways to save listings.
 
 ## Related Projects
 
