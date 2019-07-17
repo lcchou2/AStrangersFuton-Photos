@@ -16,7 +16,7 @@ class Carouselpic extends React.Component {
 
           <div className = 'phofill'></div>
           <div className = 'photarget'>
-          <img src = {this.props.list.list[this.props.currentIndex].url}  onClick = {this.props.clickFunction}></img>
+          <img src = {'https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/hb-luxury-airbnbs-santorini-1531317651.png?crop=1.00xw:1.00xh;0,0&resize=4296:*'}  onClick = {this.props.clickFunction}></img>
           </div>
 
           <div className = 'phoslider'>

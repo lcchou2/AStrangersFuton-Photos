@@ -39,7 +39,7 @@ class Photos extends React.Component {
         
           <div className = 'phobigger'>
           
-            <img src = {this.props.list[0].url}></img>
+            <img src = {'https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/hb-luxury-airbnbs-santorini-1531317651.png?crop=1.00xw:1.00xh;0,0&resize=4296:*'}></img>
           </div>
 
           <div className = 'phosmallers'>
@@ -49,22 +49,22 @@ class Photos extends React.Component {
                 <button className="phobtnBot" onClick={() => { this.props.modalHandler() }}>View Photos</button>
             <div className = 'phoinnercontainer'>
               <div className = 'phosmaller'>
-                <img src = {this.props.list[1].url}></img>
+                <img src = {'https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/lakecomo-gallio-01-1529341903.jpg?crop=0.536xw:1.00xh;0.211xw,0&resize=980:*'}></img>
               </div>
       
               <div className = 'phosmaller'>
-                <img src = {this.props.list[2].url}></img>
+                <img src = {'https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/lakecomo-gallio-01-1529341903.jpg?crop=0.536xw:1.00xh;0.211xw,0&resize=980:*'}></img>
               </div>
             </div>
   
             <div className = 'phoinnercontainer'>
               <div className = 'phosmaller'>
-                <img src = {this.props.list[3].url}></img>
+                <img src = {'https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/lakecomo-gallio-01-1529341903.jpg?crop=0.536xw:1.00xh;0.211xw,0&resize=980:*'}></img>
                
               </div>
       
               <div className = 'phosmaller'>
-                <img src = {this.props.list[4].url}></img>
+                <img src = {'https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/lakecomo-gallio-01-1529341903.jpg?crop=0.536xw:1.00xh;0.211xw,0&resize=980:*'}></img>
                 
               </div>
             </div>

@@ -22,11 +22,11 @@ class App extends React.Component {
 
     super(props);
     var id = 1;
-    var path = window.location.pathname.split('/');
-    var pathId = Number.parseInt(path[1], 10);
-    if (!Number.isNaN(pathId)) {
-      id = pathId;
-    }
+    // var path = window.location.pathname.split('/');
+    // var pathId = Number.parseInt(path[1], 10);
+    // if (!Number.isNaN(pathId)) {
+    //   id = pathId;
+    // }
     this.state = {
       listingId: id,
       list : [{url:''}, {url:''},{url:''},{url:''},{url:''}],
@@ -42,13 +42,13 @@ class App extends React.Component {
     this.shareXHandler = this.shareXHandler.bind(this);
   }
 
-  componentDidMount() {
-    ajax.getAjax(this.state.listingId,(photoobj) => {
-      this.setState({
-        list : photoobj
-      });
-    })
-  }
+  // componentDidMount() {
+  //   ajax.getAjax(this.state.listingId,(photoobj) => {
+  //     this.setState({
+  //       list : photoobj
+  //     });
+  //   })
+  // }
 
   shareHandler(e) {
     e.stopPropagation();
@@ -103,7 +103,7 @@ class App extends React.Component {
 
 
       <div style = {{display:this.state.display}}>
-        <Carousel list = {this.state.list} display = {this.state.display} switchBack = {this.switchBack}/>
+        <Carousel list = {['https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/hb-luxury-airbnbs-santorini-1531317651.png?crop=1.00xw:1.00xh;0,0&resize=4296:*','https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/lakecomo-gallio-01-1529341903.jpg?crop=0.536xw:1.00xh;0.211xw,0&resize=980:*','https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/hb-luxury-airbnbs-santorini-1531317651.png?crop=1.00xw:1.00xh;0,0&resize=4296:*']} display = {this.state.display} switchBack = {this.switchBack}/>
       </div>
        
        
